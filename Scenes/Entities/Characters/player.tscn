@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnkck3vdeodaa"]
+
+[ext_resource type="Texture2D" uid="uid://dr6fw0j02oxes" path="res://Art/Entities/Characters/Player/player.png" id="1_ip6be"]
+[ext_resource type="Script" path="res://Scripts/Entities/Characters/player.gd" id="1_xroi2"]
+[ext_resource type="Resource" uid="uid://cudo5oph02fov" path="res://Resources/Entities/Characters/player_data_default.tres" id="2_0a44g"]
+[ext_resource type="Script" path="res://addons/ProCam2D/scripts/pcam_target.gd" id="2_lsvk7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_duk6b"]
+radius = 20.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 8
+collision_mask = 17
+motion_mode = 1
+script = ExtResource("1_xroi2")
+player_data = ExtResource("2_0a44g")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ip6be")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_duk6b")
+
+[node name="PCamTarget" type="Node2D" parent="."]
+script = ExtResource("2_lsvk7")
+radius = 20.0
