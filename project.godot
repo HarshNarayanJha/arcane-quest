@@ -55,6 +55,9 @@ move_right={
 2d_physics/layer_1="Default"
 2d_physics/layer_4="Player"
 2d_physics/layer_5="Walls"
+2d_physics/layer_6="Ground"
+2d_physics/layer_7="Foreground"
+2d_physics/layer_8="Objects"
 
 [rendering]
 

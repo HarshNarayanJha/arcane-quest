@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://b0ocs23mqrch5"]
+[gd_scene load_steps=9 format=4 uid="uid://b0ocs23mqrch5"]
 
-[ext_resource type="TileSet" uid="uid://bte21k45l8pkd" path="res://Scenes/Levels/Tilesets/tileset.tres" id="1_sovft"]
+[ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_8nbwm"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="2_5xtda"]
+[ext_resource type="TileSet" uid="uid://mejdaxlkw3mx" path="res://Scenes/Levels/Tilesets/border_tileset.tres" id="2_57mks"]
+[ext_resource type="TileSet" uid="uid://beumnpq6u0a2d" path="res://Scenes/Levels/Tilesets/foreground_tileset.tres" id="3_p6vor"]
 [ext_resource type="PackedScene" uid="uid://dgts438blgcwe" path="res://Scenes/Helpers/player_spawn.tscn" id="3_sqlbh"]
+[ext_resource type="TileSet" uid="uid://bono8c6o7slux" path="res://Scenes/Levels/Tilesets/interactable_tileset.tres" id="4_nd7nw"]
+[ext_resource type="PackedScene" uid="uid://dla4koheqh3xc" path="res://Scenes/Entities/Interactables/switch.tscn" id="7_vblou"]
+[ext_resource type="PackedScene" uid="uid://dofj4wtemqmiy" path="res://Scenes/Entities/Interactables/wall_door.tscn" id="8_lgibd"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -10,15 +15,19 @@
 
 [node name="Ground" type="TileMapLayer" parent="Starting Pathway"]
 tile_map_data = PackedByteArray("AAD//+z/AAAAAAEAAAD//+3/AAAAAAEAAAD//+7/AAAAAAEAAAAAAOz/AAAAAAEAAAAAAO3/AAAAAAEAAAAAAO7/AAAAAAEAAAD+/+z/AAADAAAAAGD+/+3/AAADAAAAAGD+/+7/AAADAAAAAGABAOz/AAADAAAAAHABAO3/AAADAAAAAHABAO7/AAADAAAAAHD//+v/AAAHAAUAAAAAAOv/AAAHAAUAAAD//+r/AAAAAAMAAAAAAOr/AAAAAAMAAAD+/+r/AAAAAAMAAAABAOr/AAAAAAMAAAD+/+n/AAAAAAMAAAD9/+n/AAAAAAIAAGABAOn/AAAAAAMAAAACAOn/AAAAAAIAAHD9/+j/AAAAAAMAAAD9/+f/AAAAAAIAAAD+/+b/AAAAAAIAAAACAOj/AAAAAAMAAAACAOf/AAAAAAIAABABAOb/AAAAAAIAABD//+b/AAAAAAMAAAAAAOb/AAAAAAMAAAD+/+f/AAAAAAMAAAD//+f/AAAAAAMAAAAAAOf/AAAAAAMAAAABAOf/AAAAAAMAAAABAOj/AAAAAAQAAAAAAOj/AAAAAAMAAAD//+j/AAAAAAMAAAD+/+j/AAAAAAQAAAD//+n/AAAAAAMAAAAAAOn/AAAAAAMAAAD+/+v/AAAHAAUAAAABAOv/AAAHAAUAAAD+/+//AAADAAAAAGD+//D/AAADAAAAAGD+//H/AAADAAAAAGD+//L/AAADAAAAAGD+//P/AAADAAAAAGD+//T/AAADAAAAAGD+//X/AAADAAAAAGD+//b/AAACAAAAAGD//+//AAAAAAEAAAD///D/AAAAAAEAAAD///H/AAAAAAEAAAD///L/AAAAAAEAAAD///P/AAAAAAEAAAD///T/AAAAAAEAAAD///X/AAAAAAEAAAD///b/AAACAAQAAGD///f/AAADAAAAAGD///j/AAADAAAAAGD///n/AAADAAAAAGD///r/AAADAAAAAGD///v/AAADAAAAAGAAAO//AAAAAAEAAAAAAPD/AAAAAAEAAAAAAPH/AAAAAAEAAAAAAPL/AAAAAAEAAAAAAPP/AAAAAAEAAAAAAPT/AAAAAAEAAAAAAPX/AAAAAAEAAAAAAPb/AAACAAQAADAAAPf/AAADAAAAAHAAAPj/AAADAAAAAHAAAPn/AAADAAAAAHAAAPr/AAADAAAAAHAAAPv/AAADAAAAAHABAO//AAADAAAAAHABAPD/AAADAAAAAHABAPH/AAADAAAAAHABAPL/AAADAAAAAHABAPP/AAADAAAAAHABAPT/AAADAAAAAHABAPX/AAADAAAAAHABAPb/AAACAAAAADA=")
-tile_set = ExtResource("1_sovft")
+tile_set = ExtResource("1_8nbwm")
 
 [node name="Borders" type="TileMapLayer" parent="Starting Pathway"]
 tile_map_data = PackedByteArray("AAD+/+r/AAAKAAAAAGABAOr/AAAKAAAAAHABAOn/AAAJAAQAADD+/+n/AAAJAAQAACABAOb/AAAJAAEAABABAOf/AAAJAAQAABD+/+f/AAAJAAQAAAACAOf/AAAJAAEAAFACAOj/AAAKAAAAAFACAOn/AAAJAAEAADD9/+f/AAAJAAEAAAD9/+j/AAAKAAAAAED9/+n/AAAJAAEAACD+/+b/AAAJAAEAAED+/+v/AAAKAAAAAGD+/+z/AAAKAAAAAGD+/+3/AAAKAAAAAGD+/+7/AAAKAAAAAGD+/+//AAAKAAAAAGD+//D/AAAKAAAAAGD+//H/AAAKAAAAAGD+//L/AAAKAAAAAGD+//P/AAAKAAAAAGD+//T/AAAKAAAAAGD+//X/AAAKAAAAAGD+//b/AAAJAAAAAGD///f/AAAKAAAAAGD///j/AAAKAAAAAGD///n/AAAKAAAAAGD///r/AAAKAAAAAGD///v/AAAKAAAAAGAAAPf/AAAKAAAAAHAAAPj/AAAKAAAAAHAAAPn/AAAKAAAAAHAAAPr/AAAKAAAAAHAAAPv/AAAKAAAAAHABAOv/AAAKAAAAAHABAOz/AAAKAAAAAHABAO3/AAAKAAAAAHABAO7/AAAKAAAAAHABAO//AAAKAAAAAHABAPD/AAAKAAAAAHABAPH/AAAKAAAAAHABAPL/AAAKAAAAAHABAPP/AAAKAAAAAHABAPT/AAAKAAAAAHABAPX/AAAKAAAAAHABAPb/AAAJAAAAAHD///b/AAAJAAQAAGAAAPb/AAAJAAQAAHA=")
-tile_set = ExtResource("1_sovft")
+tile_set = ExtResource("2_57mks")
 
 [node name="Foreground" type="TileMapLayer" parent="Starting Pathway"]
-tile_map_data = PackedByteArray("AAD//+b/AAAKAAMAAAAAAOb/AAAKAAMAAAA=")
-tile_set = ExtResource("1_sovft")
+tile_set = ExtResource("3_p6vor")
+
+[node name="Interactables" type="TileMapLayer" parent="Starting Pathway"]
+visible = false
+enabled = false
+tile_set = ExtResource("4_nd7nw")
 
 [node name="ProCam2D" type="Node2D" parent="."]
 z_index = 4096
@@ -54,4 +63,17 @@ global_debug_draw = false
 spawn_location = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" type="Marker2D" parent="PlayerSpawn"]
-position = Vector2(0, -291)
+position = Vector2(4, -1111)
+
+[node name="Switch" parent="." instance=ExtResource("7_vblou")]
+position = Vector2(-83, -1462)
+
+[node name="WallDoor" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("8_lgibd")]
+position = Vector2(-30, -1550)
+trigger = NodePath("../Switch/EventTrigger")
+
+[node name="WallDoor2" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("8_lgibd")]
+position = Vector2(32, -1550)
+trigger = NodePath("../Switch/EventTrigger")
+
+[editable path="Switch"]
