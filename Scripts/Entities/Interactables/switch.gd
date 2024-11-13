@@ -17,6 +17,7 @@ signal switch_toggle(state: bool)
 
 @export_category("Events")
 @export var event_trigger: EventTrigger
+@export var bool_event_trigger: BoolEventTrigger
 
 func _ready() -> void:
 	sprite.texture = off_texture
@@ -37,3 +38,5 @@ func toggle() -> void:
 		sprite.texture = off_texture
 		
 	switch_toggle.emit(state)
+	bool_event_trigger.trigger.emit(state)
+	

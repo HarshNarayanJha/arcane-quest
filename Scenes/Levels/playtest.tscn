@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b0ocs23mqrch5"]
+[gd_scene load_steps=10 format=4 uid="uid://b0ocs23mqrch5"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_8nbwm"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="2_5xtda"]
@@ -8,8 +8,9 @@
 [ext_resource type="TileSet" uid="uid://bono8c6o7slux" path="res://Scenes/Levels/Tilesets/interactable_tileset.tres" id="4_nd7nw"]
 [ext_resource type="PackedScene" uid="uid://dla4koheqh3xc" path="res://Scenes/Entities/Interactables/switch.tscn" id="7_vblou"]
 [ext_resource type="PackedScene" uid="uid://dofj4wtemqmiy" path="res://Scenes/Entities/Interactables/wall_door.tscn" id="8_lgibd"]
+[ext_resource type="PackedScene" uid="uid://bfgub5tx488x2" path="res://Scenes/Entities/Interactables/platform.tscn" id="9_tnthq"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Playtest" type="Node2D"]
 
 [node name="Starting Pathway" type="Node" parent="."]
 
@@ -65,15 +66,30 @@ spawn_location = NodePath("SpawnPoint")
 [node name="SpawnPoint" type="Marker2D" parent="PlayerSpawn"]
 position = Vector2(4, -1111)
 
-[node name="Switch" parent="." instance=ExtResource("7_vblou")]
+[node name="WallSwitch" parent="." instance=ExtResource("7_vblou")]
 position = Vector2(-83, -1462)
 
 [node name="WallDoor" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("8_lgibd")]
 position = Vector2(-30, -1550)
-trigger = NodePath("../Switch/EventTrigger")
+trigger = NodePath("../WallSwitch/EventTrigger")
 
 [node name="WallDoor2" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("8_lgibd")]
 position = Vector2(32, -1550)
-trigger = NodePath("../Switch/EventTrigger")
+trigger = NodePath("../WallSwitch/EventTrigger")
 
-[editable path="Switch"]
+[node name="PlatformsSwitch" parent="." instance=ExtResource("7_vblou")]
+position = Vector2(92.1588, -1467.4)
+switch_type = 1
+
+[node name="Platform1" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("9_tnthq")]
+position = Vector2(0, -1592)
+platform_type = 1
+trigger = NodePath("../PlatformsSwitch/BoolEventTrigger")
+
+[node name="Platform2" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("9_tnthq")]
+position = Vector2(0, -1654)
+platform_type = 1
+trigger = NodePath("../PlatformsSwitch/BoolEventTrigger")
+
+[editable path="WallSwitch"]
+[editable path="PlatformsSwitch"]

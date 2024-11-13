@@ -11,6 +11,6 @@ func _ready() -> void:
 	
 func spawn_player() -> void:
 	var playerNode = player.instantiate() as CharacterBody2D
-	get_tree().root.add_child.call_deferred(playerNode)
+	get_parent().add_child.call_deferred(playerNode)
 	playerNode.global_position = spawn_location.global_position
 		

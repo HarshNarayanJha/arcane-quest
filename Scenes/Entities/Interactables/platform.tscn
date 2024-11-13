@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfgub5tx488x2"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Interactables/platform.gd" id="1_r8hs4"]
+[ext_resource type="Texture2D" uid="uid://bml5r3op4em7" path="res://Art/Entities/Objects/platform.png" id="2_fbxrv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dghjm"]
+size = Vector2(57, 57)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rvh8f"]
+radius = 0.01
+
+[node name="Platform" type="AnimatableBody2D" node_paths=PackedStringArray("sprite", "collision")]
+collision_layer = 161
+collision_mask = 137
+script = ExtResource("1_r8hs4")
+sprite = NodePath("Sprite2D")
+collision = NodePath("Area2D/CollisionShape2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 161
+collision_mask = 137
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_dghjm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fbxrv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rvh8f")
+disabled = true
