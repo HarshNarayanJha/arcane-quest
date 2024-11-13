@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dla4koheqh3xc"]
+[gd_scene load_steps=9 format=3 uid="uid://dla4koheqh3xc"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Interactables/switch.gd" id="1_2mh27"]
 [ext_resource type="Texture2D" uid="uid://csd4atqh365f1" path="res://Art/Entities/Objects/switch.png" id="1_yjxcx"]
 [ext_resource type="Texture2D" uid="uid://c8h6yohlpebqt" path="res://Art/Entities/Objects/switch_on.png" id="3_rlr23"]
+[ext_resource type="PackedScene" uid="uid://c7q5b0divy5kt" path="res://Scenes/Entities/Interactables/interaction.tscn" id="4_0d6bx"]
 [ext_resource type="Script" path="res://Scripts/Events/event_trigger.gd" id="4_xrcyk"]
 [ext_resource type="Script" path="res://Scripts/Events/bool_event_trigger.gd" id="5_ybx64"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ylpp"]
+radius = 30.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vfcr"]
 radius = 15.0
 
-[node name="Switch" type="StaticBody2D" node_paths=PackedStringArray("sprite", "event_trigger", "bool_event_trigger")]
+[node name="Switch" type="StaticBody2D" node_paths=PackedStringArray("sprite", "interaction_area", "event_trigger", "bool_event_trigger")]
 z_index = 2
 collision_layer = 128
 collision_mask = 152
@@ -17,8 +21,15 @@ script = ExtResource("1_2mh27")
 sprite = NodePath("Sprite2D")
 off_texture = ExtResource("1_yjxcx")
 on_texture = ExtResource("3_rlr23")
+interaction_area = NodePath("InteractionArea")
 event_trigger = NodePath("EventTrigger")
 bool_event_trigger = NodePath("BoolEventTrigger")
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_0d6bx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_5ylpp")
+debug_color = Color(0, 0.651049, 0.0416142, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_yjxcx")

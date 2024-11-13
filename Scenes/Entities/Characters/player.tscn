@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnkck3vdeodaa"]
+[gd_scene load_steps=12 format=3 uid="uid://cnkck3vdeodaa"]
 
 [ext_resource type="Texture2D" uid="uid://dr6fw0j02oxes" path="res://Art/Entities/Characters/Player/player.png" id="1_ip6be"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/player.gd" id="1_xroi2"]
 [ext_resource type="Resource" uid="uid://cudo5oph02fov" path="res://Resources/Entities/Characters/player_data_default.tres" id="2_0a44g"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/pcam_target.gd" id="2_lsvk7"]
 [ext_resource type="Texture2D" uid="uid://dtytnrv73bxvf" path="res://Art/Entities/Characters/Player/player_hand.png" id="5_yfgbr"]
+[ext_resource type="Script" path="res://Scripts/Entities/Characters/interaction_finder.gd" id="6_ywa5a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_duk6b"]
 radius = 20.0
@@ -47,6 +48,9 @@ _data = {
 "hand_float": SubResource("Animation_telyk")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_si0ha"]
+size = Vector2(46, 15)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 z_index = 3
 collision_layer = 8
@@ -83,3 +87,15 @@ libraries = {
 "": SubResource("AnimationLibrary_axtg0")
 }
 autoplay = "hand_float"
+
+[node name="InteractionFinder" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("6_ywa5a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionFinder"]
+position = Vector2(0, -29.5)
+shape = SubResource("RectangleShape2D_si0ha")
+
+[connection signal="area_entered" from="InteractionFinder" to="InteractionFinder" method="_on_area_entered"]
+[connection signal="area_exited" from="InteractionFinder" to="InteractionFinder" method="_on_area_exited"]

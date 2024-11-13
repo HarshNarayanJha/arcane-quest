@@ -16,15 +16,13 @@ signal switch_toggle(state: bool)
 @export var on_texture: Texture2D
 
 @export_category("Events")
+@export var interaction_area: InteractionArea
 @export var event_trigger: EventTrigger
 @export var bool_event_trigger: BoolEventTrigger
 
 func _ready() -> void:
 	sprite.texture = off_texture
-	
-func _physics_process(delta: float) -> void:
-	if Input.is_key_pressed(KEY_SPACE):
-		toggle()
+	interaction_area.interact.connect(toggle)
 	
 func toggle() -> void:
 	if (state and switch_type == SWITCH_TYPE.ONETIME):
@@ -40,3 +38,6 @@ func toggle() -> void:
 	switch_toggle.emit(state)
 	bool_event_trigger.trigger.emit(state)
 	
+
+func _exit_tree() -> void:
+	interaction_area.interact.disconnect(toggle)
