@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dofj4wtemqmiy"]
+
+[ext_resource type="Texture2D" uid="uid://c8x3dvl46ukj5" path="res://Art/Entities/Objects/wall_secret.png" id="1_mscy2"]
+[ext_resource type="Script" path="res://Scripts/Entities/Interactables/door.gd" id="1_y2ijr"]
+[ext_resource type="PackedScene" uid="uid://c7q5b0divy5kt" path="res://Scenes/Entities/Interactables/interaction.tscn" id="3_2p11h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkhx4"]
+size = Vector2(60, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epa75"]
+size = Vector2(59, 44)
+
+[node name="Door" type="StaticBody2D" node_paths=PackedStringArray("sprite", "collision", "interaction_area")]
+z_index = 1
+collision_layer = 128
+collision_mask = 137
+script = ExtResource("1_y2ijr")
+sprite = NodePath("Sprite2D")
+collision = NodePath("CollisionShape2D")
+interaction_area = NodePath("InteractionArea")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mscy2")
+offset = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mkhx4")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_2p11h")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-0.350098, 0.144989)
+shape = SubResource("RectangleShape2D_epa75")
+debug_color = Color(0.0752487, 0.649349, 7.70092e-07, 0.42)

@@ -17,6 +17,8 @@ signal switch_toggle(state: bool)
 
 @export_category("Events")
 @export var interaction_area: InteractionArea
+
+@export_subgroup("Emits")
 @export var event_trigger: EventTrigger
 @export var bool_event_trigger: BoolEventTrigger
 

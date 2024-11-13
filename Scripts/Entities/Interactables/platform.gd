@@ -5,10 +5,13 @@ enum PLATFORM_TYPE {
 	TRIGGERED
 }
 
+@export_category("Platform")
 @export var platform_type: PLATFORM_TYPE
 @export var sprite: Sprite2D
 @export var collision: CollisionShape2D
 
+@export_category("Events")
+@export_subgroup("Connects")
 @export var trigger: BoolEventTrigger
 
 
@@ -30,7 +33,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func set_platform(state: bool) -> void:
-	if (state):
+	if state:
 		show_platform()
 	else:
 		hide_platform()
