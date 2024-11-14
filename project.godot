@@ -63,6 +63,8 @@ primary={
 2d_physics/layer_6="Ground"
 2d_physics/layer_7="Foreground"
 2d_physics/layer_8="Objects"
+2d_physics/layer_10="Hitbox"
+2d_physics/layer_11="Hurtbox"
 
 [rendering]
 

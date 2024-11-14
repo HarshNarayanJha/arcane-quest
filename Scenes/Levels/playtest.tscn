@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b0ocs23mqrch5"]
+[gd_scene load_steps=14 format=4 uid="uid://b0ocs23mqrch5"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_8nbwm"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="2_5xtda"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dofj4wtemqmiy" path="res://Scenes/Entities/Interactables/door.tscn" id="8_lgibd"]
 [ext_resource type="Texture2D" uid="uid://c8x3dvl46ukj5" path="res://Art/Entities/Objects/wall_secret.png" id="9_0rw40"]
 [ext_resource type="PackedScene" uid="uid://bfgub5tx488x2" path="res://Scenes/Entities/Interactables/platform.tscn" id="9_tnthq"]
+[ext_resource type="PackedScene" uid="uid://bselrii20ajc7" path="res://Scenes/Entities/Hazards/spike_spin.tscn" id="10_hls6r"]
 [ext_resource type="Texture2D" uid="uid://hsirqexkh5u8" path="res://Art/Entities/Objects/door_closed.png" id="11_7ftcv"]
 [ext_resource type="Texture2D" uid="uid://dkd1xt1buf5y7" path="res://Art/Entities/Objects/door_open.png" id="12_5ae31"]
 
@@ -68,7 +69,7 @@ global_debug_draw = false
 spawn_location = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" type="Marker2D" parent="PlayerSpawn"]
-position = Vector2(28, -1732)
+position = Vector2(-2, -1445)
 
 [node name="WallSwitch" parent="." instance=ExtResource("7_vblou")]
 position = Vector2(-83, -1462)
@@ -86,7 +87,7 @@ closed_texture = ExtResource("9_0rw40")
 trigger = NodePath("../WallSwitch/BoolEventTrigger")
 
 [node name="PlatformsSwitch" parent="." instance=ExtResource("7_vblou")]
-position = Vector2(92.1588, -1467.4)
+position = Vector2(83, -1462)
 switch_type = 1
 
 [node name="Platform1" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("9_tnthq")]
@@ -107,6 +108,9 @@ open_texture = ExtResource("12_5ae31")
 
 [node name="Sprite2D" parent="ManualDoor" index="0"]
 texture = ExtResource("11_7ftcv")
+
+[node name="SpikeSpin" parent="." instance=ExtResource("10_hls6r")]
+position = Vector2(-450, -2040)
 
 [editable path="WallSwitch"]
 [editable path="PlatformsSwitch"]

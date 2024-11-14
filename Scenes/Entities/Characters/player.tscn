@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnkck3vdeodaa"]
+[gd_scene load_steps=16 format=3 uid="uid://cnkck3vdeodaa"]
 
 [ext_resource type="Texture2D" uid="uid://dr6fw0j02oxes" path="res://Art/Entities/Characters/Player/player.png" id="1_ip6be"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/player.gd" id="1_xroi2"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/pcam_target.gd" id="2_lsvk7"]
 [ext_resource type="Texture2D" uid="uid://dtytnrv73bxvf" path="res://Art/Entities/Characters/Player/player_hand.png" id="5_yfgbr"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/interaction_finder.gd" id="6_ywa5a"]
+[ext_resource type="Script" path="res://Scripts/Entities/Hazards/health.gd" id="7_qr0p4"]
+[ext_resource type="Resource" uid="uid://36p5ymibsi6n" path="res://Resources/Entities/Characters/player_health_data.tres" id="8_5oj87"]
+[ext_resource type="PackedScene" uid="uid://b06xgkqkhtepd" path="res://Scenes/Entities/Hazards/hurtbox.tscn" id="9_81dcv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_duk6b"]
 radius = 20.0
@@ -50,6 +53,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_si0ha"]
 size = Vector2(46, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq51b"]
+size = Vector2(36, 36)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 z_index = 3
@@ -96,6 +102,18 @@ script = ExtResource("6_ywa5a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionFinder"]
 position = Vector2(0, -29.5)
 shape = SubResource("RectangleShape2D_si0ha")
+debug_color = Color(0, 0.64783, 0.1998, 0.42)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("7_qr0p4")
+health_data = ExtResource("8_5oj87")
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_81dcv")]
+health_component = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_dq51b")
+debug_color = Color(0.826961, 0.396441, 0, 0.42)
 
 [connection signal="area_entered" from="InteractionFinder" to="InteractionFinder" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractionFinder" to="InteractionFinder" method="_on_area_exited"]

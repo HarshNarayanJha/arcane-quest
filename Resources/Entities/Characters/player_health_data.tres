@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HealthData" load_steps=2 format=3 uid="uid://36p5ymibsi6n"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Hazards/Resources/health_data.gd" id="1_opsiv"]
+
+[resource]
+script = ExtResource("1_opsiv")
+max_health = 100
+health = null
