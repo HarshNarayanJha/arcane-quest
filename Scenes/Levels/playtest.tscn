@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b0ocs23mqrch5"]
+[gd_scene load_steps=15 format=4 uid="uid://b0ocs23mqrch5"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_8nbwm"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="2_5xtda"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bselrii20ajc7" path="res://Scenes/Entities/Hazards/spike_spin.tscn" id="10_hls6r"]
 [ext_resource type="Texture2D" uid="uid://hsirqexkh5u8" path="res://Art/Entities/Objects/door_closed.png" id="11_7ftcv"]
 [ext_resource type="Texture2D" uid="uid://dkd1xt1buf5y7" path="res://Art/Entities/Objects/door_open.png" id="12_5ae31"]
+[ext_resource type="PackedScene" uid="uid://cx7jvgxecvmxd" path="res://Scenes/Entities/Hazards/arrow_dispenser.tscn" id="14_wgrsb"]
 
 [node name="Playtest" type="Node2D"]
 
@@ -69,7 +70,7 @@ global_debug_draw = false
 spawn_location = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" type="Marker2D" parent="PlayerSpawn"]
-position = Vector2(-2, -1445)
+position = Vector2(542, -2263)
 
 [node name="WallSwitch" parent="." instance=ExtResource("7_vblou")]
 position = Vector2(-83, -1462)
@@ -111,6 +112,9 @@ texture = ExtResource("11_7ftcv")
 
 [node name="SpikeSpin" parent="." instance=ExtResource("10_hls6r")]
 position = Vector2(-450, -2040)
+
+[node name="ArrowDispenser" parent="." instance=ExtResource("14_wgrsb")]
+position = Vector2(510, -2380)
 
 [editable path="WallSwitch"]
 [editable path="PlatformsSwitch"]

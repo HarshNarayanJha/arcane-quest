@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx7jvgxecvmxd"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Hazards/arrow_dispenser.gd" id="1_5dqd5"]
+[ext_resource type="Texture2D" uid="uid://4hc2kxb6abr4" path="res://Art/Entities/Objects/wall_trap.png" id="1_p0ysx"]
+[ext_resource type="PackedScene" uid="uid://ocnvx1bocci2" path="res://Scenes/Entities/Hazards/arrow.tscn" id="2_gtbc7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1s26"]
+size = Vector2(32, 34)
+
+[node name="ArrowDispenser" type="StaticBody2D" node_paths=PackedStringArray("fire_timer", "fire_point")]
+z_index = 2
+collision_layer = 128
+collision_mask = 136
+script = ExtResource("1_5dqd5")
+arrow_scene = ExtResource("2_gtbc7")
+fire_timer = NodePath("FireTimer")
+fire_point = NodePath("FirePoint")
+fire_direction = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p0ysx")
+offset = Vector2(0, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_v1s26")
+
+[node name="FirePoint" type="Marker2D" parent="."]
+position = Vector2(0, 25)
+
+[node name="FireTimer" type="Timer" parent="."]

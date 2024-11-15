@@ -21,7 +21,7 @@ procam="*res://addons/ProCam2D/scripts/autoload.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ProCam2D/plugin.cfg")
+enabled=PackedStringArray("res://addons/ProCam2D/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [input]
 
