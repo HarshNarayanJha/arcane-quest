@@ -57,7 +57,7 @@ size = Vector2(46, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dq51b"]
 size = Vector2(36, 36)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hurtbox", "health")]
 z_index = 3
 collision_layer = 8
 collision_mask = 145
@@ -66,6 +66,8 @@ platform_wall_layers = 128
 script = ExtResource("1_xroi2")
 player_data = ExtResource("2_0a44g")
 sprite = NodePath("Sprite2D")
+hurtbox = NodePath("Hurtbox")
+health = NodePath("Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ip6be")

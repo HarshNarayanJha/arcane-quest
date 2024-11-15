@@ -63,6 +63,7 @@ autoplay = "spin"
 
 [node name="Hitbox" parent="." instance=ExtResource("2_5jr62")]
 damage_amount = 10
+knockback_amount = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_gg6gd")

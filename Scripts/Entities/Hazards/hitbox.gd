@@ -1,8 +1,9 @@
 class_name HitBox extends Area2D
 
 @export var damage_amount: int
+@export var knockback_amount: float
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is HurtBox:
 		var hurtbox := area as HurtBox
-		hurtbox.take_damage(damage_amount)
+		hurtbox.take_damage(damage_amount, global_position, knockback_amount)

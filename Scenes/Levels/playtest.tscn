@@ -70,7 +70,7 @@ global_debug_draw = false
 spawn_location = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" type="Marker2D" parent="PlayerSpawn"]
-position = Vector2(542, -2263)
+position = Vector2(-407, -2143)
 
 [node name="WallSwitch" parent="." instance=ExtResource("7_vblou")]
 position = Vector2(-83, -1462)
