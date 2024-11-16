@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://tj5su87dwu3n"]
+
+[ext_resource type="Texture2D" uid="uid://ckaw5mxntmlnd" path="res://Art/Entities/Objects/wall_damaged.png" id="1_em0cg"]
+[ext_resource type="Script" path="res://Scripts/Entities/Interactables/destructable_wall.gd" id="1_forqp"]
+[ext_resource type="PackedScene" uid="uid://b06xgkqkhtepd" path="res://Scenes/Entities/Hazards/hurtbox.tscn" id="2_u2ge4"]
+[ext_resource type="Texture2D" uid="uid://c7552ypyr7gfy" path="res://Art/Entities/Objects/wall_demolished.png" id="3_bu43l"]
+[ext_resource type="Script" path="res://Scripts/Entities/Hazards/health.gd" id="3_vtolb"]
+[ext_resource type="Script" path="res://Scripts/Entities/Hazards/Resources/health_data.gd" id="4_k1uo7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yncj"]
+size = Vector2(60, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uo26b"]
+size = Vector2(66, 26)
+
+[sub_resource type="Resource" id="Resource_7oh23"]
+script = ExtResource("4_k1uo7")
+max_health = 100
+health = null
+
+[node name="DestructableWall" type="StaticBody2D" node_paths=PackedStringArray("hurtbox", "health", "sprite", "collision")]
+z_index = 2
+collision_layer = 144
+collision_mask = 137
+script = ExtResource("1_forqp")
+hurtbox = NodePath("Hurtbox")
+health = NodePath("Health")
+sprite = NodePath("Sprite2D")
+collision = NodePath("CollisionShape2D")
+wall_texture = ExtResource("1_em0cg")
+destroyed_texture = ExtResource("3_bu43l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_em0cg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_8yncj")
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_u2ge4")]
+health_component = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_uo26b")
+debug_color = Color(0.969949, 0.174378, 7.70092e-07, 0.42)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_vtolb")
+health_data = SubResource("Resource_7oh23")

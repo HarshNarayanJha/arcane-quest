@@ -9,7 +9,7 @@ func init() -> void:
 func apply_damage(amount: int) -> void:
 	health = clampi(health - amount, 0, max_health)
 	
-	print(resource_name, " HEALTH_DATA VALUE: ", health)
+	prints(resource_name, "HEALTH_DATA VALUE:", health)
 	
 func heal_health(amount: int) -> void:
 	health = clampi(health + amount, 0, max_health)
