@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://b0ocs23mqrch5"]
+[gd_scene load_steps=18 format=4 uid="uid://b0ocs23mqrch5"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_8nbwm"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="2_5xtda"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cx7jvgxecvmxd" path="res://Scenes/Entities/Hazards/arrow_dispenser.tscn" id="14_wgrsb"]
 [ext_resource type="PackedScene" uid="uid://tj5su87dwu3n" path="res://Scenes/Entities/Interactables/destructable_wall.tscn" id="15_8w0rh"]
 [ext_resource type="PackedScene" uid="uid://cqnq6p7n22lqq" path="res://Scenes/Entities/Hazards/bomb.tscn" id="16_6ngkb"]
+[ext_resource type="PackedScene" uid="uid://cst6nmirqp3hn" path="res://Scenes/Entities/Objects/laser.tscn" id="17_g3wnm"]
 
 [node name="Playtest" type="Node2D"]
 
@@ -72,7 +73,7 @@ global_debug_draw = false
 spawn_location = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" type="Marker2D" parent="PlayerSpawn"]
-position = Vector2(236, -1936)
+position = Vector2(308, -2324)
 
 [node name="WallSwitch" parent="." instance=ExtResource("7_vblou")]
 position = Vector2(-83, -1462)
@@ -126,6 +127,7 @@ position = Vector2(-510, -2250)
 rotation = -1.57079
 
 [node name="Bomb" parent="." instance=ExtResource("16_6ngkb")]
+process_mode = 4
 position = Vector2(32, -2022)
 rotation = -1.57079
 time_to_detonate = 5.0
@@ -134,15 +136,18 @@ impact_time = 0.2
 
 [node name="DestructableWall3" parent="." instance=ExtResource("15_8w0rh")]
 position = Vector2(304, -2082)
-rotation = 1.309
+rotation = 2.09439
 
 [node name="DestructableWall4" parent="." instance=ExtResource("15_8w0rh")]
-position = Vector2(-103.495, -2038.66)
-rotation = -1.0472
+position = Vector2(-157, -2064)
+rotation = 0.785397
 
 [node name="DestructableWall5" parent="." instance=ExtResource("15_8w0rh")]
-position = Vector2(-94.0565, -1932.01)
-rotation = -1.57079
+position = Vector2(-18, -1872)
+rotation = -3.14159
+
+[node name="Laser" parent="." instance=ExtResource("17_g3wnm")]
+position = Vector2(163, -2085)
 
 [editable path="WallSwitch"]
 [editable path="PlatformsSwitch"]

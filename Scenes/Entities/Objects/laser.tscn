@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cst6nmirqp3hn"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Objects/laser.gd" id="1_k8hr0"]
+[ext_resource type="Texture2D" uid="uid://dtytnrv73bxvf" path="res://Art/Entities/Characters/Player/player_hand.png" id="2_tigqw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufr2a"]
+radius = 6.0
+
+[sub_resource type="Curve" id="Curve_ytw0s"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gqu0d"]
+particle_flag_disable_z = true
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.662
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 9.99998
+radial_accel_min = 14.61
+radial_accel_max = 14.61
+turbulence_enabled = true
+turbulence_noise_strength = 10.38
+
+[node name="Laser" type="StaticBody2D" node_paths=PackedStringArray("sprite", "raycast", "line", "particles")]
+z_index = 2
+collision_layer = 128
+collision_mask = 137
+script = ExtResource("1_k8hr0")
+sprite = NodePath("Sprite2D")
+raycast = NodePath("RayCast2D")
+line = NodePath("Line2D")
+particles = NodePath("GPUParticles2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+texture = ExtResource("2_tigqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ufr2a")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(50, 0)
+collision_mask = 144
+
+[node name="Line2D" type="Line2D" parent="."]
+width_curve = SubResource("Curve_ytw0s")
+default_color = Color(0, 1, 1, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_gqu0d")
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 2
+trail_section_subdivisions = 1

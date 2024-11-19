@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfa4354uueapp"]
+
+[ext_resource type="PackedScene" uid="uid://cst6nmirqp3hn" path="res://Scenes/Entities/Objects/laser.tscn" id="1_qojk2"]
+[ext_resource type="PackedScene" uid="uid://tj5su87dwu3n" path="res://Scenes/Entities/Interactables/destructable_wall.tscn" id="2_kibs7"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Laser" parent="." instance=ExtResource("1_qojk2")]
+position = Vector2(292, -82)
+rotation = 1.67901
+bounces = 4
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="DestructableWall" parent="." instance=ExtResource("2_kibs7")]
+position = Vector2(0, 119)
+scale = Vector2(10.44, 1)
+
+[node name="DestructableWall2" parent="." instance=ExtResource("2_kibs7")]
+position = Vector2(0, -119)
+scale = Vector2(10.44, 1)
