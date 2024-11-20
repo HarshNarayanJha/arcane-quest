@@ -15,9 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://dkd1xt1buf5y7" path="res://Art/Entities/Objects/door_open.png" id="12_5ae31"]
 [ext_resource type="PackedScene" uid="uid://cx7jvgxecvmxd" path="res://Scenes/Entities/Hazards/arrow_dispenser.tscn" id="14_wgrsb"]
 [ext_resource type="PackedScene" uid="uid://tj5su87dwu3n" path="res://Scenes/Entities/Interactables/destructable_wall.tscn" id="15_8w0rh"]
-[ext_resource type="PackedScene" uid="uid://cqnq6p7n22lqq" path="res://Scenes/Entities/Hazards/bomb.tscn" id="16_6ngkb"]
 [ext_resource type="PackedScene" uid="uid://cst6nmirqp3hn" path="res://Scenes/Entities/Objects/laser.tscn" id="17_g3wnm"]
 [ext_resource type="PackedScene" uid="uid://bw12gl0qhkatu" path="res://Scenes/Entities/Objects/mirror.tscn" id="18_n1pvr"]
+[ext_resource type="PackedScene" uid="uid://pksoyxe20ojs" path="res://Scenes/Entities/Objects/crate.tscn" id="19_nsjwc"]
 
 [node name="Playtest" type="Node2D"]
 
@@ -74,7 +74,7 @@ global_debug_draw = false
 spawn_location = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" type="Marker2D" parent="PlayerSpawn"]
-position = Vector2(308, -2324)
+position = Vector2(58, -1372)
 
 [node name="WallSwitch" parent="." instance=ExtResource("7_vblou")]
 position = Vector2(-83, -1462)
@@ -127,13 +127,6 @@ position = Vector2(-210, -2250)
 position = Vector2(-510, -2250)
 rotation = -1.57079
 
-[node name="Bomb" parent="." instance=ExtResource("16_6ngkb")]
-position = Vector2(32, -2022)
-rotation = -1.57079
-time_to_detonate = 5.0
-impact_radius = 400.0
-impact_time = 0.2
-
 [node name="DestructableWall3" parent="." instance=ExtResource("15_8w0rh")]
 position = Vector2(304, -2082)
 rotation = 2.09439
@@ -173,6 +166,9 @@ rotation = 6.54498
 [node name="Mirror6" parent="." instance=ExtResource("18_n1pvr")]
 position = Vector2(31.0002, -2375)
 rotation = 7.53633
+
+[node name="Crate" parent="." instance=ExtResource("19_nsjwc")]
+position = Vector2(-35.3473, -1368.34)
 
 [editable path="WallSwitch"]
 [editable path="PlatformsSwitch"]

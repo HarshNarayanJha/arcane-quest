@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 procam="*res://addons/ProCam2D/scripts/autoload.gd"
 
+[display]
+
+window/size/window_width_override=1280
+window/size/window_height_override=720
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/ProCam2D/plugin.cfg", "res://addons/script-ide/plugin.cfg")
@@ -54,6 +59,11 @@ primary={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
+action_1={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -71,3 +81,5 @@ primary={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/screen_space_aa=1

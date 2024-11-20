@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnkck3vdeodaa"]
+[gd_scene load_steps=18 format=3 uid="uid://cnkck3vdeodaa"]
 
 [ext_resource type="Texture2D" uid="uid://dr6fw0j02oxes" path="res://Art/Entities/Characters/Player/player.png" id="1_ip6be"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/player.gd" id="1_xroi2"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Hazards/health.gd" id="7_qr0p4"]
 [ext_resource type="Resource" uid="uid://36p5ymibsi6n" path="res://Resources/Entities/Characters/player_health_data.tres" id="8_5oj87"]
 [ext_resource type="PackedScene" uid="uid://b06xgkqkhtepd" path="res://Scenes/Entities/Hazards/hurtbox.tscn" id="9_81dcv"]
+[ext_resource type="Script" path="res://Scripts/Entities/Characters/bomb_drop.gd" id="10_b7bs4"]
+[ext_resource type="PackedScene" uid="uid://cqnq6p7n22lqq" path="res://Scenes/Entities/Hazards/bomb.tscn" id="11_mydbg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_duk6b"]
 radius = 20.0
@@ -96,10 +98,11 @@ libraries = {
 }
 autoplay = "hand_float"
 
-[node name="InteractionFinder" type="Area2D" parent="."]
+[node name="InteractionFinder" type="Area2D" parent="." node_paths=PackedStringArray("player")]
 collision_layer = 0
 collision_mask = 128
 script = ExtResource("6_ywa5a")
+player = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionFinder"]
 position = Vector2(0, -29.5)
@@ -117,5 +120,16 @@ health_component = NodePath("../Health")
 shape = SubResource("RectangleShape2D_dq51b")
 debug_color = Color(0.826961, 0.396441, 0, 0.42)
 
-[connection signal="area_entered" from="InteractionFinder" to="InteractionFinder" method="_on_area_entered"]
-[connection signal="area_exited" from="InteractionFinder" to="InteractionFinder" method="_on_area_exited"]
+[node name="BombDrop" type="Node2D" parent="." node_paths=PackedStringArray("player", "cooldown")]
+script = ExtResource("10_b7bs4")
+player = NodePath("..")
+bomb_scene = ExtResource("11_mydbg")
+drop_offset = Vector2(0, -50)
+cooldown = NodePath("Cooldown")
+time_to_detonate = 5.0
+impact_radius = 100.0
+impact_time = 0.1
+
+[node name="Cooldown" type="Timer" parent="BombDrop"]
+wait_time = 5.0
+one_shot = true

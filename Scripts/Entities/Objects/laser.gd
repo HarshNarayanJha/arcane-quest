@@ -46,9 +46,9 @@ func _process(delta: float) -> void:
 		
 		if not coll is CollisionObject2D:
 			break
+			
 		var col: CollisionObject2D = coll
 		
-		print(mirror_layer)
 		if not col.get_collision_layer_value(log(mirror_layer) / log(2) + 1):
 			break
 			

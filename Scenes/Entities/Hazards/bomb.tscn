@@ -18,7 +18,7 @@ script = ExtResource("1_7fbcv")
 hitbox = NodePath("Hitbox")
 hitbox_collision = NodePath("Hitbox/CollisionShape2D")
 time_to_detonate = 8.0
-impact_radius = 70.0
+impact_radius = 30.0
 impact_time = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
