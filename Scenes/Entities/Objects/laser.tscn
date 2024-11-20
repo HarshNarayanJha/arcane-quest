@@ -23,16 +23,23 @@ turbulence_noise_strength = 10.38
 
 [node name="Laser" type="StaticBody2D" node_paths=PackedStringArray("sprite", "raycast", "line", "particles")]
 z_index = 2
-collision_layer = 128
-collision_mask = 137
+collision_layer = 129
+collision_mask = 153
 script = ExtResource("1_k8hr0")
 sprite = NodePath("Sprite2D")
 raycast = NodePath("RayCast2D")
 line = NodePath("Line2D")
 particles = NodePath("GPUParticles2D")
+mirror_layer = 4096
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
+texture = ExtResource("2_tigqw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(10.4, 0)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_tigqw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -40,11 +47,13 @@ shape = SubResource("CircleShape2D_ufr2a")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(50, 0)
-collision_mask = 144
+collision_mask = 4280
 
 [node name="Line2D" type="Line2D" parent="."]
+width = 5.0
 width_curve = SubResource("Curve_ytw0s")
-default_color = Color(0, 1, 1, 1)
+default_color = Color(0, 0.784314, 0, 1)
+joint_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 process_material = SubResource("ParticleProcessMaterial_gqu0d")

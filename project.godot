@@ -65,6 +65,8 @@ primary={
 2d_physics/layer_8="Objects"
 2d_physics/layer_10="Hitbox"
 2d_physics/layer_11="Hurtbox"
+2d_physics/layer_13="Mirror"
+2d_physics/layer_14="Laser"
 
 [rendering]
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw12gl0qhkatu"]
+
+[ext_resource type="Texture2D" uid="uid://k632l8f3trid" path="res://Art/Entities/Objects/shield_straight.png" id="1_4mxc6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm526"]
+size = Vector2(50, 13)
+
+[node name="Mirror" type="RigidBody2D"]
+z_index = 2
+collision_layer = 4224
+collision_mask = 8192
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4mxc6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_pm526")
+one_way_collision = true
+debug_color = Color(0.69541, 0.49494, 0, 0.42)

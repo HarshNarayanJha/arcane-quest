@@ -4,16 +4,16 @@ extends StaticBody2D
 @export var raycast: RayCast2D
 @export var line: Line2D
 @export var particles: GPUParticles2D
+@export_flags_2d_physics var mirror_layer: int
 
 @export var bounces := 5
 
 const MAX_LENGTH := 1000
-#var max_cast_to: Vector2
-
-#var lasers : Array[RayCast2D] = []
 
 func _ready() -> void:
 	pass
+	#print(raycast.collision_mask)
+	#raycast.set_collision_mask_value(mirror_layer, true)
 	
 func _draw() -> void:
 	draw_circle(raycast.position, 10, Color.AQUAMARINE)
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	line.add_point(Vector2.ZERO)
 	
 	raycast.global_position = line.global_position
-	raycast.target_position = transform.x.normalized() * MAX_LENGTH
+	raycast.target_position = Vector2(MAX_LENGTH, 0)
 	#raycast.target_position = (get_local_mouse_position() - line.position).normalized() * MAX_LENGTH
 	raycast.force_raycast_update()
 	
@@ -44,9 +44,14 @@ func _process(delta: float) -> void:
 		
 		line.add_point(line.to_local(pt))
 		
-		#if not coll.is_mirrot():
-			#break
+		if not coll is CollisionObject2D:
+			break
+		var col: CollisionObject2D = coll
 		
+		print(mirror_layer)
+		if not col.get_collision_layer_value(log(mirror_layer) / log(2) + 1):
+			break
+			
 		var normal = raycast.get_collision_normal()
 		if normal == Vector2.ZERO:
 			break

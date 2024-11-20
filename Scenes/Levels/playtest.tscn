@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b0ocs23mqrch5"]
+[gd_scene load_steps=19 format=4 uid="uid://b0ocs23mqrch5"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_8nbwm"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="2_5xtda"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://tj5su87dwu3n" path="res://Scenes/Entities/Interactables/destructable_wall.tscn" id="15_8w0rh"]
 [ext_resource type="PackedScene" uid="uid://cqnq6p7n22lqq" path="res://Scenes/Entities/Hazards/bomb.tscn" id="16_6ngkb"]
 [ext_resource type="PackedScene" uid="uid://cst6nmirqp3hn" path="res://Scenes/Entities/Objects/laser.tscn" id="17_g3wnm"]
+[ext_resource type="PackedScene" uid="uid://bw12gl0qhkatu" path="res://Scenes/Entities/Objects/mirror.tscn" id="18_n1pvr"]
 
 [node name="Playtest" type="Node2D"]
 
@@ -127,7 +128,6 @@ position = Vector2(-510, -2250)
 rotation = -1.57079
 
 [node name="Bomb" parent="." instance=ExtResource("16_6ngkb")]
-process_mode = 4
 position = Vector2(32, -2022)
 rotation = -1.57079
 time_to_detonate = 5.0
@@ -148,6 +148,31 @@ rotation = -3.14159
 
 [node name="Laser" parent="." instance=ExtResource("17_g3wnm")]
 position = Vector2(163, -2085)
+bounces = 10
+
+[node name="Mirror" parent="." instance=ExtResource("18_n1pvr")]
+position = Vector2(283.225, -2091.05)
+rotation = 4.33016
+
+[node name="Mirror2" parent="." instance=ExtResource("18_n1pvr")]
+position = Vector2(118, -1916)
+rotation = -0.261799
+
+[node name="Mirror3" parent="." instance=ExtResource("18_n1pvr")]
+position = Vector2(-518, -2068)
+rotation = 1.0472
+
+[node name="Mirror4" parent="." instance=ExtResource("18_n1pvr")]
+position = Vector2(-422, -2370)
+rotation = 2.87979
+
+[node name="Mirror5" parent="." instance=ExtResource("18_n1pvr")]
+position = Vector2(-342, -2268)
+rotation = 6.54498
+
+[node name="Mirror6" parent="." instance=ExtResource("18_n1pvr")]
+position = Vector2(31.0002, -2375)
+rotation = 7.53633
 
 [editable path="WallSwitch"]
 [editable path="PlatformsSwitch"]
