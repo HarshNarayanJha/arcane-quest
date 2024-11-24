@@ -55,7 +55,7 @@ func inventory_set_orb(orb: int) -> void:
 	inventory_changed.emit(inventory)
 	print_log("Got an Orb %d" % orb)
 	
-func inventory_boss_key() -> void:
+func inventory_add_boss_key() -> void:
 	inventory.set_boss_key(true)
 	inventory_changed.emit(inventory)
 	print_log("Got Boss Key")

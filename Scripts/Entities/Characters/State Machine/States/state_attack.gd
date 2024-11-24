@@ -7,7 +7,7 @@ var attacking: bool = false
 
 ## Logic for entering the state
 func Enter() -> void:
-	player.update_animation("attack", 0.1)
+	player.update_animation("attack", 0.1, 2.0)
 	player.animation.animation_finished.connect(end_attack)
 	attacking = true
 	pass

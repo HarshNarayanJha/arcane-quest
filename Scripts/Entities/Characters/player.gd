@@ -54,11 +54,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _took_damage(amount: int, hitbox_position: Vector2, knockback: float):
-	Globals.inventory_add_sword()
 	if knockback > 0:
 		knockback_velocity = (global_position - hitbox_position).normalized() * (knockback + clampi(amount, 0, 10))
 		
-func update_animation(state: String, blend_duration: float) -> void:
-	animation.play("Player/%s" % state, blend_duration)
+func update_animation(state: String, blend_duration: float, speed: float = 1.0) -> void:
+	animation.play("Player/%s" % state, blend_duration, speed)
 	pass
 		
