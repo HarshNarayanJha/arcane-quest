@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b0ocs23mqrch5"]
+[gd_scene load_steps=21 format=4 uid="uid://b0ocs23mqrch5"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_8nbwm"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="2_5xtda"]
@@ -15,9 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://dkd1xt1buf5y7" path="res://Art/Entities/Objects/door_open.png" id="12_5ae31"]
 [ext_resource type="PackedScene" uid="uid://cx7jvgxecvmxd" path="res://Scenes/Entities/Hazards/arrow_dispenser.tscn" id="14_wgrsb"]
 [ext_resource type="PackedScene" uid="uid://tj5su87dwu3n" path="res://Scenes/Entities/Interactables/destructable_wall.tscn" id="15_8w0rh"]
+[ext_resource type="Script" path="res://Scripts/Entities/Hazards/Resources/health_data.gd" id="16_qkaqn"]
 [ext_resource type="PackedScene" uid="uid://cst6nmirqp3hn" path="res://Scenes/Entities/Objects/laser.tscn" id="17_g3wnm"]
 [ext_resource type="PackedScene" uid="uid://bw12gl0qhkatu" path="res://Scenes/Entities/Objects/mirror.tscn" id="18_n1pvr"]
 [ext_resource type="PackedScene" uid="uid://pksoyxe20ojs" path="res://Scenes/Entities/Objects/crate.tscn" id="19_nsjwc"]
+
+[sub_resource type="Resource" id="Resource_fjxgs"]
+script = ExtResource("16_qkaqn")
+max_health = 10
+health = null
 
 [node name="Playtest" type="Node2D"]
 
@@ -139,6 +145,9 @@ rotation = 0.785397
 position = Vector2(-18, -1872)
 rotation = -3.14159
 
+[node name="Health" parent="DestructableWall5" index="3"]
+health_data = SubResource("Resource_fjxgs")
+
 [node name="Laser" parent="." instance=ExtResource("17_g3wnm")]
 position = Vector2(163, -2085)
 bounces = 10
@@ -173,3 +182,4 @@ position = Vector2(-35.3473, -1368.34)
 [editable path="WallSwitch"]
 [editable path="PlatformsSwitch"]
 [editable path="ManualDoor"]
+[editable path="DestructableWall5"]

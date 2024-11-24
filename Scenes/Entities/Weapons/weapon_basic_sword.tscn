@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://b48ihwht2eqhw"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Weapons/melee_weapon.gd" id="1_6oyqs"]
+[ext_resource type="Texture2D" uid="uid://drjnyf2avqxl5" path="res://Art/Entities/Objects/weapon_sword.png" id="2_ddshg"]
+[ext_resource type="Resource" uid="uid://cl77oowu5p2iy" path="res://Resources/Entities/Weapons/weapon_basic_sword_data.tres" id="2_r6gp2"]
+[ext_resource type="PackedScene" uid="uid://c2j3v3lcdh32d" path="res://Scenes/Entities/Hazards/hitbox.tscn" id="3_w52fx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5u6e"]
+radius = 18.0278
+
+[node name="Weapon_Basic_Sword" type="StaticBody2D" node_paths=PackedStringArray("sprite", "hitbox")]
+script = ExtResource("1_6oyqs")
+weapon_data = ExtResource("2_r6gp2")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Hitbox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ddshg")
+offset = Vector2(0, -13.45)
+
+[node name="Hitbox" parent="." instance=ExtResource("3_w52fx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -25)
+shape = SubResource("CircleShape2D_g5u6e")
+debug_color = Color(0.993832, 0.0722113, 3.85046e-07, 0.42)

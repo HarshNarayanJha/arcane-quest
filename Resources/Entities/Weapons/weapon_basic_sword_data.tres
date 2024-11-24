@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://cl77oowu5p2iy"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Weapons/Resources/weapon_data.gd" id="1_docq7"]
+[ext_resource type="Texture2D" uid="uid://drjnyf2avqxl5" path="res://Art/Entities/Objects/weapon_sword.png" id="2_k8gwj"]
+
+[resource]
+script = ExtResource("1_docq7")
+attack_speed = 10.0
+damage = 5.0
+sprite = ExtResource("2_k8gwj")

@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 @export var player_data: PlayerData
 @export var state_machine: PlayerStateMachine
+@export var combat_manager: CombatManager
 @export var sprite: Sprite2D
 @export var animation: AnimationPlayer
 @export var hurtbox: HurtBox
@@ -53,6 +54,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _took_damage(amount: int, hitbox_position: Vector2, knockback: float):
+	Globals.inventory_add_sword()
 	if knockback > 0:
 		knockback_velocity = (global_position - hitbox_position).normalized() * (knockback + clampi(amount, 0, 10))
 		

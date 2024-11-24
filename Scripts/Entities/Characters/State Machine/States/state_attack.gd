@@ -15,11 +15,18 @@ func Enter() -> void:
 ## Logic for exiting the state
 func Exit() -> void:
 	player.animation.animation_finished.disconnect(end_attack)
+	player.combat_manager.disable_sword()
 	attacking = false
 	pass
 
 ## Logic for _process update
 func Process(_delta: float) -> State:
+	if not player.combat_manager.has_sword:
+		if not player.direction:
+			return state_idle
+		else:
+			return state_walk
+			
 	player.velocity = player.velocity.move_toward(Vector2.ZERO, player.deceleration * _delta)
 	
 	if not attacking:
@@ -39,4 +46,5 @@ func HandleInput(_event: InputEvent) -> State:
 	return null
 
 func end_attack(_newAnimName: String) -> void:
+	player.combat_manager.disable_sword()
 	attacking = false

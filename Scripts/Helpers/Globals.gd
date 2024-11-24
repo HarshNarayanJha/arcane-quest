@@ -20,6 +20,23 @@ func set_player(instance: Player) -> void:
 	print_log("Player Changed!")
 
 #region inventory_apis
+
+func inventory_add_sword() -> void:
+	if inventory.has_sword():
+		return
+		
+	inventory.set_sword(true)
+	inventory_changed.emit(inventory)
+	print_log("Got Sword")
+	
+func inventory_add_bow() -> void:
+	if inventory.has_bow():
+		return
+		
+	inventory.set_bow(true)
+	inventory_changed.emit(inventory)
+	print_log("Got Bow")
+	
 func inventory_add_key(amount: int = 1) -> void:
 	inventory.set_keys(inventory.keys + amount)
 	inventory_changed.emit(inventory)
@@ -65,6 +82,13 @@ class Inventory:
 		set = set_orb
 	var earth_orb: bool = false:
 		set = set_orb
+		
+	var sword: bool = false:
+		set = set_sword,
+		get = has_sword
+	var bow: bool = false:
+		set = set_bow,
+		get = has_bow
 	
 	func set_keys(amount: int) -> void:
 		keys = clamp(amount, 0, MAX_KEYS)
@@ -78,6 +102,18 @@ class Inventory:
 			1: fire_orb = true
 			2: wind_orb = true
 			3: earth_orb = true
+			
+	func set_sword(have: bool) -> void:
+		sword = have
+		
+	func has_sword() -> bool:
+		return sword
+		
+	func set_bow(have: bool) -> void:
+		bow = have
+		
+	func has_bow() -> bool:
+		return bow
 
 func print_log(message: String) -> void:
 	print_rich("[color=green]GLOBALS[/color]: " + message)

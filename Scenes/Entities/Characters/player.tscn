@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://cnkck3vdeodaa"]
+[gd_scene load_steps=31 format=3 uid="uid://cnkck3vdeodaa"]
 
 [ext_resource type="Texture2D" uid="uid://dr6fw0j02oxes" path="res://Art/Entities/Characters/Player/player.png" id="1_ip6be"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/player.gd" id="1_xroi2"]
 [ext_resource type="Resource" uid="uid://cudo5oph02fov" path="res://Resources/Entities/Characters/player_data_default.tres" id="2_0a44g"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/pcam_target.gd" id="2_lsvk7"]
 [ext_resource type="Texture2D" uid="uid://dtytnrv73bxvf" path="res://Art/Entities/Characters/Player/player_hand.png" id="5_yfgbr"]
+[ext_resource type="PackedScene" uid="uid://b48ihwht2eqhw" path="res://Scenes/Entities/Weapons/weapon_basic_sword.tscn" id="6_lm66s"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/interaction_finder.gd" id="6_ywa5a"]
 [ext_resource type="Script" path="res://Scripts/Entities/Hazards/health.gd" id="7_qr0p4"]
 [ext_resource type="Resource" uid="uid://36p5ymibsi6n" path="res://Resources/Entities/Characters/player_health_data.tres" id="8_5oj87"]
@@ -15,6 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/States/state_idle.gd" id="13_b7m6m"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/States/state_walk.gd" id="14_0rswv"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/States/state_attack.gd" id="15_av4tn"]
+[ext_resource type="Script" path="res://Scripts/Entities/Characters/combat_manager.gd" id="17_lccf1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_duk6b"]
 radius = 20.0
@@ -57,11 +59,86 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-27, -27)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hands/Right:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xogea"]
 _data = {
 "RESET": SubResource("Animation_ecgy2")
 }
+
+[sub_resource type="Animation" id="Animation_irmta"]
+resource_name = "RESET"
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_1vmar"]
+length = 0.6
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hands/Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26, -18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hands/Right:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.475),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(38, -18), Vector2(41, -8), Vector2(41, -8), Vector2(26.6417, -30.2033), Vector2(-16, -37)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hands/Right:rotation")
+tracks/2/interp = 4
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.475),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.74533, 2.1293, 1.91986, 0.698132, 4.88692]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CombatManager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.475),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"enable_sword"
+}, {
+"args": [],
+"method": &"disable_sword"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ssph3"]
 
 [sub_resource type="Animation" id="Animation_ds5uh"]
 length = 2.0
@@ -102,6 +179,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hands/Right:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.558505]
+}
+
+[sub_resource type="Animation" id="Animation_6104s"]
+
+[sub_resource type="Animation" id="Animation_1afp2"]
 
 [sub_resource type="Animation" id="Animation_ol8bw"]
 length = 2.0
@@ -130,44 +223,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(27, -27), Vector2(27, -22), Vector2(27, -27)]
 }
-
-[sub_resource type="Animation" id="Animation_ssph3"]
-
-[sub_resource type="Animation" id="Animation_1vmar"]
-length = 0.6
-step = 0.025
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Hands/Left:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hands/Right:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-26, -18)]
+"values": [0.558505, 0.785398, 0.558505]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hands/Right:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.475),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(38, -18), Vector2(41, -8), Vector2(41, -8), Vector2(26.6417, -30.2033), Vector2(-16, -37)]
-}
-
-[sub_resource type="Animation" id="Animation_1afp2"]
-
-[sub_resource type="Animation" id="Animation_6104s"]
-
-[sub_resource type="Animation" id="Animation_irmta"]
-resource_name = "RESET"
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_83gx0"]
 _data = {
@@ -186,7 +253,7 @@ size = Vector2(46, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dq51b"]
 size = Vector2(36, 36)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "sprite", "animation", "hurtbox", "health")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "combat_manager", "sprite", "animation", "hurtbox", "health")]
 z_index = 3
 collision_layer = 8
 collision_mask = 145
@@ -195,6 +262,7 @@ platform_wall_layers = 128
 script = ExtResource("1_xroi2")
 player_data = ExtResource("2_0a44g")
 state_machine = NodePath("StateMachine")
+combat_manager = NodePath("CombatManager")
 sprite = NodePath("Sprite2D")
 animation = NodePath("AnimationPlayer")
 hurtbox = NodePath("Hurtbox")
@@ -274,3 +342,9 @@ script = ExtResource("14_0rswv")
 
 [node name="State_Attack" type="Node" parent="StateMachine"]
 script = ExtResource("15_av4tn")
+
+[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("left_hand", "right_hand")]
+script = ExtResource("17_lccf1")
+left_hand = NodePath("../Hands/Left")
+right_hand = NodePath("../Hands/Right")
+basic_sword_scene = ExtResource("6_lm66s")

@@ -115,7 +115,7 @@ interaction = NodePath("InteractionArea")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ykqs5")
 autoplay = "default"
-frame_progress = 0.46668
+frame_progress = 0.496446
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_l7yxv")
