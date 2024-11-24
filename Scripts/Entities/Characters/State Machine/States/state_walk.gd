@@ -1,11 +1,12 @@
 class_name State_Walk extends State
 
 @onready var state_idle: State_Idle = $"../State_Idle"
+@onready var state_attack: State_Attack = $"../State_Attack"
 
 
 ## Logic for entering the state
 func Enter() -> void:
-	player.update_animation("walk")
+	player.update_animation("walk", 0.2)
 	pass
 	
 ## Logic for exiting the state
@@ -34,4 +35,7 @@ func Physics(_delta: float) -> State:
 	
 ## Logic for input events
 func HandleInput(_event: InputEvent) -> State:
+	if _event.is_action_pressed("attack"):
+		return state_attack
+		
 	return null

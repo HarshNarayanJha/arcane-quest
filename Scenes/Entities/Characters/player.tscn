@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cnkck3vdeodaa"]
+[gd_scene load_steps=29 format=3 uid="uid://cnkck3vdeodaa"]
 
 [ext_resource type="Texture2D" uid="uid://dr6fw0j02oxes" path="res://Art/Entities/Characters/Player/player.png" id="1_ip6be"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/player.gd" id="1_xroi2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/player_state_machine.gd" id="12_b8vyw"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/States/state_idle.gd" id="13_b7m6m"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/States/state_walk.gd" id="14_0rswv"]
+[ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/States/state_attack.gd" id="15_av4tn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_duk6b"]
 radius = 20.0
@@ -133,6 +134,32 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_ssph3"]
 
 [sub_resource type="Animation" id="Animation_1vmar"]
+length = 0.6
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hands/Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26, -18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hands/Right:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.475),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(38, -18), Vector2(41, -8), Vector2(41, -8), Vector2(26.6417, -30.2033), Vector2(-16, -37)]
+}
 
 [sub_resource type="Animation" id="Animation_1afp2"]
 
@@ -244,3 +271,6 @@ script = ExtResource("13_b7m6m")
 
 [node name="State_Walk" type="Node" parent="StateMachine"]
 script = ExtResource("14_0rswv")
+
+[node name="State_Attack" type="Node" parent="StateMachine"]
+script = ExtResource("15_av4tn")

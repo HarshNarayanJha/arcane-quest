@@ -56,7 +56,7 @@ func _took_damage(amount: int, hitbox_position: Vector2, knockback: float):
 	if knockback > 0:
 		knockback_velocity = (global_position - hitbox_position).normalized() * (knockback + clampi(amount, 0, 10))
 		
-func update_animation(state: String) -> void:
-	animation.play("Player/%s" % state, 1)
+func update_animation(state: String, blend_duration: float) -> void:
+	animation.play("Player/%s" % state, blend_duration)
 	pass
 		
