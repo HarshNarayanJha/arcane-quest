@@ -25,6 +25,11 @@ signal switch_toggle(state: bool)
 func _ready() -> void:
 	sprite.texture = off_texture
 	interaction_area.interact.connect(toggle)
+	bool_event_trigger.trigger.emit(state)
+	switch_toggle.emit(state)
+	if state:
+		sprite.texture = on_texture
+		event_trigger.trigger.emit()
 	
 func toggle() -> void:
 	if (state and switch_type == SWITCH_TYPE.ONETIME):

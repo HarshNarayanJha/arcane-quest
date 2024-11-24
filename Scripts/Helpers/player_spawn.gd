@@ -10,7 +10,9 @@ func _ready() -> void:
 	spawn_player()
 	
 func spawn_player() -> void:
-	var playerNode = player.instantiate() as CharacterBody2D
+	var playerNode = player.instantiate() as Player
 	get_parent().add_child.call_deferred(playerNode)
 	playerNode.global_position = spawn_location.global_position
+	
+	Globals.set_player(playerNode)
 		

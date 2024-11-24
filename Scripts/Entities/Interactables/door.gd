@@ -2,7 +2,8 @@ extends StaticBody2D
 
 enum DOOR_TYPE {
 	SELF,
-	TRIGGERED
+	TRIGGERED,
+	KEY
 }
 
 @export_category("Door")
@@ -31,6 +32,10 @@ func _ready() -> void:
 		set_door(true)
 		trigger.trigger.connect(set_door_trigger)
 		return
+		
+	if (door_type == DOOR_TYPE.KEY):
+		set_door(true)
+		interaction_area.interact.connect(check_key)
 	
 func _exit_tree() -> void:
 	if (door_type == DOOR_TYPE.SELF):
@@ -39,6 +44,16 @@ func _exit_tree() -> void:
 	if (door_type == DOOR_TYPE.TRIGGERED):
 		trigger.trigger.disconnect(set_door_trigger)
 		
+	if (door_type == DOOR_TYPE.KEY):
+		interaction_area.interact.disconnect(check_key)
+		
+
+func check_key() -> void:
+	if Globals.inventory_has_key():
+		Globals.inventory_use_key()
+		open()
+		
+	
 func toggle_door() -> void:
 	set_door(is_open)
 		
