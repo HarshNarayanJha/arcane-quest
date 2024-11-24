@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://b0ocs23mqrch5"]
+[gd_scene load_steps=22 format=4 uid="uid://b0ocs23mqrch5"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_8nbwm"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="2_5xtda"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cst6nmirqp3hn" path="res://Scenes/Entities/Objects/laser.tscn" id="17_g3wnm"]
 [ext_resource type="PackedScene" uid="uid://bw12gl0qhkatu" path="res://Scenes/Entities/Objects/mirror.tscn" id="18_n1pvr"]
 [ext_resource type="PackedScene" uid="uid://pksoyxe20ojs" path="res://Scenes/Entities/Objects/crate.tscn" id="19_nsjwc"]
+[ext_resource type="PackedScene" uid="uid://cgitrxm4q2a55" path="res://Scenes/Entities/Interactables/treasure_chest.tscn" id="20_j3cur"]
 
 [sub_resource type="Resource" id="Resource_fjxgs"]
 script = ExtResource("16_qkaqn")
@@ -178,6 +179,9 @@ rotation = 7.53633
 
 [node name="Crate" parent="." instance=ExtResource("19_nsjwc")]
 position = Vector2(-35.3473, -1368.34)
+
+[node name="TreasureChest" parent="." instance=ExtResource("20_j3cur")]
+position = Vector2(-218.205, -1902.42)
 
 [editable path="WallSwitch"]
 [editable path="PlatformsSwitch"]

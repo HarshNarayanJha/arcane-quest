@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgitrxm4q2a55"]
+[gd_scene load_steps=6 format=3 uid="uid://cgitrxm4q2a55"]
 
 [ext_resource type="Texture2D" uid="uid://b5luohj7ltdkm" path="res://Art/Entities/Objects/chest.png" id="1_n2pw2"]
+[ext_resource type="Script" path="res://Scripts/Entities/Interactables/treasure_chest.gd" id="1_odvox"]
+[ext_resource type="PackedScene" uid="uid://c7q5b0divy5kt" path="res://Scenes/Entities/Interactables/interaction.tscn" id="2_i1cla"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nti7j"]
 size = Vector2(46, 35)
 
-[node name="TreasureChest" type="StaticBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_swdf8"]
+radius = 34.0
+
+[node name="TreasureChest" type="StaticBody2D" node_paths=PackedStringArray("sprite", "interaction")]
+z_index = 2
+script = ExtResource("1_odvox")
+chest_type = 1
+sprite = NodePath("Sprite2D")
+interaction = NodePath("InteractionArea")
+close_sprite = ExtResource("1_n2pw2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_n2pw2")
@@ -13,3 +24,11 @@ texture = ExtResource("1_n2pw2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_nti7j")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_i1cla")]
+action_name = "Open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 15)
+shape = SubResource("CircleShape2D_swdf8")
+debug_color = Color(0.180371, 0.642886, 0, 0.42)
