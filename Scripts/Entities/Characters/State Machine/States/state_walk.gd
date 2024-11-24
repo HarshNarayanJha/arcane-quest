@@ -1,0 +1,37 @@
+class_name State_Walk extends State
+
+@onready var state_idle: State_Idle = $"../State_Idle"
+
+
+## Logic for entering the state
+func Enter() -> void:
+	player.update_animation("walk")
+	pass
+	
+## Logic for exiting the state
+func Exit() -> void:
+	pass
+
+## Logic for _process update
+func Process(_delta: float) -> State:
+	if not player.direction:
+		return state_idle
+		
+	player.velocity = player.velocity.move_toward(
+		player.direction * player.speed,
+		player.acceleration * _delta
+	)
+	
+	if not player.knockback_velocity:
+		var target_rotation := player.direction.rotated(PI / 2).angle()
+		player.rotation = lerp_angle(player.rotation, target_rotation, player.turn_speed * _delta)
+		
+	return null
+	
+## Logic for __physics_process update
+func Physics(_delta: float) -> State:
+	return null
+	
+## Logic for input events
+func HandleInput(_event: InputEvent) -> State:
+	return null

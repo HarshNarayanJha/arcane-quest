@@ -1,7 +1,9 @@
 class_name Player extends CharacterBody2D
 
 @export var player_data: PlayerData
+@export var state_machine: PlayerStateMachine
 @export var sprite: Sprite2D
+@export var animation: AnimationPlayer
 @export var hurtbox: HurtBox
 @export var health: Health
 
@@ -16,6 +18,7 @@ var knockback_velocity := Vector2.ZERO
 func _ready() -> void:
 	assert(player_data != null, "Player Data Not Set!")
 	load_data()
+	state_machine.init(self)
 	
 	hurtbox.took_damage.connect(_took_damage)
 
@@ -32,15 +35,15 @@ func read_input() -> void:
 func _physics_process(delta: float) -> void:
 	read_input()
 	
-	if direction:
-		velocity = velocity.move_toward(direction * speed, acceleration * delta)
+	#if direction:
+		#velocity = velocity.move_toward(direction * speed, acceleration * delta)
 		
 		# if in knockback, don't rotate on will
-		if not knockback_velocity:
-			var target_rotation := direction.rotated(PI / 2).angle()
-			rotation = lerp_angle(rotation, target_rotation, turn_speed * delta)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+		#if not knockback_velocity:
+			#var target_rotation := direction.rotated(PI / 2).angle()
+			#rotation = lerp_angle(rotation, target_rotation, turn_speed * delta)
+	#else:
+		#velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 	
 	# overwrite velocity with knockback, if any
 	if knockback_velocity.length() > 0:
@@ -52,4 +55,8 @@ func _physics_process(delta: float) -> void:
 func _took_damage(amount: int, hitbox_position: Vector2, knockback: float):
 	if knockback > 0:
 		knockback_velocity = (global_position - hitbox_position).normalized() * (knockback + clampi(amount, 0, 10))
+		
+func update_animation(state: String) -> void:
+	animation.play("Player/%s" % state, 1)
+	pass
 		
