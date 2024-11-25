@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_jtn5u")
 speed = 150.0
+speed_reduce_factor = 2.0
 acceleration = 800.0
 deceleration = 1000.0
 turn_speed = 8.0

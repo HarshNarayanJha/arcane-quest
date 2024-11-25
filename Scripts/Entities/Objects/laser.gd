@@ -21,7 +21,7 @@ func _draw() -> void:
 	draw_line(to_local(raycast.get_collision_point()), to_local(normal_end_point), Color.GREEN, 10)
 
 func _process(delta: float) -> void:
-	queue_redraw()
+	#queue_redraw()
 	
 	# clear the laser and add origin
 	line.clear_points()

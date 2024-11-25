@@ -2,6 +2,7 @@ class_name State_Walk extends State
 
 @onready var state_idle: State_Idle = $"../State_Idle"
 @onready var state_attack: State_Attack = $"../State_Attack"
+@onready var state_bow: State_Bow = $"../State_Bow"
 
 
 ## Logic for entering the state
@@ -37,5 +38,8 @@ func Physics(_delta: float) -> State:
 func HandleInput(_event: InputEvent) -> State:
 	if _event.is_action_pressed("attack") && player.combat_manager.has_sword:
 		return state_attack
+		
+	if _event.is_action_pressed("aim") && player.combat_manager.has_bow:
+		return state_bow
 		
 	return null

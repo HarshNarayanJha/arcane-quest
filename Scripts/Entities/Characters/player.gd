@@ -9,6 +9,7 @@ class_name Player extends CharacterBody2D
 @export var health: Health
 
 var speed: float
+var speed_reduced: float
 var acceleration: float
 var deceleration: float
 var turn_speed: float
@@ -25,6 +26,7 @@ func _ready() -> void:
 
 func load_data() -> void:
 	speed = player_data.speed
+	speed_reduced = player_data.speed / player_data.speed_reduce_factor
 	acceleration = player_data.acceleration
 	deceleration = player_data.deceleration
 	turn_speed = player_data.turn_speed

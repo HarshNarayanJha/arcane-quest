@@ -12,6 +12,7 @@ enum ChestType {
 @export var num_coins: int = 0
 
 @export var sprite: Sprite2D
+@export var collison: CollisionShape2D
 @export var interaction: InteractionArea
 @export var is_open: bool = false
 
@@ -50,3 +51,6 @@ func open_chest() -> void:
 			Globals.inventory_add_boss_key()
 			
 	chest_opened.emit(chest_type)
+	
+	# TEMP: Remove this
+	queue_free()

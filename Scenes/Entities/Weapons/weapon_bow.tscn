@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://b67svocxnna3m"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Weapons/bow_weapon.gd" id="1_vulho"]
+[ext_resource type="Texture2D" uid="uid://bx3mehrxfbbya" path="res://Art/Entities/Objects/weapon_bow.png" id="2_63ldt"]
+[ext_resource type="Script" path="res://Scripts/Entities/Weapons/Resources/weapon_data.gd" id="2_abfio"]
+[ext_resource type="PackedScene" uid="uid://ocnvx1bocci2" path="res://Scenes/Entities/Hazards/arrow.tscn" id="2_iper0"]
+
+[sub_resource type="Resource" id="Resource_hdlgy"]
+script = ExtResource("2_abfio")
+attack_speed = 100.0
+damage = 2.0
+knockback = 5.0
+
+[node name="Weapon_Bow" type="StaticBody2D" node_paths=PackedStringArray("sprite", "fire_point")]
+z_index = 2
+script = ExtResource("1_vulho")
+arrow_scene = ExtResource("2_iper0")
+weapon_data = SubResource("Resource_hdlgy")
+sprite = NodePath("Sprite2D")
+fire_point = NodePath("FirePoint")
+fire_speed = 500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_63ldt")
+offset = Vector2(0, -13.45)
+
+[node name="FirePoint" type="Marker2D" parent="."]

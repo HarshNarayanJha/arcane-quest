@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cnkck3vdeodaa"]
+[gd_scene load_steps=33 format=3 uid="uid://cnkck3vdeodaa"]
 
 [ext_resource type="Texture2D" uid="uid://dr6fw0j02oxes" path="res://Art/Entities/Characters/Player/player.png" id="1_ip6be"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/player.gd" id="1_xroi2"]
@@ -16,7 +16,9 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/States/state_idle.gd" id="13_b7m6m"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/States/state_walk.gd" id="14_0rswv"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/States/state_attack.gd" id="15_av4tn"]
+[ext_resource type="Script" path="res://Scripts/Entities/Characters/State Machine/States/state_bow.gd" id="16_odbmd"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/combat_manager.gd" id="17_lccf1"]
+[ext_resource type="PackedScene" uid="uid://b67svocxnna3m" path="res://Scenes/Entities/Weapons/weapon_bow.tscn" id="19_setyb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_duk6b"]
 radius = 20.0
@@ -66,6 +68,18 @@ tracks/3/path = NodePath("Hands/Right:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hands/Left:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -139,6 +153,66 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_ssph3"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hands/Left:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, -34)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hands/Right:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(11, -29), Vector2(10, -23)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hands/Left:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hands/Right:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
 
 [sub_resource type="Animation" id="Animation_ds5uh"]
 length = 2.0
@@ -343,8 +417,12 @@ script = ExtResource("14_0rswv")
 [node name="State_Attack" type="Node" parent="StateMachine"]
 script = ExtResource("15_av4tn")
 
+[node name="State_Bow" type="Node" parent="StateMachine"]
+script = ExtResource("16_odbmd")
+
 [node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("left_hand", "right_hand")]
 script = ExtResource("17_lccf1")
 left_hand = NodePath("../Hands/Left")
 right_hand = NodePath("../Hands/Right")
 basic_sword_scene = ExtResource("6_lm66s")
+bow_scene = ExtResource("19_setyb")

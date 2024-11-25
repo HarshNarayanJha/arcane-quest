@@ -81,7 +81,7 @@ global_debug_draw = false
 spawn_location = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" type="Marker2D" parent="PlayerSpawn"]
-position = Vector2(58, -1372)
+position = Vector2(192, -1862)
 
 [node name="WallSwitch" parent="." instance=ExtResource("7_vblou")]
 position = Vector2(-83, -1462)
@@ -182,6 +182,11 @@ position = Vector2(-35.3473, -1368.34)
 
 [node name="TreasureChest" parent="." instance=ExtResource("20_j3cur")]
 position = Vector2(-218.205, -1902.42)
+
+[node name="TreasureChest2" parent="." instance=ExtResource("20_j3cur")]
+position = Vector2(279, -1915)
+rotation = 0.785397
+chest_type = 2
 
 [editable path="WallSwitch"]
 [editable path="PlatformsSwitch"]
