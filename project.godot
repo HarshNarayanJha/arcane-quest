@@ -84,6 +84,7 @@ aim={
 2d_physics/layer_6="Ground"
 2d_physics/layer_7="Foreground"
 2d_physics/layer_8="Objects"
+2d_physics/layer_9="Enemy"
 2d_physics/layer_10="Hitbox"
 2d_physics/layer_11="Hurtbox"
 2d_physics/layer_13="Mirror"

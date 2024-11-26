@@ -38,16 +38,6 @@ func read_input() -> void:
 func _physics_process(delta: float) -> void:
 	read_input()
 	
-	#if direction:
-		#velocity = velocity.move_toward(direction * speed, acceleration * delta)
-		
-		# if in knockback, don't rotate on will
-		#if not knockback_velocity:
-			#var target_rotation := direction.rotated(PI / 2).angle()
-			#rotation = lerp_angle(rotation, target_rotation, turn_speed * delta)
-	#else:
-		#velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
-	
 	# overwrite velocity with knockback, if any
 	if knockback_velocity.length() > 0:
 		velocity = knockback_velocity * speed * delta
