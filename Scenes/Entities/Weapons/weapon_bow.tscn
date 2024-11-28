@@ -9,7 +9,7 @@
 script = ExtResource("2_abfio")
 attack_speed = 100.0
 damage = 2.0
-knockback = 5.0
+knockback = 150.0
 
 [node name="Weapon_Bow" type="StaticBody2D" node_paths=PackedStringArray("sprite", "fire_point")]
 z_index = 2

@@ -7,5 +7,5 @@
 script = ExtResource("1_docq7")
 attack_speed = 10.0
 damage = 5.0
-knockback = 5.0
+knockback = 250.0
 sprite = ExtResource("2_k8gwj")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf2wgo3c561k2"]
+
+[ext_resource type="Script" path="res://Scripts/UI/gui_heart.gd" id="1_8re2e"]
+[ext_resource type="Texture2D" uid="uid://fidywbl67ci1" path="res://Art/Entities/UI/Health/heart.png" id="2_yil8o"]
+[ext_resource type="Texture2D" uid="uid://homh2eumuj1p" path="res://Art/Entities/UI/Health/half.png" id="3_ulhuu"]
+[ext_resource type="Texture2D" uid="uid://bwmcmyjynh1rt" path="res://Art/Entities/UI/Health/cracked.png" id="4_g8xkb"]
+
+[node name="Heart" type="Control" node_paths=PackedStringArray("sprite")]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8re2e")
+sprite = NodePath("Sprite2D")
+heart_full = ExtResource("2_yil8o")
+heart_half = ExtResource("3_ulhuu")
+heart_empty = ExtResource("4_g8xkb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_yil8o")
+centered = false

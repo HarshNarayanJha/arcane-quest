@@ -11,7 +11,7 @@ extends StaticBody2D
 func _ready() -> void:
 	sprite.set_texture(wall_texture)
 	health.died.connect(destroy_wall)
-	
+
 func destroy_wall() -> void:
 	collision.set_deferred("disabled", true)
 	sprite.set_texture(destroyed_texture)

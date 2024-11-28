@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_opsiv")
-max_health = 100
+max_health = 20
 health = null

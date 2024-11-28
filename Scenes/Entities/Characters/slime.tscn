@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqa5onen8o1ls"]
+[gd_scene load_steps=20 format=3 uid="uid://cqa5onen8o1ls"]
 
 [ext_resource type="Texture2D" uid="uid://dwk3fnhn5ln6d" path="res://Art/Entities/Characters/Slime/green-slime-spritesheet.png" id="1_oqg5w"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/Enemy/enemy.gd" id="1_ptgsu"]
@@ -8,14 +8,13 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/Enemy/State Machine/enemy_state_machine.gd" id="5_ytbrj"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/Enemy/State Machine/States/enemy_state_idle.gd" id="6_1lmck"]
 [ext_resource type="Script" path="res://Scripts/Entities/Hazards/Resources/health_data.gd" id="6_jren6"]
+[ext_resource type="Script" path="res://Scripts/Entities/Characters/Enemy/State Machine/States/enemy_state_wander.gd" id="9_r6wan"]
 
 [sub_resource type="Resource" id="Resource_ygrvb"]
 script = ExtResource("2_2mgx2")
-speed = 5.0
-speed_reduce_factor = 1.2
+speed = 20.0
 acceleration = 800.0
 deceleration = 900.0
-turn_speed = 500.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2j73"]
 radius = 8.0
@@ -43,7 +42,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_4wy0w"]
 length = 0.5
-loop_mode = 1
+loop_mode = 2
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -75,6 +74,20 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_8jk7y"]
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9, 10]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ar13"]
 _data = {
@@ -105,7 +118,7 @@ hurtbox = NodePath("Hurtbox")
 health = NodePath("Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_oqg5w")
 offset = Vector2(0, -16)
 hframes = 11
@@ -137,5 +150,10 @@ health_data = SubResource("Resource_mwg20")
 [node name="EnemyStateMachine" type="Node" parent="."]
 script = ExtResource("5_ytbrj")
 
-[node name="EnemyState_Idle" type="Node" parent="EnemyStateMachine"]
+[node name="Idle" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_idle_state")]
 script = ExtResource("6_1lmck")
+after_idle_state = NodePath("../Wander")
+
+[node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("9_r6wan")
+next_state = NodePath("../Idle")

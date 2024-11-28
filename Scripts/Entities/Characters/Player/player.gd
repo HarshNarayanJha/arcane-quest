@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 @export var player_data: PlayerData
 @export var state_machine: PlayerStateMachine
+@export var interaction_finder: InteractionFinder
 @export var combat_manager: CombatManager
 @export var sprite: Sprite2D
 @export var animation: AnimationPlayer
@@ -21,7 +22,7 @@ func _ready() -> void:
 	assert(player_data != null, "Player Data Not Set!")
 	load_data()
 	state_machine.init(self)
-	
+
 	hurtbox.took_damage.connect(_took_damage)
 
 func load_data() -> void:
@@ -37,7 +38,7 @@ func read_input() -> void:
 
 func _physics_process(delta: float) -> void:
 	read_input()
-	
+
 	# overwrite velocity with knockback, if any
 	if knockback_velocity.length() > 0:
 		velocity = knockback_velocity * speed * delta
@@ -48,8 +49,7 @@ func _physics_process(delta: float) -> void:
 func _took_damage(amount: int, hitbox_position: Vector2, knockback: float):
 	if knockback > 0:
 		knockback_velocity = (global_position - hitbox_position).normalized() * (knockback + clampi(amount, 0, 10))
-		
+
 func update_animation(state: String, blend_duration: float, speed: float = 1.0) -> void:
 	animation.play("Player/%s" % state, blend_duration, speed)
 	pass
-		

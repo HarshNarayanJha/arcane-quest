@@ -26,6 +26,7 @@ event_trigger = NodePath("EventTrigger")
 bool_event_trigger = NodePath("BoolEventTrigger")
 
 [node name="InteractionArea" parent="." instance=ExtResource("4_0d6bx")]
+action_name = "Press"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_5ylpp")

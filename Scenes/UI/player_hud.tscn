@@ -1,0 +1,150 @@
+[gd_scene load_steps=8 format=3 uid="uid://lebaqy3e4ac3"]
+
+[ext_resource type="PackedScene" uid="uid://bf2wgo3c561k2" path="res://Scenes/UI/gui_heart.tscn" id="1_8dfbt"]
+[ext_resource type="Script" path="res://Scripts/UI/player_hud.gd" id="1_gu8tb"]
+[ext_resource type="Texture2D" uid="uid://dx1a0morkcxgs" path="res://Art/Entities/Objects/key-white.png" id="3_bbv2k"]
+[ext_resource type="Texture2D" uid="uid://chj4uu5vvjqpe" path="res://Art/Entities/Objects/orb_red.png" id="4_2o4w0"]
+[ext_resource type="Texture2D" uid="uid://btfogr8ibgs43" path="res://Art/Entities/Objects/orb_blue.png" id="4_y6yyv"]
+[ext_resource type="Texture2D" uid="uid://dnl56ysewchlq" path="res://Art/Entities/Objects/orb_yellow.png" id="6_cho0f"]
+[ext_resource type="Texture2D" uid="uid://dlipef6j2fnr0" path="res://Art/Entities/Objects/orb_green.png" id="7_y7t85"]
+
+[node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("gui_health_container", "interaction_container", "interaction_label", "interaction_button_sprite", "keys_label", "red_orb_gui", "blue_orb_gui", "yellow_orb_gui", "green_orb_gui")]
+script = ExtResource("1_gu8tb")
+gui_health_container = NodePath("HeartContainer/HFlowContainer")
+gui_heart_scene = ExtResource("1_8dfbt")
+interaction_container = NodePath("InteractionContainer")
+interaction_label = NodePath("InteractionContainer/VBoxContainer/InteractionLabel")
+interaction_button_sprite = NodePath("InteractionContainer/VBoxContainer/InteractionButton")
+keys_label = NodePath("InventoryContainer/VFlowContainer/Keys/KeysText")
+red_orb_gui = NodePath("InventoryContainer/VFlowContainer/Orbs/RedOrb")
+blue_orb_gui = NodePath("InventoryContainer/VFlowContainer/Orbs/BlueOrb")
+yellow_orb_gui = NodePath("InventoryContainer/VFlowContainer/Orbs/YellowOrb")
+green_orb_gui = NodePath("InventoryContainer/VFlowContainer/Orbs/GreenOrb")
+
+[node name="HeartContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="HeartContainer"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 80.0
+
+[node name="InteractionContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -100.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InteractionContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -20.0
+offset_right = 31.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractionLabel" type="Label" parent="InteractionContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "Open"
+horizontal_alignment = 1
+
+[node name="InteractionButton" type="Sprite2D" parent="InteractionContainer/VBoxContainer"]
+
+[node name="InventoryContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -146.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 130.0
+grow_horizontal = 0
+
+[node name="VFlowContainer" type="HFlowContainer" parent="InventoryContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Keys" type="VFlowContainer" parent="InventoryContainer/VFlowContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="InventoryContainer/VFlowContainer/Keys"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="InventoryContainer/VFlowContainer/Keys/Control"]
+rotation = 0.523599
+texture = ExtResource("3_bbv2k")
+centered = false
+offset = Vector2(18, -8)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(10, 4, 13, 28)
+
+[node name="KeysText" type="Label" parent="InventoryContainer/VFlowContainer/Keys"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "2"
+
+[node name="Orbs" type="VFlowContainer" parent="InventoryContainer/VFlowContainer"]
+layout_mode = 2
+
+[node name="RedOrb" type="TextureRect" parent="InventoryContainer/VFlowContainer/Orbs"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_2o4w0")
+expand_mode = 1
+
+[node name="BlueOrb" type="TextureRect" parent="InventoryContainer/VFlowContainer/Orbs"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_y6yyv")
+expand_mode = 1
+
+[node name="YellowOrb" type="TextureRect" parent="InventoryContainer/VFlowContainer/Orbs"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_cho0f")
+expand_mode = 1
+
+[node name="GreenOrb" type="TextureRect" parent="InventoryContainer/VFlowContainer/Orbs"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("7_y7t85")
+expand_mode = 1

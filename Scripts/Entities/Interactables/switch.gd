@@ -30,21 +30,31 @@ func _ready() -> void:
 	if state:
 		sprite.texture = on_texture
 		event_trigger.trigger.emit()
-	
+		if switch_type == SWITCH_TYPE.ONETIME:
+			interaction_area.disable()
+
+	match switch_type:
+		SWITCH_TYPE.ONETIME:
+			interaction_area.action_name = "Press"
+		SWITCH_TYPE.TOGGLE:
+			interaction_area.action_name = "Toggle"
+
 func toggle() -> void:
 	if (state and switch_type == SWITCH_TYPE.ONETIME):
 		return
-		
+
 	state = !state
 	if state:
 		sprite.texture = on_texture
 		event_trigger.trigger.emit()
+		if switch_type == SWITCH_TYPE.ONETIME:
+			interaction_area.disable()
 	else:
 		sprite.texture = off_texture
-		
+
 	switch_toggle.emit(state)
 	bool_event_trigger.trigger.emit(state)
-	
+
 
 func _exit_tree() -> void:
 	interaction_area.interact.disconnect(toggle)

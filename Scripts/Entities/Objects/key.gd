@@ -7,10 +7,10 @@ extends StaticBody2D
 
 func _ready() -> void:
 	interaction.interact.connect(pick_key)
-	
+
 func _exit_tree() -> void:
 	interaction.interact.disconnect(pick_key)
-	
+
 func pick_key() -> void:
 	Globals.inventory_add_key()
 	queue_free()

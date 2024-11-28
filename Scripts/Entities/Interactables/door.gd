@@ -26,41 +26,45 @@ func _ready() -> void:
 	if (door_type == DOOR_TYPE.SELF):
 		set_door(true)
 		interaction_area.interact.connect(toggle_door)
+		interaction_area.action_name = "Open"
 		return
-		
+
 	if (door_type == DOOR_TYPE.TRIGGERED):
 		set_door(true)
 		trigger.trigger.connect(set_door_trigger)
+		interaction_area.disable()
 		return
-		
+
 	if (door_type == DOOR_TYPE.KEY):
 		set_door(true)
 		interaction_area.interact.connect(check_key)
-	
+		interaction_area.action_name = "Unlock"
+
 func _exit_tree() -> void:
 	if (door_type == DOOR_TYPE.SELF):
 		interaction_area.interact.disconnect(toggle_door)
-		
+
 	if (door_type == DOOR_TYPE.TRIGGERED):
 		trigger.trigger.disconnect(set_door_trigger)
-		
+
 	if (door_type == DOOR_TYPE.KEY):
 		interaction_area.interact.disconnect(check_key)
-		
+
 
 func check_key() -> void:
 	if Globals.inventory_has_key():
 		Globals.inventory_use_key()
 		open()
-		
-	
+		interaction_area.disable()
+
+
 func toggle_door() -> void:
 	set_door(is_open)
-		
+
 func set_door_trigger(trigger_state: bool) -> void:
 #	# Need to invert the logic here, since switch open needs to open the door, hence set_door(false)
 	set_door(not trigger_state)
-	
+
 func set_door(state: bool) -> void:
 	if state:
 		close()
@@ -74,7 +78,7 @@ func open() -> void:
 		sprite.set_texture(open_texture)
 	else:
 		sprite.hide()
-		
+
 func close() -> void:
 	is_open = false
 	collision.set_deferred("disabled", false)

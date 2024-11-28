@@ -19,7 +19,7 @@ func Enter() -> void:
 	_enemy.velocity = Vector2.ZERO
 	_timer = randf_range(state_duration_min, state_duration_max)
 	pass
-	
+
 ## Logic for exiting the state
 func Exit() -> void:
 	pass
@@ -29,13 +29,15 @@ func Process(_delta: float) -> EnemyState:
 	_timer -= _delta;
 	if _timer <= 0:
 		return after_idle_state
-		
+
+	_enemy.velocity = _enemy.velocity.move_toward(Vector2.ZERO, _enemy.deceleration * _delta)
+
 	return null
-	
+
 ## Logic for __physics_process update
 func Physics(_delta: float) -> EnemyState:
 	return null
-	
+
 ## Logic for input events
 func HandleInput(_event: InputEvent) -> EnemyState:
 	return null

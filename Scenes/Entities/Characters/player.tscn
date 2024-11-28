@@ -327,7 +327,7 @@ size = Vector2(46, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dq51b"]
 size = Vector2(36, 36)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "combat_manager", "sprite", "animation", "hurtbox", "health")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "interaction_finder", "combat_manager", "sprite", "animation", "hurtbox", "health")]
 z_index = 3
 collision_layer = 8
 collision_mask = 401
@@ -336,6 +336,7 @@ platform_wall_layers = 128
 script = ExtResource("1_xroi2")
 player_data = ExtResource("2_0a44g")
 state_machine = NodePath("StateMachine")
+interaction_finder = NodePath("InteractionFinder")
 combat_manager = NodePath("CombatManager")
 sprite = NodePath("Sprite2D")
 animation = NodePath("AnimationPlayer")

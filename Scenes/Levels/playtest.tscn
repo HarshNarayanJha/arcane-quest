@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b0ocs23mqrch5"]
+[gd_scene load_steps=24 format=4 uid="uid://b0ocs23mqrch5"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_8nbwm"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="2_5xtda"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://pksoyxe20ojs" path="res://Scenes/Entities/Objects/crate.tscn" id="19_nsjwc"]
 [ext_resource type="PackedScene" uid="uid://cgitrxm4q2a55" path="res://Scenes/Entities/Interactables/treasure_chest.tscn" id="20_j3cur"]
 [ext_resource type="PackedScene" uid="uid://cqa5onen8o1ls" path="res://Scenes/Entities/Characters/slime.tscn" id="21_he80t"]
+[ext_resource type="PackedScene" uid="uid://lebaqy3e4ac3" path="res://Scenes/UI/player_hud.tscn" id="22_kg4on"]
 
 [sub_resource type="Resource" id="Resource_fjxgs"]
 script = ExtResource("16_qkaqn")
@@ -28,6 +29,8 @@ max_health = 10
 health = null
 
 [node name="Playtest" type="Node2D"]
+
+[node name="PlayerHUD" parent="." instance=ExtResource("22_kg4on")]
 
 [node name="Starting Pathway" type="Node" parent="."]
 

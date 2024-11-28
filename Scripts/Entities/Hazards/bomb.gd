@@ -8,10 +8,10 @@ class_name Bomb extends StaticBody2D
 
 func _ready() -> void:
 	(hitbox_collision.shape as CircleShape2D).set_radius(0)
-	
+
 	print("Bomb Instantiated!")
 	get_tree().create_timer(time_to_detonate).timeout.connect(detonate)
-	
+
 func detonate():
 	print("!!!BLAST!!!")
 	var tween := get_tree().create_tween()

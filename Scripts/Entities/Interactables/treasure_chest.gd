@@ -26,17 +26,17 @@ func _ready() -> void:
 	sprite.set_texture(close_sprite)
 	if is_open:
 		sprite.set_texture(open_sprite)
-	
+
 func _exit_tree() -> void:
 	interaction.interact.disconnect(open_chest)
-	
+
 func open_chest() -> void:
 	if is_open:
 		return
-		
+
 	is_open = true
 	sprite.texture = open_sprite
-	
+
 	match chest_type:
 		ChestType.COINS:
 			#give him coins
@@ -49,8 +49,8 @@ func open_chest() -> void:
 			Globals.inventory_add_key()
 		ChestType.BOSS_KEY:
 			Globals.inventory_add_boss_key()
-			
+
 	chest_opened.emit(chest_type)
-	
+
 	# TEMP: Remove this
 	queue_free()

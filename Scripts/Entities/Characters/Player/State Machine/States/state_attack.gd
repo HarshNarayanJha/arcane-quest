@@ -11,7 +11,7 @@ func Enter() -> void:
 	player.animation.animation_finished.connect(end_attack)
 	attacking = true
 	pass
-	
+
 ## Logic for exiting the state
 func Exit() -> void:
 	player.animation.animation_finished.disconnect(end_attack)
@@ -26,21 +26,21 @@ func Process(_delta: float) -> State:
 			return state_idle
 		else:
 			return state_walk
-			
+
 	player.velocity = player.velocity.move_toward(Vector2.ZERO, player.deceleration * _delta)
-	
+
 	if not attacking:
 		if not player.direction:
 			return state_idle
 		else:
 			return state_walk
-		
+
 	return null
-	
+
 ## Logic for __physics_process update
 func Physics(_delta: float) -> State:
 	return null
-	
+
 ## Logic for input events
 func HandleInput(_event: InputEvent) -> State:
 	return null
