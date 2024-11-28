@@ -1,10 +1,7 @@
 class_name EnemyState_Idle extends EnemyState
 
-#@onready var state_walk: State_Walk = $"../State_Walk"
-#@onready var state_attack: State_Attack = $"../State_Attack"
-#@onready var state_bow: State_Bow = $"../State_Bow"
-
 @export var anim_name := "idle"
+@export var blend_duration := 0.1
 
 @export_category("AI")
 @export var state_duration_min: float = 0.5
@@ -15,7 +12,7 @@ var _timer: float = 0.0
 
 ## Logic for entering the state
 func Enter() -> void:
-	_enemy.update_animation(anim_name, 0.1)
+	_enemy.update_animation(anim_name, blend_duration)
 	_enemy.velocity = Vector2.ZERO
 	_timer = randf_range(state_duration_min, state_duration_max)
 	pass

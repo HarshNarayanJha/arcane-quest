@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Arcane Quest"
-run/main_scene="res://Scenes/Levels/playtest.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 procam="*res://addons/ProCam2D/scripts/autoload.gd"
 Globals="*res://Scripts/Helpers/Globals.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+[dialogue_manager]
+
+general/balloon_path="res://Scenes/UI/Dialogue/balloon.tscn"
 
 [display]
 
@@ -27,7 +32,7 @@ window/size/window_height_override=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ProCam2D/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/ProCam2D/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [input]
 
@@ -75,6 +80,10 @@ aim={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":79,"key_label":0,"unicode":111,"location":0,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Dialogues/prologue.dialogue", "res://Dialogues/level1.dialogue")
 
 [layer_names]
 

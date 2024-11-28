@@ -18,12 +18,17 @@ var turn_speed: float
 var direction := Vector2.ZERO
 var knockback_velocity := Vector2.ZERO
 
+var controls_enabled := false
+
 func _ready() -> void:
 	assert(player_data != null, "Player Data Not Set!")
 	load_data()
 	state_machine.init(self)
 
 	hurtbox.took_damage.connect(_took_damage)
+	health.died.connect(queue_free)
+
+	unlock_controls()
 
 func load_data() -> void:
 	speed = player_data.speed
@@ -37,7 +42,8 @@ func read_input() -> void:
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 func _physics_process(delta: float) -> void:
-	read_input()
+	if controls_enabled:
+		read_input()
 
 	# overwrite velocity with knockback, if any
 	if knockback_velocity.length() > 0:
@@ -53,3 +59,12 @@ func _took_damage(amount: int, hitbox_position: Vector2, knockback: float):
 func update_animation(state: String, blend_duration: float, speed: float = 1.0) -> void:
 	animation.play("Player/%s" % state, blend_duration, speed)
 	pass
+
+func lock_controls() -> void:
+	controls_enabled = false
+	direction = Vector2.ZERO
+	velocity = Vector2.ZERO
+
+func unlock_controls() -> void:
+	print("Controls Unlocked")
+	controls_enabled = true

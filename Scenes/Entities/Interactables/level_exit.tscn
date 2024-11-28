@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://wr5kteq4tld0"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Interactables/level_exit.gd" id="1_dr2lc"]
+
+[node name="LevelExit" type="Area2D"]
+z_index = 2
+collision_layer = 129
+collision_mask = 8
+script = ExtResource("1_dr2lc")
+this_scene_type = null

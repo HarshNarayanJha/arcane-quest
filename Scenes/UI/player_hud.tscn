@@ -98,6 +98,7 @@ grow_vertical = 2
 alignment = 2
 
 [node name="Keys" type="VFlowContainer" parent="InventoryContainer/VFlowContainer"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 alignment = 1
 

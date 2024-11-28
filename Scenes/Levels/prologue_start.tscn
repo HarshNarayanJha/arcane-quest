@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=4 uid="uid://dtkuajo5hyxqs"]
+
+[ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_48sf1"]
+[ext_resource type="TileSet" uid="uid://mejdaxlkw3mx" path="res://Scenes/Levels/Tilesets/border_tileset.tres" id="2_ag8sc"]
+[ext_resource type="PackedScene" uid="uid://lebaqy3e4ac3" path="res://Scenes/UI/player_hud.tscn" id="2_p4ljm"]
+[ext_resource type="TileSet" uid="uid://beumnpq6u0a2d" path="res://Scenes/Levels/Tilesets/foreground_tileset.tres" id="3_ajkrn"]
+[ext_resource type="PackedScene" uid="uid://dgts438blgcwe" path="res://Scenes/Helpers/player_spawn.tscn" id="4_i4xhg"]
+[ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="5_j4k48"]
+[ext_resource type="PackedScene" uid="uid://dofj4wtemqmiy" path="res://Scenes/Entities/Interactables/door.tscn" id="7_0vmv5"]
+[ext_resource type="Texture2D" uid="uid://c8x3dvl46ukj5" path="res://Art/Entities/Objects/wall_secret.png" id="8_w1l2b"]
+[ext_resource type="PackedScene" uid="uid://dla4koheqh3xc" path="res://Scenes/Entities/Interactables/switch.tscn" id="9_utkg2"]
+[ext_resource type="PackedScene" uid="uid://wr5kteq4tld0" path="res://Scenes/Entities/Interactables/level_exit.tscn" id="10_0uv71"]
+[ext_resource type="PackedScene" uid="uid://ybxwgreikfq1" path="res://Scenes/Levels/Level1-Fireorb.tscn" id="11_g2cbp"]
+[ext_resource type="Script" path="res://Scripts/prologue_start.gd" id="12_m6j2b"]
+[ext_resource type="Resource" uid="uid://dcjthoul0722s" path="res://Dialogues/prologue.dialogue" id="13_we6ex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yytxy"]
+size = Vector2(60.0751, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q78pl"]
+size = Vector2(391, 20)
+
+[node name="Prologue" type="Node2D"]
+
+[node name="ProCam2D" type="Node2D" parent="."]
+z_index = 4096
+script = ExtResource("5_j4k48")
+process_frame = 2
+follow_mode = 0
+drag_type = 0
+smooth_drag = true
+smooth_drag_speed = Vector2(5, 5)
+max_distance = Vector2(100000, 100000)
+offset = Vector2(0, 0)
+smooth_offset = true
+smooth_offset_speed = 2.0
+allow_rotation = true
+smooth_rotation = true
+smooth_rotation_speed = 5.0
+zoom = 1.0
+smooth_zoom = true
+smooth_zoom_speed = 5.0
+auto_zoom = true
+min_zoom = 0.0
+max_zoom = 1.0
+zoom_margin = 5.0
+smooth_limit = true
+left_limit = -10000000
+right_limit = 10000000
+top_limit = -10000000
+bottom_limit = 10000000
+use_h_margins = false
+use_v_margins = false
+working_radius = 2000.0
+global_debug_draw = false
+
+[node name="PlayerHUD" parent="." instance=ExtResource("2_p4ljm")]
+
+[node name="Level-TopOrb" type="Node" parent="."]
+
+[node name="Ground" type="TileMapLayer" parent="Level-TopOrb"]
+tile_map_data = PackedByteArray("AAD///b/AAAAAAAAAAD///f/AAAAAAAAAAD8//f/AAAAAAIAAAD8//j/AAAAAAAAAAD8//n/AAAAAAAAAAD8//r/AAAAAAIAAGD9//b/AAAAAAIAAAD9//f/AAAAAAAAAAD9//j/AAAAAAAAAAD9//n/AAAAAAAAAAD9//r/AAAAAAAAAAD9//v/AAAAAAIAAGD+//b/AAAAAAAAAAD+//f/AAAAAAAAAAD+//j/AAAAAAAAAAD+//n/AAAAAAAAAAD+//r/AAAAAAAAAAD+//v/AAAAAAAAAAD///n/AAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAAAAPb/AAAAAAAAAAAAAPf/AAAAAAAAAAAAAPj/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPb/AAAAAAIAAFABAPf/AAAAAAAAAAABAPj/AAAAAAAAAAABAPn/AAAAAAAAAAABAPr/AAAAAAAAAAABAPv/AAAAAAIAADACAPf/AAAAAAIAAFACAPj/AAAAAAAAAAACAPn/AAAAAAAAAAACAPr/AAAAAAIAADD///j/AAAAAAAAAAA=")
+tile_set = ExtResource("1_48sf1")
+
+[node name="Border" type="TileMapLayer" parent="Level-TopOrb"]
+tile_map_data = PackedByteArray("AAD8//j/AAAKAAAAAGD8//n/AAAKAAAAAGD8//r/AAAJAAIAACD9//f/AAAJAAQAAAD9//v/AAAJAAIAACD+//b/AAAKAAAAAAAAAPb/AAAKAAAAAAABAPf/AAAJAAQAAFABAPv/AAAJAAIAAHACAPj/AAAKAAAAAHACAPn/AAAKAAAAAHACAPr/AAAJAAIAAHD8//f/AAAJAAIAAAD9//b/AAAJAAIAAED9//r/AAAJAAQAAGD+//X/AAAKAAAAAFD+//v/AAAKAAAAADAAAPX/AAAKAAAAAEAAAPv/AAAKAAAAADABAPb/AAAJAAIAABABAPr/AAAJAAQAADACAPf/AAAJAAIAABD///v/AAAKAAAAADA=")
+tile_set = ExtResource("2_ag8sc")
+
+[node name="Foreground" type="TileMapLayer" parent="Level-TopOrb"]
+tile_map_data = PackedByteArray("AAD///X/AAAHAAQAAAD///b/AAAHAAcAAAD///f/AAAHAAcAAAD///j/AAAHAAcAAAD///n/AAAHAAcAAAD///r/AAAHAAcAAAA=")
+tile_set = ExtResource("3_ajkrn")
+
+[node name="PlayerSpawn" parent="." node_paths=PackedStringArray("spawn_location") instance=ExtResource("4_i4xhg")]
+spawn_location = NodePath("SpawnPoint")
+
+[node name="SpawnPoint" type="Marker2D" parent="PlayerSpawn"]
+position = Vector2(-29, -331)
+
+[node name="Door" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("7_0vmv5")]
+position = Vector2(-30, -590)
+door_type = 1
+closed_texture = ExtResource("8_w1l2b")
+trigger = NodePath("../SwitchDoor/BoolEventTrigger")
+
+[node name="SwitchDoor" parent="." instance=ExtResource("9_utkg2")]
+position = Vector2(-150.606, -449.826)
+
+[node name="SwitchMonster" parent="." instance=ExtResource("9_utkg2")]
+position = Vector2(89.3941, -449.826)
+
+[node name="LevelExit" parent="." instance=ExtResource("10_0uv71")]
+position = Vector2(-29.0376, -649.55)
+this_scene_type = 1
+target_scene = ExtResource("11_g2cbp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
+shape = SubResource("RectangleShape2D_yytxy")
+
+[node name="DialogueAreaTrigger" type="Area2D" parent="."]
+z_index = 2
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueAreaTrigger"]
+position = Vector2(-29.5, -406)
+shape = SubResource("RectangleShape2D_q78pl")
+
+[node name="DialogueTrigger" type="Node" parent="." node_paths=PackedStringArray("dialogue_trigger_area")]
+script = ExtResource("12_m6j2b")
+dialogue_trigger_area = NodePath("../DialogueAreaTrigger")
+dialogue_resource = ExtResource("13_we6ex")
+dialogue_title = "prologue"
+
+[editable path="SwitchDoor"]
+[editable path="SwitchMonster"]

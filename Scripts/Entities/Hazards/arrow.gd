@@ -18,9 +18,6 @@ func fire(
 func _ready() -> void:
 	get_tree().create_timer(20).timeout.connect(queue_free)
 
-func _process(delta: float) -> void:
-	pass
-
 func _on_object_detector_area_entered(area: Area2D) -> void:
 	if not linear_velocity.is_equal_approx(Vector2.ZERO):
 		queue_free()

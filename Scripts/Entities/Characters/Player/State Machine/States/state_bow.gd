@@ -36,6 +36,9 @@ func Physics(_delta: float) -> State:
 
 ## Logic for input events
 func HandleInput(_event: InputEvent) -> State:
+	if not player.controls_enabled:
+		return state_idle
+
 	# Cancel arrow by pressing attack button or primary button
 	if _event.is_action_pressed("attack") or _event.is_action_pressed("primary"):
 		player.combat_manager.bow.cancel_arrow()

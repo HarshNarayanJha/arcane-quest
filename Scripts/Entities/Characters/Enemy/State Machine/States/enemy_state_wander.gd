@@ -1,6 +1,7 @@
 class_name EnemyState_Wander extends EnemyState
 
 @export var anim_name := "walk"
+@export var blend_duration := 0.1
 
 @export_category("AI")
 @export var state_animation_duration: float = 1.0
@@ -15,7 +16,7 @@ const DIRECTIONS := [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 
 ## Logic for entering the state
 func Enter() -> void:
-	_enemy.update_animation(anim_name, 0.1)
+	_enemy.update_animation(anim_name, blend_duration)
 	_timer = randi_range(state_cycles_min, state_cycles_max) * state_animation_duration
 	_enemy.direction = DIRECTIONS[
 		randi_range(0, DIRECTIONS.size() - 1)

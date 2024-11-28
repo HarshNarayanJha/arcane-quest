@@ -21,6 +21,8 @@ func _ready() -> void:
 	state_machine.init(self)
 
 	hurtbox.took_damage.connect(_took_damage)
+	health.died.connect(queue_free)
+
 	Globals.player_changed.connect(set_player)
 	if Globals.player:
 		set_player(Globals.player)
@@ -48,5 +50,5 @@ func _took_damage(amount: int, hitbox_position: Vector2, knockback: float):
 		knockback_velocity = (global_position - hitbox_position).normalized() * (knockback + clampi(amount, 0, 10))
 
 func update_animation(state: String, blend_duration: float, speed: float = 1.0) -> void:
-	animation.play("Slime/%s" % state, blend_duration, speed)
+	animation.play("%s" % state, blend_duration, speed)
 	pass

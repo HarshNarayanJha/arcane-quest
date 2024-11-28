@@ -1,0 +1,192 @@
+[gd_scene load_steps=5 format=3 uid="uid://c84kctldr2g8r"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_x42m2"]
+[ext_resource type="PackedScene" uid="uid://dtkuajo5hyxqs" path="res://Scenes/Levels/prologue_start.tscn" id="2_yq7vg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jx21v"]
+font_size = 48
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_danib"]
+bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+
+[node name="Control" type="Control" node_paths=PackedStringArray("credits_panel", "help_panel", "play", "help", "credits", "exit")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x42m2")
+prologue_scene = ExtResource("2_yq7vg")
+credits_panel = NodePath("Credits")
+help_panel = NodePath("Help")
+play = NodePath("Panel/Play")
+help = NodePath("Panel/Help")
+credits = NodePath("Panel/Credits")
+exit = NodePath("Panel/Exit")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_top = 40.0
+offset_right = 166.0
+offset_bottom = 129.0
+grow_horizontal = 2
+text = "Arcane Quest"
+label_settings = SubResource("LabelSettings_jx21v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -114.0
+offset_right = 53.5
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Play"
+
+[node name="Help" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -24.0
+offset_right = 53.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Help"
+
+[node name="Credits" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 138.0
+offset_right = 53.5
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Credits
+"
+
+[node name="Exit" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 206.0
+offset_right = 53.5
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Exit"
+
+[node name="Credits" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_danib")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Name" type="Label" parent="Credits/VBoxContainer"]
+layout_mode = 2
+text = "Arcane Quest"
+label_settings = SubResource("LabelSettings_jx21v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CreditsEntry" type="Label" parent="Credits/VBoxContainer"]
+layout_mode = 2
+text = "Concept by Harsh Narayan Jha"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Help" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_danib")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Help"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Name" type="Label" parent="Help/VBoxContainer"]
+layout_mode = 2
+text = "Arcane Quest"
+label_settings = SubResource("LabelSettings_jx21v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsEntry" type="Label" parent="Help/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "How To Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Help/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HelpText" type="Label" parent="Help/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Press WASD to Move etc etcetc "
+horizontal_alignment = 1
+vertical_alignment = 1

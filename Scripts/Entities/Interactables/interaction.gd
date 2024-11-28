@@ -5,9 +5,9 @@ class_name InteractionArea extends Area2D
 signal interact
 
 func enable() -> void:
-	monitorable = true
-	monitoring = true
+	set_deferred("monitorable", true)
+	set_deferred("monitoring", true)
 
 func disable() -> void:
-	monitorable = false
-	monitoring = false
+	set_deferred("monitorable", false)
+	set_deferred("monitoring", false)

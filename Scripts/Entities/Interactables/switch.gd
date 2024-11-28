@@ -10,6 +10,7 @@ signal switch_toggle(state: bool)
 @export_category("Switch")
 @export var switch_type: SWITCH_TYPE
 @export var state: bool = false
+@export var disable_start: bool = false
 @export var sprite: Sprite2D
 
 @export var off_texture: Texture2D
@@ -39,6 +40,9 @@ func _ready() -> void:
 		SWITCH_TYPE.TOGGLE:
 			interaction_area.action_name = "Toggle"
 
+	if disable_start:
+		disable()
+
 func toggle() -> void:
 	if (state and switch_type == SWITCH_TYPE.ONETIME):
 		return
@@ -58,3 +62,13 @@ func toggle() -> void:
 
 func _exit_tree() -> void:
 	interaction_area.interact.disconnect(toggle)
+
+func disable() -> void:
+	hide()
+	interaction_area.disable()
+	set_process_mode(ProcessMode.PROCESS_MODE_DISABLED)
+
+func enable() -> void:
+	set_process_mode(ProcessMode.PROCESS_MODE_INHERIT)
+	interaction_area.enable()
+	show()

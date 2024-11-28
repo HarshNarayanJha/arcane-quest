@@ -47,7 +47,7 @@ func update_hearts(old: int, new: int) -> void:
 
 func update_interaction(interaction: InteractionArea) -> void:
 	if interaction:
-		interaction_label.text = interaction.action_name
+		interaction_label.text = interaction.action_name + " (Space)"
 	else:
 		interaction_label.text = ""
 

@@ -11,5 +11,8 @@ func enable() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is HurtBox:
+		# don't damage self
+		if area.get_parent() == get_parent():
+			return
 		var hurtbox := area as HurtBox
 		hurtbox.take_damage(damage_amount, global_position, knockback_amount)

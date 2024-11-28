@@ -14,13 +14,13 @@ Makes this hurtbox invincible, return false if already invincible, otherwise tru
 """
 func make_invincible(duration: float = invincibility_time) -> bool:
 	if invincible: return false
-	
+
 	invincible = true
 	invincibility_timer = get_tree().create_timer(duration, false)
 	invincibility_timer.timeout.connect(revoke_invincible)
-	
+
 	return true
-	
+
 func revoke_invincible() -> void:
 	invincible = false
 
