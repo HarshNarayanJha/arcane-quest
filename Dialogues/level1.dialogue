@@ -12,13 +12,6 @@ Voice of the Sanctum: With this, thou canst strike from afar.
 Voice of the Sanctum: Look, an enemy. Shoot it. Use the "O" key to aim.
 => END
 
-~ got_sword
-Voice of the Sanctum: A fine weapon, indeed. This sword will serve thee in battle.
-Voice of the Sanctum: With this blade, thou canst cut through the trials that await thee.
-Voice of the Sanctum: Its edge is keen, but thy skill will determine its true strength.
-Voice of the Sanctum: Take it, adventurer, and be ready. The path ahead grows more dangerous.
-=> END
-
 ~ got_orb
 Voice of the Sanctum: The Fire Orb is thine. Its power now stirs within thee.
 Voice of the Sanctum: Thou hast proven thy courage in the heart of the flames. The orb shall aid thee on thy journey.

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c84kctldr2g8r"]
+[gd_scene load_steps=6 format=3 uid="uid://c84kctldr2g8r"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_x42m2"]
 [ext_resource type="PackedScene" uid="uid://dtkuajo5hyxqs" path="res://Scenes/Levels/prologue_start.tscn" id="2_yq7vg"]
+[ext_resource type="PackedScene" uid="uid://r5l2cb2kecwd" path="res://Scenes/credits.tscn" id="3_88lp3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jx21v"]
 font_size = 48
@@ -12,7 +13,7 @@ shadow_size = 10
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_danib"]
 bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
 
-[node name="Control" type="Control" node_paths=PackedStringArray("credits_panel", "help_panel", "play", "help", "credits", "exit")]
+[node name="Control" type="Control" node_paths=PackedStringArray("help_panel", "play", "help", "credits", "exit", "close_help")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,14 +22,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x42m2")
 prologue_scene = ExtResource("2_yq7vg")
-credits_panel = NodePath("Credits")
+credits_scene = ExtResource("3_88lp3")
 help_panel = NodePath("Help")
-play = NodePath("Panel/Play")
-help = NodePath("Panel/Help")
-credits = NodePath("Panel/Credits")
-exit = NodePath("Panel/Exit")
+play = NodePath("MainPanel/Play")
+help = NodePath("MainPanel/Help")
+credits = NodePath("MainPanel/Credits")
+exit = NodePath("MainPanel/Exit")
+close_help = NodePath("Help/VBoxContainer/Close Help")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="MainPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +38,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Name" type="Label" parent="Panel"]
+[node name="Name" type="Label" parent="MainPanel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -51,7 +53,7 @@ label_settings = SubResource("LabelSettings_jx21v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play" type="Button" parent="Panel"]
+[node name="Play" type="Button" parent="MainPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,7 +69,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Play"
 
-[node name="Help" type="Button" parent="Panel"]
+[node name="Help" type="Button" parent="MainPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -83,7 +85,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Help"
 
-[node name="Credits" type="Button" parent="Panel"]
+[node name="Credits" type="Button" parent="MainPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -100,7 +102,7 @@ theme_override_font_sizes/font_size = 24
 text = "Credits
 "
 
-[node name="Exit" type="Button" parent="Panel"]
+[node name="Exit" type="Button" parent="MainPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -115,40 +117,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Exit"
-
-[node name="Credits" type="ScrollContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_danib")
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 25
-alignment = 1
-
-[node name="Name" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-text = "Arcane Quest"
-label_settings = SubResource("LabelSettings_jx21v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="Credits/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="CreditsEntry" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-text = "Concept by Harsh Narayan Jha"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Help" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -187,6 +155,25 @@ theme_override_constants/separation = 20
 [node name="HelpText" type="Label" parent="Help/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Press WASD to Move etc etcetc "
+text = "Play this game to save the world from the wishes of the evil.
+Some evil forces are trying to get hold of 4 mysterious orbs that will let them control the world.
+You must save the world by collecting the orbs and making a wish.
+
+Controls:
+
+WASD or Arrow Keys to move around
+Space to interact with the environment
+Hold O to use the Bow
+Press Enter/Return to use the Sword
+Press B to drop bombs"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Help/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Close Help" type="Button" parent="Help/VBoxContainer"]
+layout_mode = 2
+text = "< Back"
+flat = true

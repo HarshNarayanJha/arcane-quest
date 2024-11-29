@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://r5l2cb2kecwd"]
+
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_pud5x"]
+[ext_resource type="PackedScene" uid="uid://c84kctldr2g8r" path="res://Scenes/main_menu.tscn" id="2_77xxc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f51to"]
+bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ou2pq"]
+font_size = 48
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_n6i07"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+
+[node name="Credits" type="ScrollContainer" node_paths=PackedStringArray("back")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f51to")
+script = ExtResource("1_pud5x")
+back = NodePath("VBoxContainer/Back")
+main_menu_scene = ExtResource("2_77xxc")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Arcane Quest"
+label_settings = SubResource("LabelSettings_ou2pq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_n6i07")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CreditsEntry" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Harsh Narayan Jha - Lead Developer, Game Design
+
+Art Credits
+Environment Art \"Scribble Dungeons\" by \"kenney.nl\" (CC0)
+Pixel Art key by \"Frontend Pashtet\" on itch.io (CC0)
+\"2D Hearts\" Sprites by \"gpway\" on itch.io
+
+Audio/Music Credits
+...
+
+Addons/Scripts Credits
+ProCam2D by Daz. B Like
+Dialogue Manager by Nathan Hoad
+Scene Manager by GlassBrick
+Some snippets from \"Make a 2D Action RPG in Godot 4\" series on YouTube by \"Michael Game\"
+
+
+Made in Godot Engine (Open Source)
+
+Concept by Harsh Narayan Jha
+Originally Made for the GitHub GameOff 2024 on itch.io
+
+Thanks for Playing Arcane Quest
+Enjoy! 
+
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Go Back"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 procam="*res://addons/ProCam2D/scripts/autoload.gd"
 Globals="*res://Scripts/Helpers/Globals.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 
 [dialogue_manager]
 
@@ -32,7 +33,7 @@ window/size/window_height_override=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ProCam2D/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/ProCam2D/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [input]
 
@@ -83,7 +84,7 @@ aim={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/prologue.dialogue", "res://Dialogues/level1.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/prologue.dialogue", "res://Dialogues/level1.dialogue", "res://Dialogues/level2.dialogue")
 
 [layer_names]
 
