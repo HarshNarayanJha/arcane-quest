@@ -1,14 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://lebaqy3e4ac3"]
+[gd_scene load_steps=10 format=3 uid="uid://lebaqy3e4ac3"]
 
 [ext_resource type="PackedScene" uid="uid://bf2wgo3c561k2" path="res://Scenes/UI/gui_heart.tscn" id="1_8dfbt"]
 [ext_resource type="Script" path="res://Scripts/UI/player_hud.gd" id="1_gu8tb"]
 [ext_resource type="Texture2D" uid="uid://dx1a0morkcxgs" path="res://Art/Entities/Objects/key-white.png" id="3_bbv2k"]
 [ext_resource type="Texture2D" uid="uid://chj4uu5vvjqpe" path="res://Art/Entities/Objects/orb_red.png" id="4_2o4w0"]
+[ext_resource type="Texture2D" uid="uid://mhdjq21i22lw" path="res://Art/Entities/Objects/coin/coin10.png" id="4_t5gjn"]
 [ext_resource type="Texture2D" uid="uid://btfogr8ibgs43" path="res://Art/Entities/Objects/orb_blue.png" id="4_y6yyv"]
 [ext_resource type="Texture2D" uid="uid://dnl56ysewchlq" path="res://Art/Entities/Objects/orb_yellow.png" id="6_cho0f"]
 [ext_resource type="Texture2D" uid="uid://dlipef6j2fnr0" path="res://Art/Entities/Objects/orb_green.png" id="7_y7t85"]
 
-[node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("gui_health_container", "interaction_container", "interaction_label", "interaction_button_sprite", "keys_label", "red_orb_gui", "blue_orb_gui", "yellow_orb_gui", "green_orb_gui")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itcnq"]
+bg_color = Color(0, 0, 0, 0.27451)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("gui_health_container", "interaction_container", "interaction_label", "interaction_button_sprite", "keys_label", "coins_label", "red_orb_gui", "blue_orb_gui", "yellow_orb_gui", "green_orb_gui")]
 script = ExtResource("1_gu8tb")
 gui_health_container = NodePath("HeartContainer/HFlowContainer")
 gui_heart_scene = ExtResource("1_8dfbt")
@@ -16,6 +24,7 @@ interaction_container = NodePath("InteractionContainer")
 interaction_label = NodePath("InteractionContainer/VBoxContainer/InteractionLabel")
 interaction_button_sprite = NodePath("InteractionContainer/VBoxContainer/InteractionButton")
 keys_label = NodePath("InventoryContainer/VFlowContainer/Keys/KeysText")
+coins_label = NodePath("InventoryContainer/VFlowContainer/Coins/CoinsText")
 red_orb_gui = NodePath("InventoryContainer/VFlowContainer/Orbs/RedOrb")
 blue_orb_gui = NodePath("InventoryContainer/VFlowContainer/Orbs/BlueOrb")
 yellow_orb_gui = NodePath("InventoryContainer/VFlowContainer/Orbs/YellowOrb")
@@ -87,19 +96,30 @@ offset_right = -10.0
 offset_bottom = 130.0
 grow_horizontal = 0
 
-[node name="VFlowContainer" type="HFlowContainer" parent="InventoryContainer"]
+[node name="Panel" type="Panel" parent="InventoryContainer"]
+layout_mode = 0
+offset_left = -128.0
+offset_top = 31.0
+offset_right = 114.0
+offset_bottom = 162.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_itcnq")
+
+[node name="VFlowContainer" type="VBoxContainer" parent="InventoryContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 20.0
+offset_left = -117.0
+offset_top = 4.0
+offset_right = -43.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 2
+alignment = 1
 
 [node name="Keys" type="VFlowContainer" parent="InventoryContainer/VFlowContainer"]
-custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 alignment = 1
 
 [node name="Control" type="Control" parent="InventoryContainer/VFlowContainer/Keys"]
@@ -111,11 +131,32 @@ rotation = 0.523599
 texture = ExtResource("3_bbv2k")
 centered = false
 offset = Vector2(18, -8)
-flip_h = true
 region_enabled = true
 region_rect = Rect2(10, 4, 13, 28)
 
 [node name="KeysText" type="Label" parent="InventoryContainer/VFlowContainer/Keys"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "2"
+
+[node name="Coins" type="VFlowContainer" parent="InventoryContainer/VFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 1
+
+[node name="Control" type="Control" parent="InventoryContainer/VFlowContainer/Coins"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="InventoryContainer/VFlowContainer/Coins/Control"]
+texture = ExtResource("4_t5gjn")
+centered = false
+region_rect = Rect2(10, 4, 13, 28)
+
+[node name="CoinsText" type="Label" parent="InventoryContainer/VFlowContainer/Coins"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

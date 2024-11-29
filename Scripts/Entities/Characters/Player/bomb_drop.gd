@@ -17,13 +17,19 @@ func _ready() -> void:
 	can_drop = true
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("action_1"):
+	if not Globals.inventory.has_bomb():
+		return
+
+	if event.is_action_pressed("bomb"):
 		get_viewport().set_input_as_handled()
 		if can_drop:
 			print("can Drop Bomb")
 			drop_bomb()
-		
+
 func drop_bomb() -> void:
+	if not Globals.inventory.has_bomb():
+		return
+
 	var point := player.direction + drop_offset
 	var bomb: Bomb = bomb_scene.instantiate()
 	bomb.time_to_detonate = time_to_detonate

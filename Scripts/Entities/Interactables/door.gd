@@ -23,32 +23,34 @@ enum DOOR_TYPE {
 @export var trigger: BoolEventTrigger
 
 func _ready() -> void:
+	set_door(not is_open)
+
 	if (door_type == DOOR_TYPE.SELF):
-		set_door(true)
 		interaction_area.interact.connect(toggle_door)
 		interaction_area.action_name = "Open"
 		return
 
 	if (door_type == DOOR_TYPE.TRIGGERED):
-		set_door(true)
 		trigger.trigger.connect(set_door_trigger)
 		interaction_area.disable()
 		return
 
 	if (door_type == DOOR_TYPE.KEY):
-		set_door(true)
 		interaction_area.interact.connect(check_key)
 		interaction_area.action_name = "Unlock"
 
 func _exit_tree() -> void:
 	if (door_type == DOOR_TYPE.SELF):
-		interaction_area.interact.disconnect(toggle_door)
+		if interaction_area:
+			interaction_area.interact.disconnect(toggle_door)
 
 	if (door_type == DOOR_TYPE.TRIGGERED):
-		trigger.trigger.disconnect(set_door_trigger)
+		if is_instance_valid(trigger):
+			trigger.trigger.disconnect(set_door_trigger)
 
 	if (door_type == DOOR_TYPE.KEY):
-		interaction_area.interact.disconnect(check_key)
+		if interaction_area:
+			interaction_area.interact.disconnect(check_key)
 
 
 func check_key() -> void:
@@ -72,6 +74,7 @@ func set_door(state: bool) -> void:
 		open()
 
 func open() -> void:
+	prints("Opening", name)
 	is_open = true
 	collision.set_deferred("disabled", true)
 	if open_texture:
@@ -80,7 +83,16 @@ func open() -> void:
 		sprite.hide()
 
 func close() -> void:
+	prints("Closing", name)
 	is_open = false
 	collision.set_deferred("disabled", false)
 	sprite.show()
 	sprite.set_texture(closed_texture)
+
+func close_trigger_body(body: Node2D) -> void:
+	if body is Player:
+		close()
+
+func open_trigger_body(body: Node2D) -> void:
+	if body is Player:
+		open()

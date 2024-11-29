@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bselrii20ajc7"]
+[gd_scene load_steps=22 format=3 uid="uid://bselrii20ajc7"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/Enemy/enemy.gd" id="1_oxoky"]
 [ext_resource type="Texture2D" uid="uid://dvlrrhvgvyu6f" path="res://Art/Entities/Objects/trap.png" id="1_qrrji"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/Enemy/State Machine/States/enemy_state_wander.gd" id="7_75syc"]
 [ext_resource type="PackedScene" uid="uid://b06xgkqkhtepd" path="res://Scenes/Entities/Hazards/hurtbox.tscn" id="8_8pa1n"]
 [ext_resource type="Script" path="res://Scripts/Events/event_trigger.gd" id="8_jaefo"]
+[ext_resource type="Script" path="res://Scripts/Events/bool_event_trigger.gd" id="9_nhtp0"]
 [ext_resource type="Script" path="res://Scripts/Entities/Hazards/health.gd" id="9_pd016"]
 [ext_resource type="Script" path="res://Scripts/Entities/Hazards/Resources/health_data.gd" id="10_62ajx"]
 
@@ -118,6 +119,9 @@ health_data = SubResource("Resource_oosl7")
 [node name="DeathEvent" type="Node" parent="Health"]
 script = ExtResource("8_jaefo")
 
+[node name="DeathEventBool" type="Node" parent="Health"]
+script = ExtResource("9_nhtp0")
+
 [node name="EnemyStateMachine" type="Node" parent="."]
 script = ExtResource("5_6scu7")
 
@@ -134,3 +138,4 @@ blend_duration = 0.5
 next_state = NodePath("../EnemyState_Idle")
 
 [connection signal="died" from="Health" to="Health/DeathEvent" method="make_trigger"]
+[connection signal="died" from="Health" to="Health/DeathEventBool" method="make_trigger" binds= [true]]

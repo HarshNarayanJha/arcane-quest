@@ -4,6 +4,7 @@ enum ChestType {
 	COINS,
 	SWORD,
 	BOW,
+	BOMB,
 	KEY,
 	BOSS_KEY
 }
@@ -19,7 +20,8 @@ enum ChestType {
 @export var open_sprite: Texture2D
 @export var close_sprite: Texture2D
 
-signal chest_opened(chest_type: ChestType)
+signal chest_opened_type(chest_type: ChestType)
+signal chest_opened
 
 func _ready() -> void:
 	interaction.interact.connect(open_chest)
@@ -39,18 +41,39 @@ func open_chest() -> void:
 
 	match chest_type:
 		ChestType.COINS:
-			#give him coins
-			pass
+			Globals.inventory_add_coins(num_coins)
 		ChestType.SWORD:
 			Globals.inventory_add_sword()
 		ChestType.BOW:
 			Globals.inventory_add_bow()
+		ChestType.BOMB:
+			Globals.inventory_add_bomb()
 		ChestType.KEY:
 			Globals.inventory_add_key()
 		ChestType.BOSS_KEY:
 			Globals.inventory_add_boss_key()
 
-	chest_opened.emit(chest_type)
+	chest_opened_type.emit(chest_type)
+	chest_opened.emit()
 
 	# TEMP: Remove this
 	queue_free()
+
+func disable() -> void:
+	hide()
+	collison.set_deferred("disabled", true)
+	interaction.disable()
+
+func enable() -> void:
+	show()
+	collison.set_deferred("disabled", false)
+	interaction.enable()
+
+func disable_trigger_body(body: Node2D) -> void:
+	if body is Player:
+		disable()
+
+func enable_trigger_body(body: Node2D) -> void:
+	if body is Player:
+		enable()
+	interaction.enable()

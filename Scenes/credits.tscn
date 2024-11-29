@@ -1,16 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://r5l2cb2kecwd"]
+[gd_scene load_steps=5 format=3 uid="uid://r5l2cb2kecwd"]
 
 [ext_resource type="Script" path="res://Scripts/credits.gd" id="1_pud5x"]
-[ext_resource type="PackedScene" uid="uid://c84kctldr2g8r" path="res://Scenes/main_menu.tscn" id="2_77xxc"]
+[ext_resource type="FontFile" uid="uid://dy4xitlayyos" path="res://Art/Fonts/Osake.otf" id="2_kd7u6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f51to"]
 bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ou2pq"]
-font_size = 48
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_n6i07"]
 font_size = 28
@@ -27,7 +21,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f51to")
 script = ExtResource("1_pud5x")
 back = NodePath("VBoxContainer/Back")
-main_menu_scene = ExtResource("2_77xxc")
+main_menu_path = "res://Scenes/main_menu.tscn"
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -41,14 +35,17 @@ alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Name" type="Label" parent="VBoxContainer"]
+[node name="Name" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-text = "Arcane Quest"
-label_settings = SubResource("LabelSettings_ou2pq")
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_fonts/normal_font = ExtResource("2_kd7u6")
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "[center][color=gray]Arcane[/color]
+[font_size=56]Quest[/font_size]
+[/center]"
+fit_content = true
 
-[node name="Name2" type="Label" parent="VBoxContainer"]
+[node name="Credits" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Credits"
 label_settings = SubResource("LabelSettings_n6i07")
@@ -67,6 +64,7 @@ Art Credits
 Environment Art \"Scribble Dungeons\" by \"kenney.nl\" (CC0)
 Pixel Art key by \"Frontend Pashtet\" on itch.io (CC0)
 \"2D Hearts\" Sprites by \"gpway\" on itch.io
+\"Osake Font\" by \"dafonts.com\"
 
 Audio/Music Credits
 ...

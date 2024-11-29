@@ -30,6 +30,7 @@ signal inventory_changed(inventory: Inventory)
 func set_player(instance: Player) -> void:
 	player = instance
 	player_changed.emit(instance)
+	inventory_changed.emit(inventory)
 	print_log("Player Changed!")
 
 #region inventory_apis
@@ -50,6 +51,14 @@ func inventory_add_bow() -> void:
 	inventory_changed.emit(inventory)
 	print_log("Got Bow")
 
+func inventory_add_bomb() -> void:
+	if inventory.has_bomb():
+		return
+
+	inventory.set_bomb(true)
+	inventory_changed.emit(inventory)
+	print_log("Got Bombs")
+
 func inventory_add_key(amount: int = 1) -> void:
 	inventory.set_keys(inventory.keys + amount)
 	inventory_changed.emit(inventory)
@@ -62,6 +71,11 @@ func inventory_use_key(amount: int = 1) -> void:
 
 func inventory_has_key(atleast: int = 1) -> bool:
 	return inventory.keys >= atleast
+
+func inventory_add_coins(amount: int = 1) -> void:
+	inventory.set_coins(inventory.coins + amount)
+	inventory_changed.emit(inventory)
+	print_log("Got %d Coins. Now have %d coinds" % [amount, inventory.coins])
 
 func inventory_set_orb(orb: Inventory.ORB_TYPE) -> void:
 	inventory.set_orb(orb)
@@ -99,6 +113,7 @@ class Inventory:
 	}
 
 	const MAX_KEYS := 8
+	const MAX_COINS := 99
 
 	var keys: int = 0 :
 		set = set_keys
@@ -113,18 +128,27 @@ class Inventory:
 	var earth_orb: bool = false:
 		set = set_orb
 
+	var coins: int = 0 :
+		set = set_coins
+
 	var sword: bool = false:
 		set = set_sword,
 		get = has_sword
 	var bow: bool = false:
 		set = set_bow,
 		get = has_bow
+	var bomb: bool = false:
+		set = set_bomb,
+		get = has_bomb
 
 	func set_keys(amount: int) -> void:
 		keys = clamp(amount, 0, MAX_KEYS)
 
 	func set_boss_key(have: bool) -> void:
 		boss_key = have
+
+	func set_coins(amount: int) -> void:
+		coins = clamp(amount, 0, MAX_COINS)
 
 	func set_orb(orb: ORB_TYPE) -> void:
 		match orb:
@@ -141,6 +165,12 @@ class Inventory:
 
 	func set_bow(have: bool) -> void:
 		bow = have
+
+	func has_bomb() -> bool:
+		return bomb
+
+	func set_bomb(have: bool) -> void:
+		bomb = have
 
 	func has_bow() -> bool:
 		return bow

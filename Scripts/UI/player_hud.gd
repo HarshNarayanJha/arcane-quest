@@ -11,6 +11,7 @@ extends CanvasLayer
 
 @export_category("Inventory")
 @export var keys_label: Label
+@export var coins_label: Label
 @export var red_orb_gui: Control
 @export var blue_orb_gui: Control
 @export var yellow_orb_gui: Control
@@ -53,6 +54,8 @@ func update_interaction(interaction: InteractionArea) -> void:
 
 func update_inventory(inventory: Globals.Inventory) -> void:
 	keys_label.text = str(inventory.keys)
+	coins_label.text = str(inventory.coins)
+
 	if inventory.fire_orb:
 		red_orb_gui.show()
 	else:
@@ -72,7 +75,3 @@ func update_inventory(inventory: Globals.Inventory) -> void:
 		green_orb_gui.show()
 	else:
 		green_orb_gui.hide()
-
-
-	if inventory.fire_orb:
-		red_orb_gui.show()

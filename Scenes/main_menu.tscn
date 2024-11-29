@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://c84kctldr2g8r"]
+[gd_scene load_steps=7 format=3 uid="uid://c84kctldr2g8r"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_x42m2"]
 [ext_resource type="PackedScene" uid="uid://dtkuajo5hyxqs" path="res://Scenes/Levels/prologue_start.tscn" id="2_yq7vg"]
 [ext_resource type="PackedScene" uid="uid://r5l2cb2kecwd" path="res://Scenes/credits.tscn" id="3_88lp3"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_jx21v"]
-font_size = 48
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 10
+[ext_resource type="FontFile" uid="uid://dy4xitlayyos" path="res://Art/Fonts/Osake.otf" id="4_58gsh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_danib"]
 bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jx21v"]
+font = ExtResource("4_58gsh")
+font_size = 72
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
 
 [node name="Control" type="Control" node_paths=PackedStringArray("help_panel", "play", "help", "credits", "exit", "close_help")]
 layout_mode = 3
@@ -38,87 +40,124 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Name" type="Label" parent="MainPanel"]
+[node name="Name" type="RichTextLabel" parent="MainPanel"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -166.0
-offset_top = 40.0
-offset_right = 166.0
-offset_bottom = 129.0
-grow_horizontal = 2
-text = "Arcane Quest"
-label_settings = SubResource("LabelSettings_jx21v")
-horizontal_alignment = 1
-vertical_alignment = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -111.0
+offset_right = 632.0
+offset_bottom = 198.0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("4_58gsh")
+theme_override_font_sizes/normal_font_size = 136
+bbcode_enabled = true
+text = "[center][color=gray]Arcane[/color]
+[font_size=96]Quest[/font_size]
+[/center]"
 
 [node name="Play" type="Button" parent="MainPanel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = -114.0
-offset_right = 53.5
-offset_bottom = -72.0
-grow_horizontal = 2
+offset_left = -365.0
+offset_top = -221.0
+offset_right = -112.0
+offset_bottom = -135.0
+grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("4_58gsh")
+theme_override_font_sizes/font_size = 48
 text = "Play"
 
 [node name="Help" type="Button" parent="MainPanel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = -24.0
-offset_right = 53.5
-offset_bottom = 18.0
-grow_horizontal = 2
+offset_left = -365.0
+offset_top = -120.0
+offset_right = -112.0
+offset_bottom = -34.0
+grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("4_58gsh")
+theme_override_font_sizes/font_size = 48
 text = "Help"
 
 [node name="Credits" type="Button" parent="MainPanel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = 138.0
-offset_right = 53.5
-offset_bottom = 180.0
-grow_horizontal = 2
+offset_left = -365.0
+offset_top = 21.0
+offset_right = -112.0
+offset_bottom = 107.0
+grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "Credits
-"
+theme_override_fonts/font = ExtResource("4_58gsh")
+theme_override_font_sizes/font_size = 48
+text = "Credits"
 
 [node name="Exit" type="Button" parent="MainPanel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = 206.0
-offset_right = 53.5
-offset_bottom = 248.0
-grow_horizontal = 2
+offset_left = -365.0
+offset_top = 127.0
+offset_right = -112.0
+offset_bottom = 213.0
+grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("4_58gsh")
+theme_override_font_sizes/font_size = 48
 text = "Exit"
 
+[node name="Footer" type="RichTextLabel" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -232.0
+offset_top = -35.0
+offset_right = -17.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.762404, 0.762404, 0.762404, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "Game by Harsh Narayan Jha ©️ 2024"
+
+[node name="Footer2" type="RichTextLabel" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -35.0
+offset_right = 133.0
+offset_bottom = -15.0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.762404, 0.762404, 0.762404, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "v0.1.0 <git_tag>"
+
 [node name="Help" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
