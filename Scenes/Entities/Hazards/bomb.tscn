@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqnq6p7n22lqq"]
+[gd_scene load_steps=7 format=3 uid="uid://cqnq6p7n22lqq"]
 
 [ext_resource type="Texture2D" uid="uid://bguwp4vdgq4vt" path="res://Art/Entities/Objects/crate_small.png" id="1_5jxcr"]
 [ext_resource type="Script" path="res://Scripts/Entities/Hazards/bomb.gd" id="1_7fbcv"]
 [ext_resource type="PackedScene" uid="uid://c2j3v3lcdh32d" path="res://Scenes/Entities/Hazards/hitbox.tscn" id="1_thixx"]
+[ext_resource type="AudioStream" uid="uid://dlkyer4u8ivic" path="res://Audio/SFX/Heavy Artillery Grenade Explosion - QuickSounds.com.mp3" id="2_hnsbh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2tpj"]
 size = Vector2(30, 30)
@@ -20,6 +21,7 @@ hitbox_collision = NodePath("Hitbox/CollisionShape2D")
 time_to_detonate = 8.0
 impact_radius = 30.0
 impact_time = 1.0
+sfx = ExtResource("2_hnsbh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_5jxcr")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ocnvx1bocci2"]
+[gd_scene load_steps=9 format=3 uid="uid://ocnvx1bocci2"]
 
 [ext_resource type="Texture2D" uid="uid://cx18obm21ev2" path="res://Art/Entities/Objects/weapon_arrow.png" id="1_gvt2s"]
 [ext_resource type="Script" path="res://Scripts/Entities/Hazards/arrow.gd" id="1_yicgl"]
+[ext_resource type="AudioStream" uid="uid://cvshum1a82ixj" path="res://Audio/SFX/mixkit-arrow-shot-through-air-2771.wav" id="2_doq3l"]
 [ext_resource type="PackedScene" uid="uid://c2j3v3lcdh32d" path="res://Scenes/Entities/Hazards/hitbox.tscn" id="2_ic76f"]
+[ext_resource type="AudioStream" uid="uid://bbdidsh5dlu20" path="res://Audio/SFX/mixkit-arrow-whizz-in-battle-2767.wav" id="3_h8qdl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps3ox"]
 size = Vector2(10, 10)
@@ -20,6 +22,8 @@ collision_mask = 440
 mass = 0.05
 gravity_scale = 0.0
 script = ExtResource("1_yicgl")
+shoot_sfx = ExtResource("2_doq3l")
+hit_sfx = ExtResource("3_h8qdl")
 hitbox = NodePath("Hitbox")
 fire_speed = 500.0
 

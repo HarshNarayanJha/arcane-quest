@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://tj5su87dwu3n"]
+[gd_scene load_steps=11 format=3 uid="uid://tj5su87dwu3n"]
 
 [ext_resource type="Texture2D" uid="uid://ckaw5mxntmlnd" path="res://Art/Entities/Objects/wall_damaged.png" id="1_em0cg"]
 [ext_resource type="Script" path="res://Scripts/Entities/Interactables/destructable_wall.gd" id="1_forqp"]
@@ -17,6 +17,10 @@ size = Vector2(66, 26)
 script = ExtResource("4_k1uo7")
 max_health = 100
 health = null
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8x8gc"]
+cull_mode = 1
+polygon = PackedVector2Array(-31, -11, 31, -11, 31, 11, -31, 11)
 
 [node name="DestructableWall" type="StaticBody2D" node_paths=PackedStringArray("hurtbox", "health", "sprite", "collision")]
 z_index = 2
@@ -48,3 +52,8 @@ debug_color = Color(0.969949, 0.174378, 7.70092e-07, 0.42)
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_vtolb")
 health_data = SubResource("Resource_7oh23")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, -20)
+occluder = SubResource("OccluderPolygon2D_8x8gc")
+sdf_collision = false

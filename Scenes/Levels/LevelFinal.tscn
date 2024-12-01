@@ -1,0 +1,272 @@
+[gd_scene load_steps=30 format=4 uid="uid://cweal1a12ebly"]
+
+[ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="1_c1pe4"]
+[ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_ceej3"]
+[ext_resource type="PackedScene" uid="uid://lebaqy3e4ac3" path="res://Scenes/UI/player_hud.tscn" id="1_hrhsd"]
+[ext_resource type="TileSet" uid="uid://beumnpq6u0a2d" path="res://Scenes/Levels/Tilesets/foreground_tileset.tres" id="2_270xi"]
+[ext_resource type="TileSet" uid="uid://mejdaxlkw3mx" path="res://Scenes/Levels/Tilesets/border_tileset.tres" id="3_twoak"]
+[ext_resource type="PackedScene" uid="uid://cgitrxm4q2a55" path="res://Scenes/Entities/Interactables/treasure_chest.tscn" id="4_yx001"]
+[ext_resource type="PackedScene" uid="uid://dgts438blgcwe" path="res://Scenes/Helpers/player_spawn.tscn" id="5_t4l6g"]
+[ext_resource type="AudioStream" uid="uid://bfk6sg61hxkq0" path="res://Audio/Music/Battle Music 1.ogg" id="6_fl13e"]
+[ext_resource type="PackedScene" uid="uid://bselrii20ajc7" path="res://Scenes/Entities/Hazards/spike_spin.tscn" id="7_ep1k6"]
+[ext_resource type="Script" path="res://Scripts/Entities/Characters/Resources/enemy_data.gd" id="8_yqpv1"]
+[ext_resource type="Script" path="res://Scripts/Entities/Hazards/Resources/health_data.gd" id="9_08s7p"]
+[ext_resource type="Script" path="res://Scripts/boss_fight_controller.gd" id="10_kobpp"]
+[ext_resource type="AudioStream" uid="uid://hp5qdjuejl8f" path="res://Audio/Music/Battle Music 2.ogg" id="11_rh2tc"]
+[ext_resource type="Resource" uid="uid://b3sedbm5dsb6i" path="res://Dialogues/level_final.dialogue" id="13_8feua"]
+[ext_resource type="PackedScene" uid="uid://cx7jvgxecvmxd" path="res://Scenes/Entities/Hazards/arrow_dispenser.tscn" id="14_rdgtu"]
+[ext_resource type="PackedScene" uid="uid://cst6nmirqp3hn" path="res://Scenes/Entities/Objects/laser.tscn" id="15_v4yqy"]
+[ext_resource type="PackedScene" uid="uid://bw12gl0qhkatu" path="res://Scenes/Entities/Objects/mirror.tscn" id="16_k3wk7"]
+[ext_resource type="PackedScene" uid="uid://tj5su87dwu3n" path="res://Scenes/Entities/Interactables/destructable_wall.tscn" id="17_i61hm"]
+[ext_resource type="PackedScene" uid="uid://wr5kteq4tld0" path="res://Scenes/Entities/Interactables/level_exit.tscn" id="18_cd6r1"]
+[ext_resource type="PackedScene" uid="uid://bax1lurllrxv6" path="res://Scenes/Levels/epilogue.tscn" id="19_j7daf"]
+[ext_resource type="PackedScene" uid="uid://8dfv3h0qimlj" path="res://Scenes/Entities/Objects/orb.tscn" id="21_58yth"]
+[ext_resource type="Texture2D" uid="uid://dlipef6j2fnr0" path="res://Art/Entities/Objects/orb_green.png" id="22_ka53v"]
+[ext_resource type="Texture2D" uid="uid://dnl56ysewchlq" path="res://Art/Entities/Objects/orb_yellow.png" id="23_ykuxu"]
+[ext_resource type="Texture2D" uid="uid://c8qdkj16gxrtc" path="res://Art/Environment/light.png" id="24_xgy05"]
+
+[sub_resource type="Resource" id="Resource_2lpm0"]
+script = ExtResource("8_yqpv1")
+speed = 0.0
+acceleration = 400.0
+deceleration = 500.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5oof"]
+radius = 22.5985
+
+[sub_resource type="Resource" id="Resource_mypbf"]
+script = ExtResource("9_08s7p")
+max_health = 500
+health = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuxm0"]
+size = Vector2(883, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhsvg"]
+size = Vector2(60.7867, 20)
+
+[node name="LevelFinal" type="Node2D"]
+
+[node name="PlayerHUD" parent="." instance=ExtResource("1_hrhsd")]
+
+[node name="ProCam2D" type="Node2D" parent="."]
+z_index = 4096
+script = ExtResource("1_c1pe4")
+process_frame = 2
+follow_mode = 0
+drag_type = 0
+smooth_drag = true
+smooth_drag_speed = Vector2(5, 5)
+max_distance = Vector2(100000, 100000)
+offset = Vector2(0, 0)
+smooth_offset = true
+smooth_offset_speed = 2.0
+allow_rotation = true
+smooth_rotation = true
+smooth_rotation_speed = 5.0
+zoom = 1.0
+smooth_zoom = true
+smooth_zoom_speed = 5.0
+auto_zoom = true
+min_zoom = 0.0
+max_zoom = 1.0
+zoom_margin = 5.0
+smooth_limit = true
+left_limit = -10000000
+right_limit = 10000000
+top_limit = -10000000
+bottom_limit = 10000000
+use_h_margins = false
+use_v_margins = false
+working_radius = 2000.0
+global_debug_draw = false
+
+[node name="Level-Final" type="Node" parent="."]
+
+[node name="Ground" type="TileMapLayer" parent="Level-Final"]
+tile_map_data = PackedByteArray("AAD///b/AAAAAAAAAAD///f/AAAAAAAAAAD8//f/AAAAAAAAAAD8//j/AAAAAAAAAAD8//n/AAAAAAAAAAD8//r/AAAAAAIAAGD9//b/AAAAAAAAAAD9//f/AAAAAAAAAAD9//j/AAAAAAAAAAD9//n/AAAAAAAAAAD9//r/AAAAAAAAAAD9//v/AAAAAAIAAGD+//b/AAAAAAAAAAD+//f/AAAAAAAAAAD+//j/AAAAAAAAAAD+//n/AAAAAAAAAAD+//r/AAAAAAAAAAD+//v/AAAAAAAAAAD///n/AAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAAAAPb/AAAAAAAAAAAAAPf/AAAAAAAAAAAAAPj/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPb/AAAAAAAAAAABAPf/AAAAAAAAAAABAPj/AAAAAAAAAAABAPn/AAAAAAAAAAABAPr/AAAAAAAAAAABAPv/AAAAAAIAADACAPf/AAAAAAAAAAACAPj/AAAAAAAAAAACAPn/AAAAAAAAAAACAPr/AAAAAAIAADD///j/AAAAAAAAAAD8//b/AAAAAAAAAAACAPb/AAAAAAAAAAACAPX/AAAAAAAAAAABAPX/AAAAAAAAAAAAAPX/AAAAAAAAAAD///X/AAAAAAAAAAD+//X/AAAAAAAAAAD9//X/AAAAAAAAAAD8//X/AAAAAAAAAAD8//T/AAAAAAAAAAD8//P/AAAAAAAAAAD9//T/AAAAAAAAAAD+//T/AAAAAAAAAAD///T/AAAAAAAAAAAAAPT/AAAAAAAAAAABAPT/AAAAAAAAAAACAPT/AAAAAAAAAAACAPP/AAAAAAAAAAABAPP/AAAAAAAAAAABAPL/AAAAAAAAAAAAAPL/AAAAAAAAAAD///L/AAAAAAAAAAD+//L/AAAAAAAAAAD9//P/AAAAAAAAAAD+//P/AAAAAAAAAAD///P/AAAAAAAAAAAAAPP/AAAAAAAAAAD8//L/AAAAAAAAAAD9//L/AAAAAAAAAAACAPL/AAAAAAAAAAACAPH/AAAAAAAAAAABAPH/AAAAAAAAAAAAAPH/AAAAAAAAAAD///H/AAAAAAAAAAD+//H/AAAAAAAAAAD9//H/AAAAAAAAAAD8//H/AAAAAAAAAAD4/+z/AAAAAAAAAAD4/+3/AAAAAAAAAAD4/+7/AAAAAAAAAAD4/+//AAAAAAAAAAD4//D/AAAAAAAAAAD4//H/AAAAAAAAAAD4//L/AAAAAAAAAAD5/+z/AAAAAAAAAAD5/+3/AAAAAAAAAAD5/+7/AAAAAAAAAAD5/+//AAAAAAAAAAD5//D/AAAAAAAAAAD5//H/AAAAAAAAAAD5//L/AAAAAAAAAAD6/+z/AAAAAAAAAAD6/+3/AAAAAAAAAAD6/+7/AAAAAAAAAAD6/+//AAAAAAAAAAD6//D/AAAAAAAAAAD6//H/AAAAAAAAAAD6//L/AAAAAAAAAAD7/+z/AAAAAAAAAAD7/+3/AAAAAAAAAAD7/+7/AAAAAAAAAAD7/+//AAAAAAAAAAD7//D/AAAAAAAAAAD7//H/AAAAAAAAAAD7//L/AAAAAAAAAAD8/+z/AAAAAAAAAAD8/+3/AAAAAAAAAAD8/+7/AAAAAAAAAAD8/+//AAAAAAAAAAD8//D/AAAAAAAAAAD9/+z/AAAAAAAAAAD9/+3/AAAAAAAAAAD9/+7/AAAAAAAAAAD9/+//AAAAAAAAAAD9//D/AAAAAAAAAAD+/+z/AAAAAAAAAAD+/+3/AAAAAAAAAAD+/+7/AAAAAAAAAAD+/+//AAAAAAAAAAD+//D/AAAAAAAAAAD//+z/AAAAAAAAAAD//+3/AAAAAAAAAAD//+7/AAAAAAAAAAD//+//AAAAAAAAAAD///D/AAAAAAAAAAAAAOz/AAAAAAAAAAAAAO3/AAAAAAAAAAAAAO7/AAAAAAAAAAAAAO//AAAAAAAAAAAAAPD/AAAAAAAAAAABAOz/AAAAAAAAAAABAO3/AAAAAAAAAAABAO7/AAAAAAAAAAABAO//AAAAAAAAAAABAPD/AAAAAAAAAAACAOz/AAAAAAAAAAACAO3/AAAAAAAAAAACAO7/AAAAAAAAAAACAO//AAAAAAAAAAACAPD/AAAAAAAAAAADAOz/AAAAAAAAAAADAO3/AAAAAAAAAAADAO7/AAAAAAAAAAADAO//AAAAAAAAAAADAPD/AAAAAAAAAAADAPH/AAAAAAAAAAADAPL/AAAAAAAAAAAEAOz/AAAAAAAAAAAEAO3/AAAAAAAAAAAEAO7/AAAAAAAAAAAEAO//AAAAAAAAAAAEAPD/AAAAAAAAAAAEAPH/AAAAAAAAAAAEAPL/AAAAAAAAAAAFAOz/AAAAAAAAAAAFAO3/AAAAAAAAAAAFAO7/AAAAAAAAAAAFAO//AAAAAAAAAAAFAPD/AAAAAAAAAAAFAPH/AAAAAAAAAAAFAPL/AAAAAAAAAAAGAOz/AAAAAAAAAAAGAO3/AAAAAAAAAAAGAO7/AAAAAAAAAAAGAO//AAAAAAAAAAAGAPD/AAAAAAAAAAAGAPH/AAAAAAAAAAAGAPL/AAAAAAAAAAD5/+b/AAAAAAAAAAD5/+f/AAAAAAAAAAD5/+j/AAAAAAAAAAD5/+n/AAAAAAAAAAD5/+r/AAAAAAAAAAD5/+v/AAAAAAAAAAD6/+b/AAAAAAAAAAD6/+f/AAAAAAAAAAD6/+j/AAAAAAAAAAD6/+n/AAAAAAAAAAD6/+r/AAAAAAAAAAD6/+v/AAAAAAAAAAD7/+b/AAAAAAAAAAD7/+f/AAAAAAAAAAD7/+j/AAAAAAAAAAD7/+n/AAAAAAAAAAD7/+r/AAAAAAAAAAD7/+v/AAAAAAAAAAD8/+b/AAAAAAAAAAD8/+f/AAAAAAAAAAD8/+j/AAAAAAAAAAD8/+n/AAAAAAAAAAD8/+r/AAAAAAAAAAD8/+v/AAAAAAAAAAD9/+b/AAAAAAAAAAD9/+f/AAAAAAAAAAD9/+j/AAAAAAAAAAD9/+n/AAAAAAAAAAD9/+r/AAAAAAAAAAD9/+v/AAAAAAAAAAD+/+b/AAAAAAAAAAD+/+f/AAAAAAAAAAD+/+j/AAAAAAAAAAD+/+n/AAAAAAAAAAD+/+r/AAAAAAAAAAD+/+v/AAAAAAAAAAD//+b/AAAAAAAAAAD//+f/AAAAAAAAAAD//+j/AAAAAAAAAAD//+n/AAAAAAAAAAD//+r/AAAAAAAAAAD//+v/AAAAAAAAAAAAAOb/AAAAAAAAAAAAAOf/AAAAAAAAAAAAAOj/AAAAAAAAAAAAAOn/AAAAAAAAAAAAAOr/AAAAAAAAAAAAAOv/AAAAAAAAAAABAOb/AAAAAAAAAAABAOf/AAAAAAAAAAABAOj/AAAAAAAAAAABAOn/AAAAAAAAAAABAOr/AAAAAAAAAAABAOv/AAAAAAAAAAACAOb/AAAAAAAAAAACAOf/AAAAAAAAAAACAOj/AAAAAAAAAAACAOn/AAAAAAAAAAACAOr/AAAAAAAAAAACAOv/AAAAAAAAAAADAOb/AAAAAAAAAAADAOf/AAAAAAAAAAADAOj/AAAAAAAAAAADAOn/AAAAAAAAAAADAOr/AAAAAAAAAAADAOv/AAAAAAAAAAAEAOb/AAAAAAAAAAAEAOf/AAAAAAAAAAAEAOj/AAAAAAAAAAAEAOn/AAAAAAAAAAAEAOr/AAAAAAAAAAAEAOv/AAAAAAAAAAAFAOb/AAAAAAAAAAAFAOf/AAAAAAAAAAAFAOj/AAAAAAAAAAAFAOn/AAAAAAAAAAAFAOr/AAAAAAAAAAAFAOv/AAAAAAAAAAD6/+P/AAAAAAAAAAD6/+T/AAAAAAAAAAD6/+X/AAAAAAAAAAD7/+P/AAAAAAAAAAD7/+T/AAAAAAAAAAD7/+X/AAAAAAAAAAD8/9//AAAAAAAAAAD8/+D/AAAAAAAAAAD8/+H/AAAAAAAAAAD8/+L/AAAAAAAAAAD8/+P/AAAAAAAAAAD8/+T/AAAAAAAAAAD8/+X/AAAAAAAAAAD9/9//AAAAAAAAAAD9/+D/AAAAAAAAAAD9/+H/AAAAAAAAAAD9/+L/AAAAAAAAAAD9/+P/AAAAAAAAAAD9/+T/AAAAAAAAAAD9/+X/AAAAAAAAAAD+/+H/AAAAAAAAAAD+/+L/AAAAAAAAAAD+/+P/AAAAAAAAAAD+/+T/AAAAAAAAAAD+/+X/AAAAAAAAAAD//+H/AAAAAAAAAAD//+L/AAAAAAAAAAD//+P/AAAAAAAAAAD//+T/AAAAAAAAAAD//+X/AAAAAAAAAAAAAOH/AAAAAAAAAAAAAOL/AAAAAAAAAAAAAOP/AAAAAAAAAAAAAOT/AAAAAAAAAAAAAOX/AAAAAAAAAAABAN//AAAAAAAAAAABAOD/AAAAAAAAAAABAOH/AAAAAAAAAAABAOL/AAAAAAAAAAABAOP/AAAAAAAAAAABAOT/AAAAAAAAAAABAOX/AAAAAAAAAAACAN//AAAAAAAAAAACAOD/AAAAAAAAAAACAOH/AAAAAAAAAAACAOL/AAAAAAAAAAACAOP/AAAAAAAAAAACAOT/AAAAAAAAAAACAOX/AAAAAAAAAAADAOP/AAAAAAAAAAADAOT/AAAAAAAAAAADAOX/AAAAAAAAAAAEAOP/AAAAAAAAAAAEAOT/AAAAAAAAAAAEAOX/AAAAAAAAAAA=")
+tile_set = ExtResource("1_ceej3")
+
+[node name="Foreground" type="TileMapLayer" parent="Level-Final"]
+tile_map_data = PackedByteArray("AAAFAO//AAANAAIAAAD5/+3/AAANAAIAAAABAPP/AAAMAAIAAAD//+X/AAAIAAEAAAD//+b/AAAIAAEAAAD//+f/AAAIAAEAAAD//+j/AAAIAAEAAAD//+n/AAAIAAEAAAD//+r/AAAIAAEAAAD//+v/AAAIAAEAAAD//+z/AAAIAAEAAAD//+3/AAAIAAEAAAD//+7/AAAIAAEAAAD//+//AAAIAAEAAAD///D/AAAIAAEAAAD///H/AAAIAAEAAAD///L/AAAIAAEAAAD///P/AAAIAAEAAAD///T/AAAIAAEAAAD///X/AAAIAAEAAAD///b/AAAIAAEAAAD///n/AAAIAAIAAAD+//n/AAAIAAAAAAD///j/AAAIAAEAAAD+//r/AAAIAAEAAAD///r/AAAIAAEAAAAAAPr/AAAIAAEAAAD+//v/AAAIAAEAAAAAAPv/AAAIAAEAAAD///v/AAAIAAEAAAD//+H/AAAHAAYAAAD//+L/AAAHAAcAAAD//+P/AAAHAAcAAAD//+T/AAAHAAcAAAA=")
+tile_set = ExtResource("2_270xi")
+
+[node name="Border" type="TileMapLayer" parent="Level-Final"]
+tile_map_data = PackedByteArray("AAD8//j/AAAKAAAAAGD8//n/AAAKAAAAAGD8//r/AAAJAAIAACD9//v/AAAJAAIAACABAPv/AAAJAAIAAHACAPj/AAAKAAAAAHACAPn/AAAKAAAAAHACAPr/AAAJAAIAAHD9//r/AAAJAAQAAGD+//v/AAAKAAAAADAAAPv/AAAKAAAAADABAPr/AAAJAAQAADD///v/AAAKAAAAADD8//f/AAAKAAAAAGD8//b/AAAKAAAAAGD8//X/AAAKAAAAAGD8//T/AAAKAAAAAGD8//P/AAAKAAAAAGD4/+z/AAAJAAAAAAD4/+3/AAAKAAAAAGD4/+7/AAAKAAAAAGD4/+//AAAKAAAAAGD4//D/AAAKAAAAAGD4//H/AAAKAAAAAGD4//L/AAAJAAAAAGD5/+b/AAAJAAAAAAD5/+f/AAAKAAAAAGD5/+j/AAAKAAAAAGD5/+n/AAAKAAAAAGD5/+r/AAAKAAAAAGD5/+v/AAAKAAAAAGD6/+P/AAAJAAAAAAD6/+T/AAAKAAAAAGD6/+X/AAAKAAAAAGD8/9//AAAJAAAAAAD8/+D/AAAKAAAAAGD8/+H/AAAKAAAAAGD8/+L/AAAKAAAAAGACAN//AAAJAAAAAFACAOD/AAAKAAAAAFACAOH/AAAKAAAAAFACAOL/AAAKAAAAAFAEAOP/AAAJAAAAAFAEAOT/AAAKAAAAAFAEAOX/AAAKAAAAAFAFAOb/AAAJAAAAAFAFAOf/AAAKAAAAAFAFAOj/AAAKAAAAAFAFAOn/AAAKAAAAAFAFAOr/AAAKAAAAAFAFAOv/AAAKAAAAAFAGAOz/AAAJAAAAAFAGAO3/AAAKAAAAAFAGAO7/AAAKAAAAAFAGAO//AAAKAAAAAFAGAPD/AAAKAAAAAFAGAPH/AAAKAAAAAFAGAPL/AAAJAAAAADACAPP/AAAKAAAAAFACAPT/AAAKAAAAAFACAPX/AAAKAAAAAFACAPb/AAAKAAAAAFACAPf/AAAKAAAAAFD5//L/AAAKAAAAADD6//L/AAAKAAAAADD7//L/AAAKAAAAADADAPL/AAAKAAAAADAEAPL/AAAKAAAAADAFAPL/AAAKAAAAADADAOP/AAAKAAAAABD7/+P/AAAKAAAAABD9/9//AAAJAAAAAFABAN//AAAJAAAAAAD9/+D/AAAKAAAAAHABAOD/AAAKAAAAAGAAAOH/AAAKAAAAAAD+/+H/AAAKAAAAAAD9/+H/AAAJAAUAAFABAOH/AAAJAAUAAAACAOP/AAAJAAUAAFAEAOb/AAAJAAUAAFAFAOz/AAAJAAUAAFD5/+z/AAAJAAUAAAD6/+b/AAAJAAUAAAD8/+P/AAAJAAUAAAD8//L/AAAJAAUAAGACAPL/AAAJAAUAADD5//H/AAAMAAMAAAD6//H/AAAMAAMAAAD7//H/AAAMAAMAAAADAPH/AAAMAAMAAAAEAPH/AAAMAAMAAAAFAPH/AAAMAAMAAAD9//T/AAAMAAMAAGD9//X/AAAMAAMAAGD9//b/AAAMAAMAAGABAPf/AAAMAAMAAFABAPj/AAAMAAMAAFABAPn/AAAMAAMAAFAEAO3/AAAMAAIAAAA=")
+tile_set = ExtResource("3_twoak")
+
+[node name="SWORD-TreasureChest" parent="." instance=ExtResource("4_yx001")]
+position = Vector2(-30.7937, -628.304)
+
+[node name="PlayerSpawn" parent="." node_paths=PackedStringArray("spawn_location") instance=ExtResource("5_t4l6g")]
+spawn_location = NodePath("Marker2D")
+level_music = ExtResource("6_fl13e")
+
+[node name="Marker2D" type="Marker2D" parent="PlayerSpawn"]
+position = Vector2(-31, -353)
+
+[node name="FinalBoss" parent="." instance=ExtResource("7_ep1k6")]
+position = Vector2(-28.4597, -1656.97)
+scale = Vector2(6, 6)
+enemy_data = SubResource("Resource_2lpm0")
+
+[node name="Hitbox" parent="FinalBoss" index="3"]
+damage_amount = 50
+
+[node name="CollisionShape2D" parent="FinalBoss/Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_n5oof")
+
+[node name="Health" parent="FinalBoss" index="5"]
+health_data = SubResource("Resource_mypbf")
+
+[node name="BossBattleArea" type="Area2D" parent="."]
+z_index = 2
+position = Vector2(-31, -1311)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossBattleArea"]
+position = Vector2(5.5, 21)
+shape = SubResource("RectangleShape2D_xuxm0")
+
+[node name="BossFightController" type="Node" parent="." node_paths=PackedStringArray("boss_battle_area", "boss", "laser")]
+script = ExtResource("10_kobpp")
+boss_battle_area = NodePath("../BossBattleArea")
+boss_music = ExtResource("11_rh2tc")
+boss = NodePath("../FinalBoss")
+laser = NodePath("../Laser")
+level_dialogue = ExtResource("13_8feua")
+
+[node name="ArrowDispenser" parent="." instance=ExtResource("14_rdgtu")]
+position = Vector2(-312, -1719)
+
+[node name="ArrowDispenser2" parent="." instance=ExtResource("14_rdgtu")]
+position = Vector2(-252, -1719)
+fire_rate = 0.8
+fire_time_margin = 0.5
+fire_hint_time = 2.5
+
+[node name="ArrowDispenser3" parent="." instance=ExtResource("14_rdgtu")]
+position = Vector2(200.418, -1719.74)
+fire_rate = 2.0
+fire_time_margin = 2.0
+fire_hint_time = 0.5
+
+[node name="ArrowDispenser4" parent="." instance=ExtResource("14_rdgtu")]
+position = Vector2(257, -1719)
+fire_rate = 2.5
+fire_time_margin = 2.0
+fire_hint_time = 1.0
+
+[node name="Laser" parent="." instance=ExtResource("15_v4yqy")]
+position = Vector2(217.821, -1012.03)
+rotation = -3.14159
+
+[node name="Mirror" parent="." instance=ExtResource("16_k3wk7")]
+position = Vector2(-386, -1011)
+rotation = 1.309
+
+[node name="Mirror2" parent="." instance=ExtResource("16_k3wk7")]
+position = Vector2(293.128, -1389.23)
+rotation = -1.76907
+
+[node name="Mirror3" parent="." instance=ExtResource("16_k3wk7")]
+position = Vector2(-353.491, -1465.88)
+rotation = 1.34257
+
+[node name="DestructableWall" parent="." instance=ExtResource("17_i61hm")]
+position = Vector2(-329, -1017)
+rotation = 1.57079
+
+[node name="DestructableWall2" parent="." instance=ExtResource("17_i61hm")]
+position = Vector2(257, -1385)
+rotation = -1.02099
+
+[node name="DestructableWall3" parent="." instance=ExtResource("17_i61hm")]
+position = Vector2(-335, -1465)
+rotation = 1.4142
+
+[node name="LevelExit" parent="." instance=ExtResource("18_cd6r1")]
+position = Vector2(-30.6067, -1850.45)
+this_scene_type = 5
+target_scene = ExtResource("19_j7daf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
+shape = SubResource("RectangleShape2D_vhsvg")
+
+[node name="Orb" parent="." instance=ExtResource("21_58yth")]
+position = Vector2(-180, -1895)
+orb_texture = ExtResource("22_ka53v")
+orb_type = 3
+
+[node name="Orb2" parent="." instance=ExtResource("21_58yth")]
+position = Vector2(119, -1896)
+orb_texture = ExtResource("23_ykuxu")
+orb_type = 2
+
+[node name="SpikeSpin" parent="." instance=ExtResource("7_ep1k6")]
+modulate = Color(0.827451, 0, 0, 1)
+position = Vector2(-184, -1320)
+
+[node name="SpikeSpin2" parent="." instance=ExtResource("7_ep1k6")]
+modulate = Color(0.827451, 0, 0, 1)
+position = Vector2(153, -1320)
+
+[node name="SpikeSpin3" parent="." instance=ExtResource("7_ep1k6")]
+modulate = Color(0.827451, 0, 0, 1)
+position = Vector2(-35.5104, -1011.61)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.454524, 0.454524, 0.454524, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-28, -262)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("24_xgy05")
+texture_scale = 0.4
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-219, -660)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("24_xgy05")
+texture_scale = 0.4
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(320, -801)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("24_xgy05")
+texture_scale = 0.4
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(-344, -802)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("24_xgy05")
+texture_scale = 0.4
+
+[node name="PointLight2D5" type="PointLight2D" parent="."]
+position = Vector2(-398, -1320)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("24_xgy05")
+texture_scale = 0.4
+
+[node name="PointLight2D6" type="PointLight2D" parent="."]
+position = Vector2(338, -1495)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("24_xgy05")
+texture_scale = 0.4
+
+[connection signal="body_entered" from="BossBattleArea" to="BossFightController" method="play_boss_music"]
+
+[editable path="FinalBoss"]

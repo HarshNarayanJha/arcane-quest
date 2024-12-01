@@ -13,9 +13,9 @@ func apply_damage(amount: int) -> void:
 	var old_health = health
 	health = clampi(health - amount, 0, max_health)
 	health_changed.emit(old_health, health)
-	print(health_changed.get_connections())
+	#print(health_changed.get_connections())
 
-	prints(resource_name, "HEALTH_DATA VALUE:", health)
+	#prints(resource_name, "HEALTH_DATA VALUE:", health)
 
 func heal_health(amount: int) -> void:
 	var old_health = health

@@ -10,4 +10,4 @@ func start_transition(player: Player) -> void:
 	if player is not Player:
 		return
 
-	Globals.transition_scene(this_scene_type, target_scene)
+	SceneManager.change_scene(target_scene)

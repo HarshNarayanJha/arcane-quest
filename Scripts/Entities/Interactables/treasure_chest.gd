@@ -20,6 +20,10 @@ enum ChestType {
 @export var open_sprite: Texture2D
 @export var close_sprite: Texture2D
 
+@export_category("SFX")
+@export var got_item_sfx: AudioStream
+@export var coin_collected_sfx: AudioStream
+
 signal chest_opened_type(chest_type: ChestType)
 signal chest_opened
 
@@ -42,16 +46,22 @@ func open_chest() -> void:
 	match chest_type:
 		ChestType.COINS:
 			Globals.inventory_add_coins(num_coins)
+			MusicPlayer.play_sfx(coin_collected_sfx, Globals.player.global_position)
 		ChestType.SWORD:
 			Globals.inventory_add_sword()
+			MusicPlayer.play_sfx(got_item_sfx, Globals.player.global_position)
 		ChestType.BOW:
 			Globals.inventory_add_bow()
+			MusicPlayer.play_sfx(got_item_sfx, Globals.player.global_position)
 		ChestType.BOMB:
 			Globals.inventory_add_bomb()
+			MusicPlayer.play_sfx(got_item_sfx, Globals.player.global_position)
 		ChestType.KEY:
 			Globals.inventory_add_key()
+			MusicPlayer.play_sfx(got_item_sfx, Globals.player.global_position)
 		ChestType.BOSS_KEY:
 			Globals.inventory_add_boss_key()
+			MusicPlayer.play_sfx(got_item_sfx, Globals.player.global_position)
 
 	chest_opened_type.emit(chest_type)
 	chest_opened.emit()

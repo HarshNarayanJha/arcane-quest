@@ -23,7 +23,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("bomb"):
 		get_viewport().set_input_as_handled()
 		if can_drop:
-			print("can Drop Bomb")
+			#print("can Drop Bomb")
 			drop_bomb()
 
 func drop_bomb() -> void:

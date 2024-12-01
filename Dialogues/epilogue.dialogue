@@ -1,0 +1,21 @@
+~ intro
+Voice of the Sanctum: Peace... at last. The orbs are united, and balance is restored.
+Voice of the Sanctum: You have completed your journey, adventurer. The world is whole once more.
+Voice of the Sanctum: The magic of the orbs flows through you, and with it, a new era begins.
+Voice of the Sanctum: Paradise is now within reach. You have earned it, and so much more.
+Voice of the Sanctum: Rest now, for your legacy will echo through the ages. Well done.
+=> END
+
+~ intro_no_orb
+Voice of the Sanctum: Peace... at last. Yet, something remains undone.
+Voice of the Sanctum: The orbs are scattered, their power unfulfilled. The world is not whole.
+Voice of the Sanctum: You have come far, adventurer, but the magic of the orbs still calls to you.
+Voice of the Sanctum: Paradise is within sight, but the orbs must be reunited to truly restore balance.
+Voice of the Sanctum: The journey is not over. Seek the orbs, and complete your legacy.
+- Why are the orbs so important?
+	Voice of the Sanctum: The orbs are the source of all magic. Without them, the balance will falter... and so will your victory dance.
+- Can’t I just take a nap instead
+	Voice of the Sanctum: Ah, a nap. The true path to peace… but only after you find the orbs. Sleep can wait!
+
+Player: I will sleep a 100 years anyways!
+=> END

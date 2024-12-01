@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://ybxwgreikfq1"]
+[gd_scene load_steps=28 format=4 uid="uid://ybxwgreikfq1"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_cg1kk"]
 [ext_resource type="PackedScene" uid="uid://lebaqy3e4ac3" path="res://Scenes/UI/player_hud.tscn" id="1_heiil"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dgts438blgcwe" path="res://Scenes/Helpers/player_spawn.tscn" id="4_pg7h5"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="4_s65yk"]
 [ext_resource type="PackedScene" uid="uid://dofj4wtemqmiy" path="res://Scenes/Entities/Interactables/door.tscn" id="6_ydojx"]
+[ext_resource type="AudioStream" uid="uid://dg4yyunwd4ard" path="res://Audio/Music/Levels.wav" id="7_4a84m"]
 [ext_resource type="Texture2D" uid="uid://hsirqexkh5u8" path="res://Art/Entities/Objects/door_closed.png" id="7_d5oeb"]
 [ext_resource type="Texture2D" uid="uid://c8x3dvl46ukj5" path="res://Art/Entities/Objects/wall_secret.png" id="7_ndyfu"]
 [ext_resource type="Texture2D" uid="uid://dkd1xt1buf5y7" path="res://Art/Entities/Objects/door_open.png" id="8_vbxwn"]
@@ -20,6 +21,8 @@
 [ext_resource type="Resource" uid="uid://cus3f6hvgqsln" path="res://Dialogues/level1.dialogue" id="18_cmkst"]
 [ext_resource type="PackedScene" uid="uid://wr5kteq4tld0" path="res://Scenes/Entities/Interactables/level_exit.tscn" id="19_fm0n0"]
 [ext_resource type="PackedScene" uid="uid://dftf4ixdjg5t3" path="res://Scenes/Levels/Level2-Waterorb.tscn" id="20_712cr"]
+[ext_resource type="PackedScene" uid="uid://b2oxrjfauk6vn" path="res://Scenes/Entities/Objects/coin.tscn" id="21_b6ww4"]
+[ext_resource type="Texture2D" uid="uid://c8qdkj16gxrtc" path="res://Art/Environment/light.png" id="23_igi47"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccdf0"]
 bg_color = Color(1, 0.0705882, 0, 0.588235)
@@ -114,7 +117,7 @@ offset_bottom = 469.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ccdf0")
 
 [node name="Border" type="TileMapLayer" parent="Level-Room-Right"]
-tile_map_data = PackedByteArray("AAAMAPn/AAAJAAAAAAAcAAcAAAAJAAAAADAcAPn/AAAJAAAAAFAMAAcAAAAJAAAAACAMAPr/AAAKAAAAAGAMAPv/AAAKAAAAAGAMAPz/AAAKAAAAAGAMAP3/AAAKAAAAAGAMAP7/AAAKAAAAAGAMAP//AAAJAAIAAAAMAAEAAAAJAAIAACAMAAIAAAAKAAAAAGAMAAMAAAAKAAAAAGAMAAQAAAAKAAAAAGAMAAUAAAAKAAAAAGAMAAYAAAAKAAAAAGANAAcAAAAKAAAAACAOAAcAAAAKAAAAACAPAAcAAAAKAAAAACAQAAcAAAAKAAAAACARAAcAAAAKAAAAACASAAcAAAAKAAAAACATAAcAAAAJAAIAACAUAAcAAAAKAAAAACAVAAcAAAAJAAIAADAWAAcAAAAKAAAAACAXAAcAAAAKAAAAACAYAAcAAAAKAAAAACAZAAcAAAAKAAAAACAaAAcAAAAKAAAAACAbAAcAAAAKAAAAACANAPn/AAAKAAAAAAAOAPn/AAAKAAAAAAAPAPn/AAAKAAAAAAAQAPn/AAAKAAAAAAARAPn/AAAKAAAAAAASAPn/AAAKAAAAAAATAPn/AAAJAAIAAAAUAPn/AAAKAAAAAAAVAPn/AAAJAAIAABAWAPn/AAAKAAAAAAAXAPn/AAAKAAAAAAAYAPn/AAAKAAAAAAAZAPn/AAAKAAAAAAAaAPn/AAAKAAAAAAAbAPn/AAAKAAAAAAAcAPr/AAAKAAAAAFAcAPv/AAAKAAAAAFAcAPz/AAAKAAAAAFAcAP3/AAAKAAAAAFAcAP7/AAAKAAAAAFAcAAIAAAAKAAAAAFAcAAMAAAAKAAAAAFAcAAQAAAAKAAAAAFAcAAUAAAAKAAAAAFAcAAYAAAAKAAAAAFAWAP//AAAKAAAAABAWAAEAAAAKAAAAACAXAP//AAAKAAAAABAXAAEAAAAKAAAAACAYAP//AAAKAAAAABAYAAEAAAAKAAAAACAZAP//AAAKAAAAABAZAAEAAAAKAAAAACAaAP//AAAKAAAAABAaAAEAAAAKAAAAACAbAP//AAAKAAAAABAbAAEAAAAKAAAAACANAP//AAAKAAAAABANAAEAAAAKAAAAACAOAP//AAAKAAAAABAOAAEAAAAKAAAAACAPAP//AAAKAAAAABAPAAEAAAAKAAAAACAQAP//AAAKAAAAABAQAAEAAAAKAAAAACARAP//AAAKAAAAABARAAEAAAAKAAAAACASAP//AAAKAAAAABASAAEAAAAKAAAAACAcAP//AAAJAAIAABAcAAAAAAAKAAAAAFAcAAEAAAAJAAIAAHAVAAIAAAAKAAAAAFAVAAMAAAAKAAAAAFAVAAQAAAAKAAAAAFAVAAUAAAAKAAAAAFAVAAYAAAAKAAAAAFATAAIAAAAKAAAAAEATAAMAAAAKAAAAAEATAAQAAAAKAAAAAEATAAUAAAAKAAAAAEATAAYAAAAKAAAAAEATAAEAAAAJAAUAACAVAAEAAAAJAAQAADATAP//AAAJAAQAAEAVAP//AAAJAAUAAFAVAPr/AAAKAAAAAFAVAPv/AAAKAAAAAFAVAPz/AAAKAAAAAFAVAP3/AAAKAAAAAFAVAP7/AAAKAAAAAFATAPr/AAAKAAAAAEATAPv/AAAKAAAAAEATAPz/AAAKAAAAAEATAP3/AAAKAAAAAEATAP7/AAAKAAAAAEA=")
+tile_map_data = PackedByteArray("AAAMAPn/AAAJAAAAAAAcAAcAAAAJAAAAADAcAPn/AAAJAAAAAFAMAAcAAAAJAAAAACAMAPr/AAAKAAAAAGAMAPv/AAAKAAAAAGAMAPz/AAAKAAAAAGAMAP3/AAAKAAAAAGAMAP7/AAAKAAAAAGAMAP//AAAJAAIAAAAMAAEAAAAJAAIAACAMAAIAAAAKAAAAAGAMAAMAAAAKAAAAAGAMAAQAAAAKAAAAAGAMAAUAAAAKAAAAAGAMAAYAAAAKAAAAAGANAAcAAAAKAAAAACAOAAcAAAAKAAAAACAPAAcAAAAKAAAAACAQAAcAAAAKAAAAACARAAcAAAAKAAAAACASAAcAAAAKAAAAACATAAcAAAAJAAIAACAUAAcAAAAKAAAAACAVAAcAAAAJAAIAADAWAAcAAAAKAAAAACAXAAcAAAAKAAAAACAYAAcAAAAKAAAAACAZAAcAAAAKAAAAACAaAAcAAAAKAAAAACAbAAcAAAAKAAAAACANAPn/AAAKAAAAAAAOAPn/AAAKAAAAAAAPAPn/AAAKAAAAAAAQAPn/AAAKAAAAAAARAPn/AAAKAAAAAAASAPn/AAAKAAAAAAATAPn/AAAJAAIAAAAUAPn/AAAKAAAAAAAVAPn/AAAJAAIAABAWAPn/AAAKAAAAAAAXAPn/AAAKAAAAAAAYAPn/AAAKAAAAAAAZAPn/AAAKAAAAAAAaAPn/AAAKAAAAAAAbAPn/AAAKAAAAAAAcAPr/AAAKAAAAAFAcAPv/AAAKAAAAAFAcAPz/AAAKAAAAAFAcAP3/AAAKAAAAAFAcAP7/AAAKAAAAAFAcAAIAAAAKAAAAAFAcAAMAAAAKAAAAAFAcAAQAAAAKAAAAAFAcAAUAAAAKAAAAAFAcAAYAAAAKAAAAAFAWAP//AAAKAAAAABAWAAEAAAAKAAAAACAXAP//AAAKAAAAABAXAAEAAAAKAAAAACAYAP//AAAKAAAAABAYAAEAAAAKAAAAACAZAP//AAAKAAAAABAZAAEAAAAKAAAAACAaAP//AAAKAAAAABAaAAEAAAAKAAAAACAbAP//AAAKAAAAABAbAAEAAAAKAAAAACANAP//AAAKAAAAABANAAEAAAAKAAAAACAOAP//AAAKAAAAABAOAAEAAAAKAAAAACAPAP//AAAKAAAAABAPAAEAAAAKAAAAACAQAP//AAAKAAAAABAQAAEAAAAKAAAAACARAP//AAAKAAAAABARAAEAAAAKAAAAACASAP//AAAKAAAAABASAAEAAAAKAAAAACAcAP//AAAJAAIAABAcAAAAAAAKAAAAAFAcAAEAAAAJAAIAAHAVAAIAAAAKAAAAAFAVAAMAAAAKAAAAAFAVAAQAAAAKAAAAAFAVAAUAAAAKAAAAAFAVAAYAAAAKAAAAAFATAAIAAAAKAAAAAEATAAMAAAAKAAAAAEATAAQAAAAKAAAAAEATAAUAAAAKAAAAAEATAAYAAAAKAAAAAEATAAEAAAAJAAUAACAVAAEAAAAJAAQAADATAP//AAAJAAQAAEAVAP//AAAJAAUAAFAVAPr/AAAKAAAAAFAVAPv/AAAKAAAAAFAVAPz/AAAKAAAAAFAVAP3/AAAKAAAAAFAVAP7/AAAKAAAAAFATAPr/AAAKAAAAAEATAPv/AAAKAAAAAEATAPz/AAAKAAAAAEATAP3/AAAKAAAAAEATAP7/AAAKAAAAAEAIAP//AAAKAAAAADAJAP//AAAKAAAAADAKAP//AAAKAAAAADALAP//AAAKAAAAADAIAAEAAAAKAAAAAAAJAAEAAAAKAAAAAAALAAEAAAAKAAAAAAAKAAEAAAAKAAAAAAA=")
 tile_set = ExtResource("2_sv6wf")
 
 [node name="Level-Room-Left" type="Node" parent="."]
@@ -124,7 +127,7 @@ tile_map_data = PackedByteArray("AAD2/wAAAAAAAAAAAAD1/wAAAAAAAAAAAAD0/wAAAAAAAAA
 tile_set = ExtResource("1_cg1kk")
 
 [node name="Border" type="TileMapLayer" parent="Level-Room-Left"]
-tile_map_data = PackedByteArray("AADr//z/AAAJAAAAAADr/wQAAAAJAAAAAGDz//z/AAAJAAAAABDr//3/AAAKAAAAAEDr//7/AAAKAAAAAEDr/wAAAAAKAAAAAEDr/wEAAAAKAAAAAEDr/wIAAAAKAAAAAEDz//3/AAAKAAAAAFDz//7/AAAKAAAAAFDy//z/AAAKAAAAAADx//z/AAAKAAAAAADw//z/AAAKAAAAAADv//z/AAAKAAAAAADu//z/AAAKAAAAAADt//z/AAAKAAAAAADs//z/AAAKAAAAAADt/wQAAAAKAAAAACDy/wQAAAAKAAAAADDr////AAAKAAAAAEDr/wMAAAAKAAAAAEDz////AAAKAAAAAHDz/wEAAAAKAAAAAHDz/wIAAAAKAAAAAHDz/wMAAAAKAAAAAHDz/wQAAAAJAAAAAHDx/wQAAAAKAAAAACDw/wQAAAAKAAAAACDv/wQAAAAKAAAAACDu/wQAAAAKAAAAACDs/wQAAAAKAAAAACA=")
+tile_map_data = PackedByteArray("AADr//z/AAAJAAAAAADr/wQAAAAJAAAAAGDz//z/AAAJAAAAABDr//3/AAAKAAAAAEDr//7/AAAKAAAAAEDr/wAAAAAKAAAAAEDr/wEAAAAKAAAAAEDr/wIAAAAKAAAAAEDz//3/AAAKAAAAAFDz//7/AAAKAAAAAFDy//z/AAAKAAAAAADx//z/AAAKAAAAAADw//z/AAAKAAAAAADv//z/AAAKAAAAAADu//z/AAAKAAAAAADt//z/AAAKAAAAAADs//z/AAAKAAAAAADt/wQAAAAKAAAAACDy/wQAAAAKAAAAADDr////AAAKAAAAAEDr/wMAAAAKAAAAAEDz////AAAKAAAAAHDz/wEAAAAKAAAAAHDz/wIAAAAKAAAAAHDz/wMAAAAKAAAAAHDz/wQAAAAJAAAAAHDx/wQAAAAKAAAAACDw/wQAAAAKAAAAACDv/wQAAAAKAAAAACDu/wQAAAAKAAAAACDs/wQAAAAKAAAAACD0/wEAAAAKAAAAAAD1/wEAAAAKAAAAAAD2/wEAAAAKAAAAAAD0////AAAKAAAAADD1////AAAKAAAAADD2////AAAKAAAAADA=")
 tile_set = ExtResource("2_sv6wf")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Level-Room-Left"]
@@ -138,7 +141,7 @@ tile_map_data = PackedByteArray("AAD///j/AAAAAAAAAAD///f/AAAAAAAAAAD///b/AAAAAAA
 tile_set = ExtResource("1_cg1kk")
 
 [node name="Border" type="TileMapLayer" parent="Level-TopOrb"]
-tile_map_data = PackedByteArray("AAD+//X/AAAKAAAAADAAAPX/AAAKAAAAADD9//X/AAAJAAIAACABAPX/AAAJAAIAAHD8//T/AAAJAAIAACD8//L/AAAKAAAAAGD8//P/AAAKAAAAAGD8//H/AAAJAAIAAAACAPT/AAAJAAIAAHACAPP/AAAKAAAAAHACAPL/AAAKAAAAAHACAPH/AAAJAAIAABD9//D/AAAJAAIAAED+//D/AAAKAAAAAAAAAPD/AAAKAAAAAAABAPD/AAAJAAIAABD+/+//AAAKAAAAAFAAAO//AAAKAAAAAED9//H/AAAJAAQAAAD9//T/AAAJAAQAAGABAPT/AAAJAAQAADABAPH/AAAJAAQAAFA=")
+tile_map_data = PackedByteArray("AAD+//X/AAAKAAAAADAAAPX/AAAKAAAAADD9//X/AAAJAAIAACABAPX/AAAJAAIAAHD8//T/AAAJAAIAACD8//L/AAAKAAAAAGD8//P/AAAKAAAAAGD8//H/AAAJAAIAAAACAPT/AAAJAAIAAHACAPP/AAAKAAAAAHACAPL/AAAKAAAAAHACAPH/AAAJAAIAABD9//D/AAAJAAIAAED+//D/AAAKAAAAAAAAAPD/AAAKAAAAAAABAPD/AAAJAAIAABD+/+//AAAKAAAAAFAAAO//AAAKAAAAAED9//H/AAAJAAQAAAD9//T/AAAJAAQAAGABAPT/AAAJAAQAADABAPH/AAAJAAQAAFAAAPb/AAAKAAAAAGAAAPf/AAAKAAAAAGAAAPj/AAAKAAAAAGD+//b/AAAKAAAAAFD+//f/AAAKAAAAAFD+//j/AAAKAAAAAFA=")
 tile_set = ExtResource("2_sv6wf")
 
 [node name="Foreground" type="TileMapLayer" parent="Level-TopOrb"]
@@ -179,6 +182,7 @@ global_debug_draw = false
 
 [node name="PlayerSpawn" parent="." node_paths=PackedStringArray("spawn_location") instance=ExtResource("4_pg7h5")]
 spawn_location = NodePath("Marker2D")
+level_music = ExtResource("7_4a84m")
 
 [node name="Marker2D" type="Marker2D" parent="PlayerSpawn"]
 position = Vector2(-29, 422)
@@ -266,6 +270,115 @@ target_scene = ExtResource("20_712cr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
 shape = SubResource("RectangleShape2D_bi014")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.454524, 0.454524, 0.454524, 1)
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("21_b6ww4")]
+position = Vector2(1195, -341)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("21_b6ww4")]
+position = Vector2(1231, -341)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("21_b6ww4")]
+position = Vector2(1266, -341)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("21_b6ww4")]
+position = Vector2(1701, 30)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("21_b6ww4")]
+position = Vector2(1231, 430)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("21_b6ww4")]
+position = Vector2(-1160, -140)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("21_b6ww4")]
+position = Vector2(-1108, 153)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("21_b6ww4")]
+position = Vector2(-461, -341)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("21_b6ww4")]
+position = Vector2(410, -341)
+
+[node name="LavaLight" type="PointLight2D" parent="."]
+position = Vector2(-269, -181)
+color = Color(1, 0.294118, 0, 1)
+energy = 0.5
+texture = ExtResource("23_igi47")
+texture_scale = 2.0
+
+[node name="LavaLight2" type="PointLight2D" parent="."]
+position = Vector2(219, -181)
+color = Color(1, 0.294118, 0, 1)
+energy = 0.5
+texture = ExtResource("23_igi47")
+texture_scale = 2.0
+
+[node name="LavaLight3" type="PointLight2D" parent="."]
+position = Vector2(-269, 243)
+color = Color(1, 0.294118, 0, 1)
+energy = 0.5
+texture = ExtResource("23_igi47")
+texture_scale = 2.0
+
+[node name="LavaLight4" type="PointLight2D" parent="."]
+position = Vector2(219, 247)
+color = Color(1, 0.294118, 0, 1)
+energy = 0.5
+texture = ExtResource("23_igi47")
+texture_scale = 2.0
+
+[node name="LavaLight5" type="PointLight2D" parent="."]
+position = Vector2(932, -226)
+color = Color(1, 0.294118, 0, 1)
+energy = 0.5
+texture = ExtResource("23_igi47")
+texture_scale = 2.0
+
+[node name="LavaLight6" type="PointLight2D" parent="."]
+position = Vector2(1527, -228)
+color = Color(1, 0.294118, 0, 1)
+energy = 0.5
+texture = ExtResource("23_igi47")
+texture_scale = 2.0
+
+[node name="LavaLight7" type="PointLight2D" parent="."]
+position = Vector2(932, 302)
+color = Color(1, 0.294118, 0, 1)
+energy = 0.5
+texture = ExtResource("23_igi47")
+texture_scale = 2.0
+
+[node name="LavaLight8" type="PointLight2D" parent="."]
+position = Vector2(1534, 302)
+color = Color(1, 0.294118, 0, 1)
+energy = 0.5
+texture = ExtResource("23_igi47")
+texture_scale = 2.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(600, 3)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+texture = ExtResource("23_igi47")
+texture_scale = 0.4
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-633, 57)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+texture = ExtResource("23_igi47")
+texture_scale = 0.4
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(-989, 32)
+color = Color(0.511799, 0.912928, 1, 1)
+energy = 0.4
+texture = ExtResource("23_igi47")
+texture_scale = 0.4
 
 [connection signal="trigger" from="SpikeSpin/Health/DeathEvent" to="Switch-DoorLeft" method="enable"]
 

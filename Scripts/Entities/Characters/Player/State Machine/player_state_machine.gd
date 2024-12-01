@@ -26,14 +26,14 @@ func init(player: Player) -> void:
 	for c in get_children():
 		if c is State:
 			states.append(c)
-	print_log("INIT: {}".format(states))
+	#print_log("INIT: {}".format(states))
 
 	if states:
 		states[0].player = player
 		change_state(states[0])
 		set_process_mode(PROCESS_MODE_INHERIT)
 
-	print_log("Changing State: %s -> %s" % [null, states[0].name])
+	#print_log("Changing State: %s -> %s" % [null, states[0].name])
 
 ## Change the state to a new state
 func change_state(new_state: State) -> void:
@@ -42,7 +42,7 @@ func change_state(new_state: State) -> void:
 
 	if current_state:
 		current_state.Exit()
-		print_log("Changing State: %s -> %s" % [current_state.name, new_state.name])
+		#print_log("Changing State: %s -> %s" % [current_state.name, new_state.name])
 
 	previous_state = current_state
 	current_state = new_state

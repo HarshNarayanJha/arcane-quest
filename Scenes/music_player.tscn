@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://yc3jubkiqnc2"]
+
+[ext_resource type="Script" path="res://Scripts/music_player.gd" id="1_5hslu"]
+
+[node name="MusicPlayer" type="Node" node_paths=PackedStringArray("music_player", "sfx_player")]
+script = ExtResource("1_5hslu")
+music_player = NodePath("MusicPlayer")
+sfx_player = NodePath("SFXPlayer")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = 2.0
+max_distance = 1500.0

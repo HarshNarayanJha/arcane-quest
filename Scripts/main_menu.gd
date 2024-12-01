@@ -4,6 +4,8 @@ extends Control
 @export var credits_scene: PackedScene
 @export var help_panel: Control
 
+@export var main_music: AudioStream
+
 @export_category("Button")
 @export var play: Button
 @export var help: Button
@@ -19,6 +21,8 @@ func _ready() -> void:
 	close_help.pressed.connect(toggle_help)
 
 	help_panel.hide()
+
+	MusicPlayer.play_music(main_music)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

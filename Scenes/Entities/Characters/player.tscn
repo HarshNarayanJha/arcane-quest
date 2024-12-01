@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cnkck3vdeodaa"]
+[gd_scene load_steps=35 format=3 uid="uid://cnkck3vdeodaa"]
 
 [ext_resource type="Texture2D" uid="uid://dr6fw0j02oxes" path="res://Art/Entities/Characters/Player/player.png" id="1_ip6be"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/Player/player.gd" id="1_xroi2"]
@@ -17,8 +17,10 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/Player/State Machine/States/state_walk.gd" id="14_0rswv"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/Player/State Machine/States/state_attack.gd" id="15_av4tn"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/Player/State Machine/States/state_bow.gd" id="16_odbmd"]
+[ext_resource type="AudioStream" uid="uid://bey5foin8mj5i" path="res://Audio/SFX/mixkit-fast-sword-whoosh-2792.wav" id="16_xoi5o"]
 [ext_resource type="Script" path="res://Scripts/Entities/Characters/Player/combat_manager.gd" id="17_lccf1"]
 [ext_resource type="PackedScene" uid="uid://b67svocxnna3m" path="res://Scenes/Entities/Weapons/weapon_bow.tscn" id="19_setyb"]
+[ext_resource type="Texture2D" uid="uid://c8qdkj16gxrtc" path="res://Art/Environment/light.png" id="21_rb3vo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_duk6b"]
 radius = 20.0
@@ -417,6 +419,7 @@ script = ExtResource("14_0rswv")
 
 [node name="State_Attack" type="Node" parent="StateMachine"]
 script = ExtResource("15_av4tn")
+sword_sfx = ExtResource("16_xoi5o")
 
 [node name="State_Bow" type="Node" parent="StateMachine"]
 script = ExtResource("16_odbmd")
@@ -427,3 +430,11 @@ left_hand = NodePath("../Hands/Left")
 right_hand = NodePath("../Hands/Right")
 basic_sword_scene = ExtResource("6_lm66s")
 bow_scene = ExtResource("19_setyb")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 50.0
+texture = ExtResource("21_rb3vo")
+texture_scale = 0.3

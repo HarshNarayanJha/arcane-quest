@@ -1,0 +1,18 @@
+~ intro
+Voice of the Sanctum: This foe cannot be bested by sword alone.
+Voice of the Sanctum: You picked it from the chest, right? Press "Enter" to Slash
+Voice of the Sanctum: Perhaps the light of reflection holds the key...
+Voice of the Sanctum: But the way is blocked. Might something explosive clear the path?
+=> END
+
+~ laser_done
+Voice of the Sanctum: Behold! The lasers have shattered the monster’s might!
+Voice of the Sanctum: Now, strike with all thy power! Deliver the final blow with thy sword… or bow!
+=> END
+
+~ enemy_done
+Voice of the Sanctum: Well done, brave adventurer! Thou hast conquered all that stood in thy way.
+Voice of the Sanctum: The path to paradise now beckons, but first—remember the orbs!
+Voice of the Sanctum: Collect them all, for only then can the true reward be claimed.
+Voice of the Sanctum: Go forth, and let thy journey be complete. A realm of peace and glory awaits!
+=> END

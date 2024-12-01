@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://8dfv3h0qimlj"]
+[gd_scene load_steps=8 format=3 uid="uid://8dfv3h0qimlj"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Objects/orb.gd" id="1_33s8y"]
 [ext_resource type="PackedScene" uid="uid://c7q5b0divy5kt" path="res://Scenes/Entities/Interactables/interaction.tscn" id="1_mbq86"]
+[ext_resource type="AudioStream" uid="uid://dem3o818xulo8" path="res://Audio/SFX/mixkit-achievement-completed-2068.wav" id="2_55q0n"]
 [ext_resource type="Texture2D" uid="uid://chj4uu5vvjqpe" path="res://Art/Entities/Objects/orb_red.png" id="2_n6q1u"]
+[ext_resource type="Texture2D" uid="uid://c8qdkj16gxrtc" path="res://Art/Environment/light.png" id="5_p54hd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hj656"]
 radius = 18.0
@@ -10,10 +12,12 @@ radius = 18.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_5sm0y"]
 radius = 29.0172
 
-[node name="Orb" type="StaticBody2D" node_paths=PackedStringArray("sprite", "interaction")]
+[node name="Orb" type="StaticBody2D" node_paths=PackedStringArray("sprite", "light", "interaction")]
 z_index = 2
 script = ExtResource("1_33s8y")
 sprite = NodePath("Sprite2D")
+light = NodePath("PointLight2D")
+sfx = ExtResource("2_55q0n")
 interaction = NodePath("InteractionArea")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -28,3 +32,11 @@ action_name = "Collect"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_5sm0y")
 debug_color = Color(0.740551, 0.466253, 0, 0.42)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 50.0
+texture = ExtResource("5_p54hd")
+texture_scale = 0.4

@@ -18,10 +18,10 @@ func apply_damage(amount: int) -> void:
 
 	health_changed.emit(old_health, health_data.health)
 
-	prints(get_parent().name, "'s Health changed! From ", old_health, "->", health_data.health)
+	#prints(get_parent().name, "'s Health changed! From ", old_health, "->", health_data.health)
 
 	if (health_data.health <= 0):
-		prints("Oopsie!", get_parent().name, "died!")
+		#prints("Oopsie!", get_parent().name, "died!")
 		died.emit()
 
 func heal_health(amount: int) -> void:

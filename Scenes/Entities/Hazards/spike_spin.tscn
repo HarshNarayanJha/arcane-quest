@@ -20,7 +20,7 @@ acceleration = 400.0
 deceleration = 500.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_siap3"]
-radius = 21.0
+radius = 14.7469
 
 [sub_resource type="Animation" id="Animation_3jsm3"]
 length = 0.001
@@ -63,14 +63,14 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gg6gd"]
-radius = 27.0
+radius = 18.5832
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fdglq"]
 radius = 35.0143
 
 [sub_resource type="Resource" id="Resource_oosl7"]
 script = ExtResource("10_62ajx")
-max_health = 10
+max_health = 5
 health = null
 
 [node name="SpikeSpin" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "sprite", "animation", "hurtbox", "health")]
@@ -98,7 +98,7 @@ libraries = {
 }
 
 [node name="Hitbox" parent="." instance=ExtResource("2_5jr62")]
-damage_amount = 10
+damage_amount = 2
 knockback_amount = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

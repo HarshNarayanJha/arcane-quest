@@ -1,16 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://r5l2cb2kecwd"]
+[gd_scene load_steps=11 format=3 uid="uid://r5l2cb2kecwd"]
 
+[ext_resource type="Texture2D" uid="uid://eg334amax2o4" path="res://Art/UI/spr_dialogue_box_withoutstartingpoint_9slice.png" id="1_pfmq1"]
 [ext_resource type="Script" path="res://Scripts/credits.gd" id="1_pud5x"]
 [ext_resource type="FontFile" uid="uid://dy4xitlayyos" path="res://Art/Fonts/Osake.otf" id="2_kd7u6"]
+[ext_resource type="AudioStream" uid="uid://dteewpoc41qwv" path="res://Audio/Music/Credits.wav" id="3_r2lmi"]
+[ext_resource type="FontFile" uid="uid://do7owcegmnk0y" path="res://Art/Fonts/monogram-extended.ttf" id="4_46gya"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f51to"]
-bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dj6pt"]
+texture = ExtResource("1_pfmq1")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhs4p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n6i07"]
-font_size = 28
+font = ExtResource("4_46gya")
+font_size = 36
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_csr3d"]
+color = Color(0.580392, 0.580392, 0.580392, 0.415686)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qn68q"]
+font = ExtResource("4_46gya")
+font_size = 28
 
 [node name="Credits" type="ScrollContainer" node_paths=PackedStringArray("back")]
 anchors_preset = 15
@@ -18,8 +35,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_f51to")
+theme_override_styles/panel = SubResource("StyleBoxTexture_dj6pt")
 script = ExtResource("1_pud5x")
+credits_music = ExtResource("3_r2lmi")
 back = NodePath("VBoxContainer/Back")
 main_menu_path = "res://Scenes/main_menu.tscn"
 metadata/_edit_use_anchors_ = true
@@ -28,12 +46,13 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 25
+theme_override_constants/separation = 15
 alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qhs4p")
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
@@ -54,7 +73,8 @@ vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_csr3d")
 
 [node name="CreditsEntry" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -63,11 +83,17 @@ text = "Harsh Narayan Jha - Lead Developer, Game Design
 Art Credits
 Environment Art \"Scribble Dungeons\" by \"kenney.nl\" (CC0)
 Pixel Art key by \"Frontend Pashtet\" on itch.io (CC0)
-\"2D Hearts\" Sprites by \"gpway\" on itch.io
+\"monogram\" font by \"datagoblin\" on itch.io
 \"Osake Font\" by \"dafonts.com\"
+\"Spinning Pixel Art Coin\" by \"ThePeeps191\" on itch.io
+\"Pixelarium UI\" by \"LukeThePolice\" on itch.io
 
 Audio/Music Credits
-...
+\"Free RPG Music Pack\" by \"Shononoki\" on itch.io
+\"Piano and Strings Music Pack\" by \"Innlydian\" on itch.io
+\"Happy Loops\" by \"Goose Ninja\" on itch.io
+\"RPG Music Pack\" by JP Soundworks, Pack Published by Platonic Game Studio.
+Various SFX by mixkit.io
 
 Addons/Scripts Credits
 ProCam2D by Daz. B Like
@@ -75,6 +101,7 @@ Dialogue Manager by Nathan Hoad
 Scene Manager by GlassBrick
 Some snippets from \"Make a 2D Action RPG in Godot 4\" series on YouTube by \"Michael Game\"
 
+And the rest whom I forgot...
 
 Made in Godot Engine (Open Source)
 
@@ -82,17 +109,19 @@ Concept by Harsh Narayan Jha
 Originally Made for the GitHub GameOff 2024 on itch.io
 
 Thanks for Playing Arcane Quest
-Enjoy! 
-
-
-"
+Enjoy! "
+label_settings = SubResource("LabelSettings_qn68q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Back" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_46gya")
+theme_override_font_sizes/font_size = 24
 text = "Go Back"
 
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxLine_csr3d")

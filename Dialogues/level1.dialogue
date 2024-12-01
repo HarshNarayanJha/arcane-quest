@@ -1,20 +1,20 @@
 ~ entry
-Voice of the Sanctum: Thou art now in the Fire Realm. Beware, for the path is fraught with danger.
-#Voice of the Sanctum: The Fire Orb lies ahead, guarded by a creature of flame. Only those who face the fire with courage shall pass.
-#Voice of the Sanctum: The heat is fierce, but trust in thyself. The orb will reveal itself to thee, if thou art worthy.
-#Voice of the Sanctum: Keep thy wits sharp. The sorcerer’s influence may be felt here. His minions watch from the shadows.
-#Voice of the Sanctum: Move forward, adventurer. The trial begins now.
+Voice of the Sanctum: Thou art in the Fire Realm. The path is perilous.
+Voice of the Sanctum: The Fire Orb lies ahead. Only the brave shall claim it.
+Voice of the Sanctum: Trust thyself, for the orb will reveal itself to the worthy.
+Voice of the Sanctum: Beware, for the sorcerer’s minions watch.
+Voice of the Sanctum: Move forward. The trial begins.
 => END
 
 ~ got_bow
-#Voice of the Sanctum: Look, a treasure chest. It contains an item to aid you in your battle.
-#Voice of the Sanctum: With this, thou canst strike from afar.
-#Voice of the Sanctum: Look, an enemy. Shoot it. Use the "O" key to aim.
+Voice of the Sanctum: A chest! It holds an item to aid thee.
+Voice of the Sanctum: With this, thou canst strike from afar.
+Voice of the Sanctum: An enemy! Use the "O" key to aim and shoot.
 => END
 
 ~ got_orb
-#Voice of the Sanctum: The Fire Orb is thine. Its power now stirs within thee.
-#Voice of the Sanctum: Thou hast proven thy courage in the heart of the flames. The orb shall aid thee on thy journey.
-#Voice of the Sanctum: But remember, the orbs are not easily controlled. They will test thee, as thou hast tested them.
-#Voice of the Sanctum: One down, three remain. Go forth, adventurer, for the trials are far from over.
+Voice of the Sanctum: The Fire Orb is thine. Its power stirs within thee.
+Voice of the Sanctum: Thou hast proven thy courage. The orb will aid thee.
+Voice of the Sanctum: But beware, the orbs will test thee, as thou hast tested them.
+Voice of the Sanctum: One down, three remain. The trials continue.
 => END

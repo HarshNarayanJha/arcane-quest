@@ -18,7 +18,7 @@ var turn_speed: float
 var direction := Vector2.ZERO
 var knockback_velocity := Vector2.ZERO
 
-var controls_enabled := false
+var controls_enabled := true
 
 func _ready() -> void:
 	assert(player_data != null, "Player Data Not Set!")
@@ -26,9 +26,9 @@ func _ready() -> void:
 	state_machine.init(self)
 
 	hurtbox.took_damage.connect(_took_damage)
-	health.died.connect(queue_free)
+	health.died.connect(game_over)
 
-	unlock_controls()
+	#unlock_controls()
 
 func load_data() -> void:
 	speed = player_data.speed
@@ -66,5 +66,9 @@ func lock_controls() -> void:
 	velocity = Vector2.ZERO
 
 func unlock_controls() -> void:
-	print("Controls Unlocked")
+	#print("Controls Unlocked")
 	controls_enabled = true
+
+func game_over() -> void:
+	SceneManager.change_scene("res://Scenes/main_menu.tscn")
+	queue_free()

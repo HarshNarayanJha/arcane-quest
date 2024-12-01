@@ -57,6 +57,7 @@ func create_arrow() -> Arrow:
 
 	var arrow: Arrow = arrow_scene.instantiate()
 	fire_point.add_child(arrow)
+	arrow.play_sounds = false
 	arrow.z_index = -1
 	arrow.position = Vector2.ZERO + fire_direction_vector * -10
 	arrow.rotation = Vector2.UP.angle_to(fire_direction_vector)

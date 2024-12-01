@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dftf4ixdjg5t3"]
+[gd_scene load_steps=32 format=4 uid="uid://dftf4ixdjg5t3"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_3h848"]
 [ext_resource type="PackedScene" uid="uid://lebaqy3e4ac3" path="res://Scenes/UI/player_hud.tscn" id="1_7iwcr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dgts438blgcwe" path="res://Scenes/Helpers/player_spawn.tscn" id="4_w2fb1"]
 [ext_resource type="PackedScene" uid="uid://wr5kteq4tld0" path="res://Scenes/Entities/Interactables/level_exit.tscn" id="6_6ef23"]
 [ext_resource type="Script" path="res://Scripts/prologue_start.gd" id="7_s3jw0"]
+[ext_resource type="AudioStream" uid="uid://dg4yyunwd4ard" path="res://Audio/Music/Levels.wav" id="7_vdxyd"]
 [ext_resource type="Resource" uid="uid://cfn3puy5kw7vv" path="res://Dialogues/level2.dialogue" id="8_0je7h"]
 [ext_resource type="PackedScene" uid="uid://cgitrxm4q2a55" path="res://Scenes/Entities/Interactables/treasure_chest.tscn" id="9_qpebc"]
 [ext_resource type="PackedScene" uid="uid://bselrii20ajc7" path="res://Scenes/Entities/Hazards/spike_spin.tscn" id="10_5d7ii"]
@@ -21,6 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://cx7jvgxecvmxd" path="res://Scenes/Entities/Hazards/arrow_dispenser.tscn" id="17_nxg33"]
 [ext_resource type="PackedScene" uid="uid://8dfv3h0qimlj" path="res://Scenes/Entities/Objects/orb.tscn" id="18_xkfu2"]
 [ext_resource type="Texture2D" uid="uid://btfogr8ibgs43" path="res://Art/Entities/Objects/orb_blue.png" id="19_0p2r8"]
+[ext_resource type="PackedScene" uid="uid://cweal1a12ebly" path="res://Scenes/Levels/LevelFinal.tscn" id="22_0r1uf"]
+[ext_resource type="PackedScene" uid="uid://b2oxrjfauk6vn" path="res://Scenes/Entities/Objects/coin.tscn" id="22_xyry4"]
+[ext_resource type="Texture2D" uid="uid://c8qdkj16gxrtc" path="res://Art/Environment/light.png" id="25_mpdx7"]
+[ext_resource type="Script" path="res://Scripts/Levels/bomb_dialogue_trigger.gd" id="26_phwyr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqc5e"]
 bg_color = Color(0.167054, 0.600267, 0.999993, 0.588235)
@@ -28,9 +33,9 @@ bg_color = Color(0.167054, 0.600267, 0.999993, 0.588235)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wc86g"]
 size = Vector2(362, 28)
 
-[sub_resource type="Resource" id="Resource_4d5eu"]
+[sub_resource type="Resource" id="Resource_nwc8g"]
 script = ExtResource("17_idmmc")
-max_health = 10
+max_health = 30
 health = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uecat"]
@@ -105,6 +110,7 @@ tile_set = ExtResource("3_hi246")
 
 [node name="PlayerSpawn" parent="." node_paths=PackedStringArray("spawn_location") instance=ExtResource("4_w2fb1")]
 spawn_location = NodePath("Marker2D")
+level_music = ExtResource("7_vdxyd")
 
 [node name="Marker2D" type="Marker2D" parent="PlayerSpawn"]
 position = Vector2(-90, -90)
@@ -229,11 +235,11 @@ chest_type = 3
 
 [node name="BOSS-SpikeSpin" parent="LeftRoom" instance=ExtResource("10_5d7ii")]
 modulate = Color(0.101961, 1, 1, 1)
-position = Vector2(-2248, -2011)
+position = Vector2(-2247, -2011)
 scale = Vector2(3.5, 3.5)
 
 [node name="Health" parent="LeftRoom/BOSS-SpikeSpin" index="5"]
-health_data = SubResource("Resource_4d5eu")
+health_data = SubResource("Resource_nwc8g")
 
 [node name="Boss-Trigger" type="Area2D" parent="LeftRoom"]
 position = Vector2(-2246, -2008)
@@ -246,6 +252,7 @@ shape = SubResource("CircleShape2D_uecat")
 [node name="LevelExit" parent="." instance=ExtResource("6_6ef23")]
 position = Vector2(-1470, -793)
 this_scene_type = 3
+target_scene = ExtResource("22_0r1uf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
 shape = SubResource("RectangleShape2D_3mf4k")
@@ -255,8 +262,318 @@ position = Vector2(-1470.19, -990.126)
 orb_texture = ExtResource("19_0p2r8")
 orb_type = 1
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.454524, 0.454524, 0.454524, 1)
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(2296, -731)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(2007, -2004)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(1006, -1810)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(817, -1808)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(817, -1770)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(817, -1733)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(212, -2038)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(292, -1988)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(369, -2040)
+
+[node name="Coin10" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(-2573, -2280)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(-2573, -1746)
+
+[node name="Coin12" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(-1933, -2280)
+
+[node name="Coin13" parent="Coins" instance=ExtResource("22_xyry4")]
+position = Vector2(-1936, -1746)
+
+[node name="WaterLight" type="PointLight2D" parent="."]
+position = Vector2(2490, -690)
+color = Color(0, 0.878431, 0.901961, 1)
+energy = 0.4
+texture = ExtResource("25_mpdx7")
+texture_scale = 2.0
+
+[node name="WallLights" type="Node" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="WallLights"]
+position = Vector2(-159, -420)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D2" type="PointLight2D" parent="WallLights"]
+position = Vector2(-21, -609)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D3" type="PointLight2D" parent="WallLights"]
+position = Vector2(120, -759)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D4" type="PointLight2D" parent="WallLights"]
+position = Vector2(360, -622)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D5" type="PointLight2D" parent="WallLights"]
+position = Vector2(600, -759)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D6" type="PointLight2D" parent="WallLights"]
+position = Vector2(741, -612)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D7" type="PointLight2D" parent="WallLights"]
+position = Vector2(1021, -621)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D8" type="PointLight2D" parent="WallLights"]
+position = Vector2(1231, -758)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D9" type="PointLight2D" parent="WallLights"]
+position = Vector2(1685, -621)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D10" type="PointLight2D" parent="WallLights"]
+position = Vector2(2190, -621)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D11" type="PointLight2D" parent="WallLights"]
+position = Vector2(1942, -990)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D12" type="PointLight2D" parent="WallLights"]
+position = Vector2(2079, -1384)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D13" type="PointLight2D" parent="WallLights"]
+position = Vector2(1941, -1807)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D14" type="PointLight2D" parent="WallLights"]
+position = Vector2(1704, -2079)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D15" type="PointLight2D" parent="WallLights"]
+position = Vector2(1313, -1941)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D16" type="PointLight2D" parent="WallLights"]
+position = Vector2(720, -2077)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D17" type="PointLight2D" parent="WallLights"]
+position = Vector2(-58, -1941)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D18" type="PointLight2D" parent="WallLights"]
+position = Vector2(-528, -2079)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D19" type="PointLight2D" parent="WallLights"]
+position = Vector2(369, -1837)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D20" type="PointLight2D" parent="WallLights"]
+position = Vector2(84, -1701)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D21" type="PointLight2D" parent="WallLights"]
+position = Vector2(-426, -1837)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D22" type="PointLight2D" parent="WallLights"]
+position = Vector2(-691, -1701)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D23" type="PointLight2D" parent="WallLights"]
+position = Vector2(-1100, -1942)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D24" type="PointLight2D" parent="WallLights"]
+position = Vector2(-1393, -2078)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D25" type="PointLight2D" parent="WallLights"]
+position = Vector2(-1668, -1942)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D26" type="PointLight2D" parent="WallLights"]
+position = Vector2(-2619, -2019)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D27" type="PointLight2D" parent="WallLights"]
+position = Vector2(-1539, -1653)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D28" type="PointLight2D" parent="WallLights"]
+position = Vector2(-1250, -1838)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D29" type="PointLight2D" parent="WallLights"]
+position = Vector2(-1402, -1486)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D30" type="PointLight2D" parent="WallLights"]
+position = Vector2(-1898, -1071)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="PointLight2D31" type="PointLight2D" parent="WallLights"]
+position = Vector2(-1044, -1092)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("25_mpdx7")
+texture_scale = 0.4
+
+[node name="BombDialogueTrigger" type="Node" parent="."]
+script = ExtResource("26_phwyr")
+dialogue = ExtResource("8_0je7h")
+
 [connection signal="chest_opened" from="MiddlePart/Coins-TreasureChest" to="MiddlePart/CoinDialogueTrigger" method="start_dialogue"]
 [connection signal="died" from="LeftRoom/BOSS-SpikeSpin/Health" to="LeftRoom/Bombs-TreasureChest" method="enable"]
+[connection signal="died" from="LeftRoom/BOSS-SpikeSpin/Health" to="Coins/Coin10" method="queue_free"]
+[connection signal="died" from="LeftRoom/BOSS-SpikeSpin/Health" to="Coins/Coin11" method="queue_free"]
+[connection signal="died" from="LeftRoom/BOSS-SpikeSpin/Health" to="Coins/Coin12" method="queue_free"]
+[connection signal="died" from="LeftRoom/BOSS-SpikeSpin/Health" to="Coins/Coin13" method="queue_free"]
+[connection signal="died" from="LeftRoom/BOSS-SpikeSpin/Health" to="BombDialogueTrigger" method="trigger_bomb_dialogue"]
 [connection signal="body_entered" from="LeftRoom/Boss-Trigger" to="LeftRoom/Boss-Door" method="close_trigger_body"]
 [connection signal="body_entered" from="LeftRoom/Boss-Trigger" to="LeftRoom/Bombs-TreasureChest" method="disable_trigger_body"]
 

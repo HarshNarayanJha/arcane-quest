@@ -31,7 +31,7 @@ func set_player(instance: Player) -> void:
 	player = instance
 	player_changed.emit(instance)
 	inventory_changed.emit(inventory)
-	print_log("Player Changed!")
+	#print_log("Player Changed!")
 
 #region inventory_apis
 
@@ -41,7 +41,7 @@ func inventory_add_sword() -> void:
 
 	inventory.set_sword(true)
 	inventory_changed.emit(inventory)
-	print_log("Got Sword")
+	#print_log("Got Sword")
 
 func inventory_add_bow() -> void:
 	if inventory.has_bow():
@@ -49,7 +49,7 @@ func inventory_add_bow() -> void:
 
 	inventory.set_bow(true)
 	inventory_changed.emit(inventory)
-	print_log("Got Bow")
+	#print_log("Got Bow")
 
 func inventory_add_bomb() -> void:
 	if inventory.has_bomb():
@@ -57,17 +57,17 @@ func inventory_add_bomb() -> void:
 
 	inventory.set_bomb(true)
 	inventory_changed.emit(inventory)
-	print_log("Got Bombs")
+	#print_log("Got Bombs")
 
 func inventory_add_key(amount: int = 1) -> void:
 	inventory.set_keys(inventory.keys + amount)
 	inventory_changed.emit(inventory)
-	print_log("Got %d Key(s). Now have %d keys(s)" % [amount, inventory.keys])
+	#print_log("Got %d Key(s). Now have %d keys(s)" % [amount, inventory.keys])
 
 func inventory_use_key(amount: int = 1) -> void:
 	inventory.set_keys(inventory.keys - amount)
 	inventory_changed.emit(inventory)
-	print_log("Used %s Key(s). Now have %s key(s)" % [amount, inventory.keys])
+	#print_log("Used %s Key(s). Now have %s key(s)" % [amount, inventory.keys])
 
 func inventory_has_key(atleast: int = 1) -> bool:
 	return inventory.keys >= atleast
@@ -75,22 +75,22 @@ func inventory_has_key(atleast: int = 1) -> bool:
 func inventory_add_coins(amount: int = 1) -> void:
 	inventory.set_coins(inventory.coins + amount)
 	inventory_changed.emit(inventory)
-	print_log("Got %d Coins. Now have %d coinds" % [amount, inventory.coins])
+	#print_log("Got %d Coins. Now have %d coinds" % [amount, inventory.coins])
 
 func inventory_set_orb(orb: Inventory.ORB_TYPE) -> void:
 	inventory.set_orb(orb)
 	inventory_changed.emit(inventory)
-	print_log("Got an Orb %d" % orb)
+	#print_log("Got an Orb %d" % orb)
 
 func inventory_add_boss_key() -> void:
 	inventory.set_boss_key(true)
 	inventory_changed.emit(inventory)
-	print_log("Got Boss Key")
+	#print_log("Got Boss Key")
 
 func inventory_use_boss_key() -> void:
 	inventory.set_boss_key(false)
 	inventory_changed.emit(inventory)
-	print_log("Used Boss Key")
+	#print_log("Used Boss Key")
 
 #endregion inventory_apis
 
@@ -99,10 +99,6 @@ func lock_controls() -> void:
 
 func unlock_controls() -> void:
 	player.unlock_controls()
-
-func transition_scene(from: GameScene, to: PackedScene) -> void:
-	last_scene = from
-	get_tree().change_scene_to_packed(to)
 
 class Inventory:
 	enum ORB_TYPE {

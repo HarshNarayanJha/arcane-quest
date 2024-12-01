@@ -15,6 +15,8 @@ enum DOOR_TYPE {
 @export var closed_texture: Texture2D
 @export var open_texture: Texture2D
 
+@export_category("SFX")
+@export var sfx_key: AudioStream
 
 @export_category("Events")
 @export var interaction_area: InteractionArea
@@ -56,6 +58,7 @@ func _exit_tree() -> void:
 func check_key() -> void:
 	if Globals.inventory_has_key():
 		Globals.inventory_use_key()
+		MusicPlayer.play_sfx(sfx_key, global_position)
 		open()
 		interaction_area.disable()
 
@@ -74,7 +77,7 @@ func set_door(state: bool) -> void:
 		open()
 
 func open() -> void:
-	prints("Opening", name)
+	#prints("Opening", name)
 	is_open = true
 	collision.set_deferred("disabled", true)
 	if open_texture:
@@ -83,7 +86,7 @@ func open() -> void:
 		sprite.hide()
 
 func close() -> void:
-	prints("Closing", name)
+	#prints("Closing", name)
 	is_open = false
 	collision.set_deferred("disabled", false)
 	sprite.show()

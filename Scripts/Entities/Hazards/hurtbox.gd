@@ -25,5 +25,7 @@ func revoke_invincible() -> void:
 	invincible = false
 
 func take_damage(amount: int, hitbox_position: Vector2, knockback: float = 0) -> void:
+	if invincible:
+		return
 	health_component.apply_damage(amount)
 	took_damage.emit(amount, hitbox_position, knockback)

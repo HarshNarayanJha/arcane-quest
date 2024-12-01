@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dtkuajo5hyxqs"]
+[gd_scene load_steps=18 format=4 uid="uid://dtkuajo5hyxqs"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_48sf1"]
 [ext_resource type="TileSet" uid="uid://mejdaxlkw3mx" path="res://Scenes/Levels/Tilesets/border_tileset.tres" id="2_ag8sc"]
@@ -7,12 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://dgts438blgcwe" path="res://Scenes/Helpers/player_spawn.tscn" id="4_i4xhg"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="5_j4k48"]
 [ext_resource type="PackedScene" uid="uid://dofj4wtemqmiy" path="res://Scenes/Entities/Interactables/door.tscn" id="7_0vmv5"]
+[ext_resource type="AudioStream" uid="uid://b3c2223q1smiq" path="res://Audio/Music/NearOrb.mp3" id="7_bcxpv"]
 [ext_resource type="Texture2D" uid="uid://c8x3dvl46ukj5" path="res://Art/Entities/Objects/wall_secret.png" id="8_w1l2b"]
 [ext_resource type="PackedScene" uid="uid://dla4koheqh3xc" path="res://Scenes/Entities/Interactables/switch.tscn" id="9_utkg2"]
 [ext_resource type="PackedScene" uid="uid://wr5kteq4tld0" path="res://Scenes/Entities/Interactables/level_exit.tscn" id="10_0uv71"]
 [ext_resource type="PackedScene" uid="uid://ybxwgreikfq1" path="res://Scenes/Levels/Level1-Fireorb.tscn" id="11_g2cbp"]
 [ext_resource type="Script" path="res://Scripts/prologue_start.gd" id="12_m6j2b"]
 [ext_resource type="Resource" uid="uid://dcjthoul0722s" path="res://Dialogues/prologue.dialogue" id="13_we6ex"]
+[ext_resource type="Texture2D" uid="uid://c8qdkj16gxrtc" path="res://Art/Environment/light.png" id="15_kjdy3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yytxy"]
 size = Vector2(60.0751, 20)
@@ -72,6 +74,7 @@ tile_set = ExtResource("3_ajkrn")
 
 [node name="PlayerSpawn" parent="." node_paths=PackedStringArray("spawn_location") instance=ExtResource("4_i4xhg")]
 spawn_location = NodePath("SpawnPoint")
+level_music = ExtResource("7_bcxpv")
 
 [node name="SpawnPoint" type="Marker2D" parent="PlayerSpawn"]
 position = Vector2(-29, -331)
@@ -110,6 +113,39 @@ script = ExtResource("12_m6j2b")
 dialogue_trigger_area = NodePath("../DialogueAreaTrigger")
 dialogue_resource = ExtResource("13_we6ex")
 dialogue_title = "prologue"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.454524, 0.454524, 0.454524, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-30, -650)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 50.0
+texture = ExtResource("15_kjdy3")
+texture_scale = 0.3
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-217, -406)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 50.0
+texture = ExtResource("15_kjdy3")
+texture_scale = 0.5
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(157, -406)
+color = Color(1, 0.396078, 0, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 50.0
+texture = ExtResource("15_kjdy3")
+texture_scale = 0.5
 
 [editable path="SwitchDoor"]
 [editable path="SwitchMonster"]

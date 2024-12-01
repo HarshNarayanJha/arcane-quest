@@ -15,14 +15,15 @@ var has_bow: bool = false
 
 func _ready() -> void:
 	Globals.inventory_changed.connect(inventory_changed)
+	inventory_changed(Globals.inventory)
 
 func inventory_changed(inventory: Globals.Inventory) -> void:
 	if inventory.has_sword() && not has_sword:
-		print("Giving Sword to player in Combat Manager")
+		#print("Giving Sword to player in Combat Manager")
 		give_sword()
 
 	if inventory.has_bow() && not has_bow:
-		print("Giving Bow to player in Combat Manager")
+		#print("Giving Bow to player in Combat Manager")
 		give_bow()
 
 func give_sword():

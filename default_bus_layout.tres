@@ -1,0 +1,13 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://djumfms11gqdh"]
+
+[sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_wp7kq"]
+resource_name = "StereoEnhance"
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_y8l5y"]
+resource_name = "Compressor"
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectStereoEnhance_wp7kq")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectCompressor_y8l5y")
+bus/0/effect/1/enabled = true

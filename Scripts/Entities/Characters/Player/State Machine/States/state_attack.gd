@@ -5,6 +5,8 @@ var attacking: bool = false
 @onready var state_idle: State_Idle = $"../State_Idle"
 @onready var state_walk: State_Walk = $"../State_Walk"
 
+@export var sword_sfx: AudioStream
+
 ## Logic for entering the state
 func Enter() -> void:
 	player.update_animation("attack", 0.1, 2.0)
@@ -47,4 +49,5 @@ func HandleInput(_event: InputEvent) -> State:
 
 func end_attack(_newAnimName: String) -> void:
 	player.combat_manager.disable_sword()
+	MusicPlayer.play_sfx(sword_sfx, player.global_position)
 	attacking = false

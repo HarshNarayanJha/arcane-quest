@@ -28,7 +28,7 @@ func _prepare_arrow() -> void:
 	can_shoot = false
 
 	arrow = _create_arrow()
-	prints("Preparing arrow to fire in", 100 / attack_speed)
+	#prints("Preparing arrow to fire in", 100 / attack_speed)
 
 	if fire_timer:
 		fire_timer.timeout.disconnect(_ready_to_fire)
@@ -62,7 +62,7 @@ func shoot_arrow() -> void:
 	arrow.z_index = 2
 	arrow.global_transform = pos
 
-	prints("Arrow Fired")
+	#prints("Arrow Fired")
 	arrow.fire(global_transform.basis_xform(Vector2.UP), fire_speed, damage, knockback)
 
 func cancel_arrow() -> void:
