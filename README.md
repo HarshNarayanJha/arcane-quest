@@ -4,10 +4,11 @@
 
 Game made in Godot by me for the GitHub GameOff 2024.
 
-> Play this game to save the world from the wishes of the evil.
-> Some evil forces are trying to get hold of 4 mysterious orbs
-> that will let them control the world.
-> You must save the world by collecting the orbs and making a wish.
+> Embark on an epic quest to save the world from the clutches of evil! Dark forces are hunting down four ancient orbs, and whoever controls them will have the power to dominate the world. As the chosen hero, your mission is to track down these mysterious orbs before they fall into the wrong hands.
+> Venture through treacherous lands, facing fierce monsters and collecting powerful weapons to aid you on your journey. With every step, you'll uncover secrets, battle evil creatures, and grow stronger. But beware—dark forces lurk around every corner, determined to stop you.
+> Your ultimate goal is to collect the orbs, seal the evil forces away, and make a wish that will restore peace to the world. The fate of humanity lies in your hands—are you brave enough to take on this thrilling adventure and defeat the evil that threatens all?
+
+> For those daring enough to take on the challenge, seek out the 99 hidden coins scattered throughout the game. Finding them won’t be easy, but the rewards are worth the effort. The world’s future is waiting for you to save it! 
 
 ![cover](Screenshots/cover.png)
 
