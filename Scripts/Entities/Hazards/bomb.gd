@@ -18,3 +18,8 @@ func detonate():
 	var tween := get_tree().create_tween()
 	tween.tween_property(hitbox_collision.shape as CircleShape2D, "radius", impact_radius, impact_time)
 	tween.tween_callback(queue_free)
+
+	var shake = procam.get_addons()[1]
+	shake.shake()
+	await get_tree().create_timer(0.2).timeout
+	shake.stop()

@@ -280,6 +280,9 @@ modulate = Color(0.101961, 1, 1, 1)
 position = Vector2(-2247, -2011)
 scale = Vector2(3.5, 3.5)
 
+[node name="Hitbox" parent="LeftRoom/BOSS-SpikeSpin" index="3"]
+damage_amount = 6
+
 [node name="Health" parent="LeftRoom/BOSS-SpikeSpin" index="5"]
 health_data = SubResource("Resource_nwc8g")
 

@@ -46,9 +46,11 @@ func _prepare_arrow() -> void:
 func _ready_to_fire() -> void:
 	can_shoot = true
 	arrow.translate(Vector2.UP * 10)
-	particles.global_position = arrow.global_position + arrow.transform.basis_xform(Vector2.UP * 20)
+	particles.global_position = arrow.global_position
+	particles.translate(Vector2.UP * 20)
 	particles.emitting = true
-	light.global_position = arrow.global_position + arrow.transform.basis_xform(Vector2.UP * 18)
+	light.global_position = arrow.global_position
+	light.translate(Vector2.UP * 18)
 	light.enabled = true
 
 ## Called by the Bow State on Player to shoot_arrow when key is released

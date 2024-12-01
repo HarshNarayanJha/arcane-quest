@@ -55,13 +55,13 @@ priority = 0
 
 [sub_resource type="Resource" id="Resource_my65t"]
 script = ExtResource("4_tjt3d")
-preset = 1
-speed = 70.0
+preset = 4
+speed = 30.0
 intensity = 5.0
-shake_type = 127
-trauma_attack = 0.05
-trauma_decay = 0.1
-duration = 0.1
+shake_type = 108
+trauma_attack = 0.1
+trauma_decay = 0.5
+duration = 0.5
 endless = false
 enabled = true
 priority = 0
@@ -130,7 +130,7 @@ tile_map_data = PackedByteArray("AAD///b/AAAAAAAAAAD///f/AAAAAAAAAAD8//f/AAAAAAA
 tile_set = ExtResource("1_ceej3")
 
 [node name="Foreground" type="TileMapLayer" parent="Level-Final"]
-tile_map_data = PackedByteArray("AAAFAO//AAANAAIAAAD5/+3/AAANAAIAAAABAPP/AAAMAAIAAAD//+X/AAAIAAEAAAD//+b/AAAIAAEAAAD//+f/AAAIAAEAAAD//+j/AAAIAAEAAAD//+n/AAAIAAEAAAD//+r/AAAIAAEAAAD//+v/AAAIAAEAAAD//+z/AAAIAAEAAAD//+3/AAAIAAEAAAD//+7/AAAIAAEAAAD//+//AAAIAAEAAAD///D/AAAIAAEAAAD///H/AAAIAAEAAAD///L/AAAIAAEAAAD///P/AAAIAAEAAAD///T/AAAIAAEAAAD///X/AAAIAAEAAAD///b/AAAIAAEAAAD///n/AAAIAAIAAAD+//n/AAAIAAAAAAD///j/AAAIAAEAAAD+//r/AAAIAAEAAAD///r/AAAIAAEAAAAAAPr/AAAIAAEAAAD+//v/AAAIAAEAAAAAAPv/AAAIAAEAAAD///v/AAAIAAEAAAD//+H/AAAHAAYAAAD//+L/AAAHAAcAAAD//+P/AAAHAAcAAAD//+T/AAAHAAcAAAA=")
+tile_map_data = PackedByteArray("AAAFAO//AAANAAIAAAD5/+3/AAANAAIAAAABAPP/AAAMAAIAAAD//+X/AAAIAAEAAAD//+b/AAAIAAEAAAD//+f/AAAIAAEAAAD//+j/AAAIAAEAAAD//+n/AAAIAAEAAAD//+r/AAAIAAEAAAD//+v/AAAIAAEAAAD//+z/AAAIAAEAAAD//+3/AAAIAAEAAAD//+7/AAAIAAEAAAD//+//AAAIAAEAAAD///D/AAAIAAEAAAD///H/AAAIAAEAAAD///L/AAAIAAEAAAD///P/AAAIAAEAAAD///T/AAAIAAEAAAD///X/AAAIAAEAAAD///b/AAAIAAEAAAD///n/AAAIAAIAAAD+//n/AAAIAAAAAAD///j/AAAIAAEAAAD+//r/AAAIAAEAAAD///r/AAAIAAEAAAAAAPr/AAAIAAEAAAD+//v/AAAIAAEAAAAAAPv/AAAIAAEAAAD///v/AAAIAAEAAAD//+H/AAAHAAYAAAD//+L/AAAHAAcAAAD//+P/AAAHAAcAAAD//+T/AAAHAAcAAAAAAPn/AAAIAAAAAFA=")
 tile_set = ExtResource("2_270xi")
 
 [node name="Border" type="TileMapLayer" parent="Level-Final"]
@@ -153,7 +153,7 @@ scale = Vector2(6, 6)
 enemy_data = SubResource("Resource_2lpm0")
 
 [node name="Hitbox" parent="FinalBoss" index="3"]
-damage_amount = 50
+damage_amount = 18
 
 [node name="CollisionShape2D" parent="FinalBoss/Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_n5oof")

@@ -45,7 +45,8 @@ offset = Vector2(0, -13.45)
 [node name="FirePoint" type="Marker2D" parent="."]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 128
+modulate = Color(0, 1, 1, 1)
+amount = 256
 process_material = SubResource("ParticleProcessMaterial_sw7pn")
 trail_enabled = true
 trail_lifetime = 0.05
