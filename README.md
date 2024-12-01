@@ -1,11 +1,15 @@
 # Arcane Quest
 
+![logo](icon.svg)
+
 Game made in Godot by me for the GitHub GameOff 2024.
 
 > Play this game to save the world from the wishes of the evil.
 > Some evil forces are trying to get hold of 4 mysterious orbs
 > that will let them control the world.
 > You must save the world by collecting the orbs and making a wish.
+
+![cover](Screenshots/cover.png)
 
 ```
 Controls:
@@ -34,7 +38,7 @@ Audio/Music Credits
 "Piano and Strings Music Pack" by "Innlydian" on itch.io
 "Happy Loops" by "Goose Ninja" on itch.io
 "RPG Music Pack" by JP Soundworks, Pack Published by Platonic Game Studio.
-Various SFX by mixkit.io
+Various SFX by mixkit.io and pixabay.com
 
 Addons/Scripts Credits
 ProCam2D by Daz. B Like
