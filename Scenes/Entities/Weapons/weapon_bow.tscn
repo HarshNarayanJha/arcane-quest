@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b67svocxnna3m"]
+[gd_scene load_steps=8 format=3 uid="uid://b67svocxnna3m"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Weapons/bow_weapon.gd" id="1_vulho"]
 [ext_resource type="Texture2D" uid="uid://bx3mehrxfbbya" path="res://Art/Entities/Objects/weapon_bow.png" id="2_63ldt"]
 [ext_resource type="Script" path="res://Scripts/Entities/Weapons/Resources/weapon_data.gd" id="2_abfio"]
 [ext_resource type="PackedScene" uid="uid://ocnvx1bocci2" path="res://Scenes/Entities/Hazards/arrow.tscn" id="2_iper0"]
+[ext_resource type="Texture2D" uid="uid://c8qdkj16gxrtc" path="res://Art/Environment/light.png" id="5_nvvef"]
 
 [sub_resource type="Resource" id="Resource_hdlgy"]
 script = ExtResource("2_abfio")
@@ -11,7 +12,22 @@ attack_speed = 100.0
 damage = 2.0
 knockback = 150.0
 
-[node name="Weapon_Bow" type="StaticBody2D" node_paths=PackedStringArray("sprite", "fire_point")]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sw7pn"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 200.0
+turbulence_noise_speed = Vector3(0.05, 0.05, 0.05)
+
+[node name="Weapon_Bow" type="StaticBody2D" node_paths=PackedStringArray("sprite", "fire_point", "particles", "light")]
 z_index = 2
 script = ExtResource("1_vulho")
 arrow_scene = ExtResource("2_iper0")
@@ -19,9 +35,22 @@ weapon_data = SubResource("Resource_hdlgy")
 sprite = NodePath("Sprite2D")
 fire_point = NodePath("FirePoint")
 fire_speed = 500.0
+particles = NodePath("GPUParticles2D")
+light = NodePath("PointLight2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_63ldt")
 offset = Vector2(0, -13.45)
 
 [node name="FirePoint" type="Marker2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_sw7pn")
+trail_enabled = true
+trail_lifetime = 0.05
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+texture = ExtResource("5_nvvef")
+texture_scale = 0.1

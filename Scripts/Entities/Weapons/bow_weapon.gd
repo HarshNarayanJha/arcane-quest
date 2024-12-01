@@ -5,6 +5,8 @@ class_name BowWeapon extends StaticBody2D
 @export var sprite: Sprite2D
 @export var fire_point: Marker2D
 @export var fire_speed: float
+@export var particles: GPUParticles2D
+@export var light: PointLight2D
 
 var fire_timer: SceneTreeTimer
 var arrow: Arrow = null
@@ -22,6 +24,9 @@ func _ready() -> void:
 	attack_speed = weapon_data.attack_speed
 	damage = weapon_data.damage
 	knockback = weapon_data.knockback
+
+	particles.emitting = false
+	light.enabled = false
 
 ## Prepares an arrow by creating it, and setting up can_shoot timer
 func _prepare_arrow() -> void:
@@ -41,6 +46,10 @@ func _prepare_arrow() -> void:
 func _ready_to_fire() -> void:
 	can_shoot = true
 	arrow.translate(Vector2.UP * 10)
+	particles.global_position = arrow.global_position + arrow.transform.basis_xform(Vector2.UP * 20)
+	particles.emitting = true
+	light.global_position = arrow.global_position + arrow.transform.basis_xform(Vector2.UP * 18)
+	light.enabled = true
 
 ## Called by the Bow State on Player to shoot_arrow when key is released
 func shoot_arrow() -> void:
@@ -64,6 +73,8 @@ func shoot_arrow() -> void:
 
 	#prints("Arrow Fired")
 	arrow.fire(global_transform.basis_xform(Vector2.UP), fire_speed, damage, knockback)
+	particles.emitting = false
+	light.enabled = false
 
 func cancel_arrow() -> void:
 	if arrow:

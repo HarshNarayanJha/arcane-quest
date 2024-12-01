@@ -23,7 +23,7 @@ func init(enemy: Enemy) -> void:
 		if c is EnemyState:
 			states.append(c)
 
-	print_log("INIT: {0}".format(states))
+	#print_log("INIT: {0}".format(states))
 
 	for s in states:
 		s._enemy = enemy
@@ -33,7 +33,7 @@ func init(enemy: Enemy) -> void:
 		change_state(states[0])
 		set_process_mode(PROCESS_MODE_INHERIT)
 
-	print_log("Changing State: %s -> %s" % [null, states[0].name])
+	#print_log("Changing State: %s -> %s" % [null, states[0].name])
 
 ## Change the state to a new state
 func change_state(new_state: EnemyState) -> void:
@@ -42,7 +42,7 @@ func change_state(new_state: EnemyState) -> void:
 
 	if current_state:
 		current_state.Exit()
-		print_log("Changing State: %s -> %s" % [current_state.name, new_state.name])
+		#print_log("Changing State: %s -> %s" % [current_state.name, new_state.name])
 
 	previous_state = current_state
 	current_state = new_state

@@ -1,10 +1,12 @@
-[gd_scene load_steps=32 format=4 uid="uid://dftf4ixdjg5t3"]
+[gd_scene load_steps=37 format=4 uid="uid://dftf4ixdjg5t3"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_3h848"]
 [ext_resource type="PackedScene" uid="uid://lebaqy3e4ac3" path="res://Scenes/UI/player_hud.tscn" id="1_7iwcr"]
 [ext_resource type="Script" path="res://addons/ProCam2D/scripts/procam2d.gd" id="1_64l62"]
 [ext_resource type="TileSet" uid="uid://beumnpq6u0a2d" path="res://Scenes/Levels/Tilesets/foreground_tileset.tres" id="2_40wbr"]
 [ext_resource type="TileSet" uid="uid://mejdaxlkw3mx" path="res://Scenes/Levels/Tilesets/border_tileset.tres" id="3_hi246"]
+[ext_resource type="Script" path="res://addons/ProCam2D/scripts/core/nds/a.gd" id="3_iol2x"]
+[ext_resource type="Script" path="res://addons/ProCam2D/scripts/core/addns/pcam_shake.gd" id="4_jiilx"]
 [ext_resource type="PackedScene" uid="uid://dgts438blgcwe" path="res://Scenes/Helpers/player_spawn.tscn" id="4_w2fb1"]
 [ext_resource type="PackedScene" uid="uid://wr5kteq4tld0" path="res://Scenes/Entities/Interactables/level_exit.tscn" id="6_6ef23"]
 [ext_resource type="Script" path="res://Scripts/prologue_start.gd" id="7_s3jw0"]
@@ -26,6 +28,45 @@
 [ext_resource type="PackedScene" uid="uid://b2oxrjfauk6vn" path="res://Scenes/Entities/Objects/coin.tscn" id="22_xyry4"]
 [ext_resource type="Texture2D" uid="uid://c8qdkj16gxrtc" path="res://Art/Environment/light.png" id="25_mpdx7"]
 [ext_resource type="Script" path="res://Scripts/Levels/bomb_dialogue_trigger.gd" id="26_phwyr"]
+
+[sub_resource type="Resource" id="Resource_i2efp"]
+script = ExtResource("4_jiilx")
+preset = 1
+speed = 70.0
+intensity = 2.0
+shake_type = 111
+trauma_attack = 0.05
+trauma_decay = 0.1
+duration = 0.1
+endless = false
+enabled = true
+priority = 0
+
+[sub_resource type="Resource" id="Resource_68qgp"]
+script = ExtResource("4_jiilx")
+preset = 1
+speed = 70.0
+intensity = 2.0
+shake_type = 87
+trauma_attack = 0.05
+trauma_decay = 0.1
+duration = 0.1
+endless = false
+enabled = true
+priority = 0
+
+[sub_resource type="Resource" id="Resource_d3rcd"]
+script = ExtResource("4_jiilx")
+preset = 1
+speed = 70.0
+intensity = 5.0
+shake_type = 127
+trauma_attack = 0.05
+trauma_decay = 0.1
+duration = 0.1
+endless = false
+enabled = true
+priority = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqc5e"]
 bg_color = Color(0.167054, 0.600267, 0.999993, 0.588235)
@@ -51,6 +92,7 @@ size = Vector2(62, 20)
 [node name="ProCam2D" type="Node2D" parent="."]
 z_index = 4096
 script = ExtResource("1_64l62")
+addons = Array[ExtResource("3_iol2x")]([SubResource("Resource_i2efp"), SubResource("Resource_68qgp"), SubResource("Resource_d3rcd")])
 process_frame = 2
 follow_mode = 0
 drag_type = 0
