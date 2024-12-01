@@ -233,9 +233,9 @@ You must save the world by collecting the orbs and making a wish.
 Controls:
 
 WASD or Arrow Keys to move around (Left Stick on Controller)
-Space to interact with the environment (West Button on Controller)
+Space to interact with the environment (East Button on Controller)
 Hold O to use the Bow (North Button on Controller)
-Press Enter/Return to use the Sword (East Button on Controller)
+Press Enter/Return to use the Sword (West Button on Controller)
 Press B to drop bombs (South Button on Controller)"
 label_settings = SubResource("LabelSettings_n0733")
 horizontal_alignment = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dtkuajo5hyxqs"]
+[gd_scene load_steps=20 format=4 uid="uid://dtkuajo5hyxqs"]
 
 [ext_resource type="TileSet" uid="uid://bgd51oq3vu7s5" path="res://Scenes/Levels/Tilesets/ground_tileset.tres" id="1_48sf1"]
 [ext_resource type="TileSet" uid="uid://mejdaxlkw3mx" path="res://Scenes/Levels/Tilesets/border_tileset.tres" id="2_ag8sc"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://Scripts/prologue_start.gd" id="12_m6j2b"]
 [ext_resource type="Resource" uid="uid://dcjthoul0722s" path="res://Dialogues/prologue.dialogue" id="13_we6ex"]
 [ext_resource type="Texture2D" uid="uid://c8qdkj16gxrtc" path="res://Art/Environment/light.png" id="15_kjdy3"]
+[ext_resource type="Script" path="res://Scripts/Levels/secret_coins.gd" id="16_lk2xb"]
+[ext_resource type="PackedScene" uid="uid://b2oxrjfauk6vn" path="res://Scenes/Entities/Objects/coin.tscn" id="17_gslq1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yytxy"]
 size = Vector2(60.0751, 20)
@@ -39,7 +41,7 @@ smooth_offset_speed = 2.0
 allow_rotation = true
 smooth_rotation = true
 smooth_rotation_speed = 5.0
-zoom = 1.0
+zoom = 1.5
 smooth_zoom = true
 smooth_zoom_speed = 5.0
 auto_zoom = true
@@ -88,7 +90,7 @@ trigger = NodePath("../SwitchDoor/BoolEventTrigger")
 [node name="SwitchDoor" parent="." instance=ExtResource("9_utkg2")]
 position = Vector2(-150.606, -449.826)
 
-[node name="SwitchMonster" parent="." instance=ExtResource("9_utkg2")]
+[node name="SwitchSecret" parent="." instance=ExtResource("9_utkg2")]
 position = Vector2(89.3941, -449.826)
 
 [node name="LevelExit" parent="." instance=ExtResource("10_0uv71")]
@@ -147,5 +149,19 @@ shadow_filter_smooth = 50.0
 texture = ExtResource("15_kjdy3")
 texture_scale = 0.5
 
+[node name="SecretCoins" type="Node" parent="." node_paths=PackedStringArray("markers")]
+script = ExtResource("16_lk2xb")
+time = 10
+coin_scene = ExtResource("17_gslq1")
+markers = [NodePath("CoinMarker1"), NodePath("CoinMarker2")]
+
+[node name="CoinMarker1" type="Marker2D" parent="SecretCoins"]
+position = Vector2(-89, -310)
+
+[node name="CoinMarker2" type="Marker2D" parent="SecretCoins"]
+position = Vector2(33, -310)
+
+[connection signal="switch_toggle" from="SwitchSecret" to="SecretCoins" method="spawn_secret_coins"]
+
 [editable path="SwitchDoor"]
-[editable path="SwitchMonster"]
+[editable path="SwitchSecret"]

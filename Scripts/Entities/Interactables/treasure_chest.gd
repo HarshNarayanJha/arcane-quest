@@ -73,6 +73,7 @@ func disable() -> void:
 	hide()
 	collison.set_deferred("disabled", true)
 	interaction.disable()
+	print("Disabling")
 
 func enable() -> void:
 	show()
