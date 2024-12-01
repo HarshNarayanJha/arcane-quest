@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Arcane Quest"
-config/description="Game where you go on an adventure to collect orbs and save the world"
-config/version="v0.1.0"
+config/description="Embark on an epic quest to save the world from the clutches of evil! Dark forces are hunting down four ancient orbs, and whoever controls them will have the power to dominate the world. As the chosen hero, your mission is to track down these mysterious orbs before they fall into the wrong hands. Venture through treacherous lands, facing fierce monsters and collecting powerful weapons to aid you on your journey. With every step, you'll uncover secrets, battle evil creatures, and grow stronger. But beware—dark forces lurk around every corner, determined to stop you. Your ultimate goal is to collect the orbs, seal the evil forces away, and make a wish that will restore peace to the world. The fate of humanity lies in your hands—are you brave enough to take on this thrilling adventure and defeat the evil that threatens all?
+
+For those daring enough to take on the challenge, seek out the 99 hidden coins scattered throughout the game. Finding them won’t be easy, but the rewards are worth the effort. The world’s future is waiting for you to save it!
+"
+config/version="v1.0.0"
 run/main_scene="res://Scenes/main_menu.tscn"
+run/disable_stdout=true
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -34,6 +38,7 @@ general/balloon_path="res://Scenes/UI/Dialogue/balloon.tscn"
 
 window/size/window_width_override=1280
 window/size/window_height_override=720
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 

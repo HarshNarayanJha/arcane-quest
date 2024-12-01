@@ -45,6 +45,7 @@ Addons/Scripts Credits
 ProCam2D by Daz. B Like
 Dialogue Manager by Nathan Hoad
 Scene Manager by GlassBrick
+ScriptIDE by "Maran23"
 Some snippets from "Make a 2D Action RPG in Godot 4" series on YouTube by "Michael Game"
 
 And the rest whom I forgot...
