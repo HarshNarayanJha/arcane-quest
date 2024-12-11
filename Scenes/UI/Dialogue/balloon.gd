@@ -2,10 +2,10 @@ extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
 ## The action to use for advancing the dialogue
-@export var next_action: StringName = &"ui_accept"
+@export var next_action: StringName = &"dialogue_next"
 
 ## The action to use to skip typing the dialogue
-@export var skip_action: StringName = &"ui_cancel"
+@export var skip_action: StringName = &"dialogue_skip"
 
 ## The dialogue resource
 var resource: DialogueResource

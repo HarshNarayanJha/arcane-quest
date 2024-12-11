@@ -186,7 +186,7 @@ offset_bottom = -15.0
 grow_vertical = 0
 theme_override_colors/default_color = Color(0.762404, 0.762404, 0.762404, 1)
 theme_override_font_sizes/normal_font_size = 12
-text = "v0.1.0 <git_tag>"
+text = "v1.0.1 19bd1ca"
 
 [node name="Help" type="ScrollContainer" parent="."]
 layout_mode = 1

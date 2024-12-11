@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=15 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://Scenes/UI/Dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
@@ -66,6 +66,10 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
+[sub_resource type="LabelSettings" id="LabelSettings_j7bmq"]
+font = ExtResource("5_ommbw")
+font_size = 28
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qjq3m"]
 texture = ExtResource("4_h7jkh")
 texture_margin_left = 10.0
@@ -93,6 +97,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
+
+[node name="Label" type="Label" parent="Balloon"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -226.0
+offset_right = 168.0
+offset_bottom = -181.0
+grow_vertical = 0
+text = "Space to advance
+Escape to skip"
+label_settings = SubResource("LabelSettings_j7bmq")
 
 [node name="Panel" type="Panel" parent="Balloon"]
 clip_children = 2
